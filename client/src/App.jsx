@@ -1,22 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { // useState( setState ==> this.setState {})
+export default function App() {
 
-    }
-  }
+  useEffect(() => {
 
-  componentDidMount() { // useEffect
+  }, []);
 
-  }
-
-  render() {
-    return(
-      <div></div>
-    )
-  }
+  return (
+    <div></div>
+  );
 }
-
-export default App;
