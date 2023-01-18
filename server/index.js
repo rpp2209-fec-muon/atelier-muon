@@ -14,16 +14,39 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 
 // routes
-app.get('/product', (req, res) => {
-  helper.getProduct('', '', (err, products) => {
+app.get('/products', (req, res) => {
+  helper.getProduct((err, products) => {
     if (err) {
-      // console.log(err);
       res.sendStatus(400);
     } else {
-      // console.log(products);
-      res.status(201).send(products);
+      res.status(200).send(products);
+    }
+  }, req.query.params, req.query.product_id, req.query.type);
+});
+
+app.get('/reviews', (req, res) => {
+  // console.log(req.query);
+  helper.getReview((err, reviews) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(200).send(reviews);
+    }
+  }, req.query.params, req.query.type);
+})
+
+app.post('/reviews', (req, res) => {
+  helper.postReview(req.body, (err) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
     }
   })
+})
+
+app.put('/reviews', (req, res) => {
+  //helper.putReview
 })
 
 app.listen(PORT, () => {
