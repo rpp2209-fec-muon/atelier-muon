@@ -9,6 +9,8 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '../client/dist')));
 // extra imports (body parsers, etc);
 
+app.use(express.json());
+
 
 // routes
 
