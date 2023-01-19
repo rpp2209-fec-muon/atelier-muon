@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import ProductDetailsPage from './components/Product Overview/ProductDetails.jsx';
+import RelatedProducts from './components/Related Products/RelatedProducts.jsx';
 const axios = require('axios');
 
 
 export default function App() {
+
+  const [product, setProduct] = useState('/71697');
 
   useEffect(() => {
 
   }, []);
 
   return (
-    <ProductDetailsPage />
+    <div>
+      <RelatedProducts product_id={product} />
+    </div>
   );
 }

@@ -4,7 +4,6 @@ const express = require('express');
 const helper = require('./helpers/api.js');
 const path = require("path");
 const PORT = process.env.PORT;
-const path = require('path');
 
 const app = express();
 // static file serve
@@ -17,7 +16,7 @@ app.use(express.json());
 
 // routes
 
-app.get('/products', (req, res) => {
+app.get('/:tagid', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
       res.sendStatus(400);
