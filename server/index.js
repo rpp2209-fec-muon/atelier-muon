@@ -4,16 +4,19 @@ const express = require('express');
 const helper = require('./helpers/api.js');
 const path = require("path");
 const PORT = process.env.PORT;
+const path = require('path');
 
 const app = express();
 // static file serve
-app.use(express.json());
 
 // extra imports (body parsers, etc);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+app.use(express.json());
+
 
 // routes
+
 app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
@@ -48,6 +51,7 @@ app.post('/reviews', (req, res) => {
 app.put('/reviews', (req, res) => {
   //helper.putReview
 })
+
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
