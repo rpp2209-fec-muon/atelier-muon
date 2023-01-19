@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ProductDetailsPage from './components/Product Overview/ProductDetails.jsx';
 import RelatedProducts from './components/Related Products/RelatedProducts.jsx';
 const axios = require('axios');
 
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <div>
+      <ProductDetailsPage />
       <RelatedProducts product_id={product} />
     </div>
   );
