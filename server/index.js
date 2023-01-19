@@ -16,7 +16,7 @@ app.use(express.json());
 
 // routes
 
-app.get('/:tagid', (req, res) => {
+app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
       res.sendStatus(400);

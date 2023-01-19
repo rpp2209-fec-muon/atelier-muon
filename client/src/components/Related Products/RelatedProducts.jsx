@@ -1,28 +1,34 @@
 import React from 'react';
 import axios from 'axios';
+import Cards from './components/Cards.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: props.product_id
+      product_id: props.product_id,
+      related: []
     }
   }
-/*
-related list: GET /products/:product_id/related
-Product Category: GET /products/:product_id
-Product Name: GET /products/:product_id
-Price : defalt?: true; original_price, sale_price: GET /products/:product_id/styles
-Star Rating: GET /reviews/meta
-img: GET /products/:product_id/styles
-*/
+  // related list: GET /products/:product_id/related
   componentDidMount() {
-
+    axios
+      .get('/products', { params: { type: '/related', product_id: this.state.product_id, params: {} }})
+      .then((data) => {
+        this.setState({
+          related: data.data
+        })
+        console.log("GET Products Related Successful");
+      })
+      .catch(err => console.log(err));
   }
 
   render () {
     return(
       <div>
+        <h3>Related Products</h3>
+          {this.state.related.map((product) => <Cards product_id={product} key={product} />)}
+        <h3>Outfits</h3>
       </div>
     )
   }
