@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Tile() {
+export default function NewReview() {
 
   return (
     <div></div>
