@@ -7,7 +7,23 @@ import Search from './Search.jsx';
 
 export default function Reviews() {
 
+  const [formState, setFormState] = useState(false);
+
+  // useEffect will load a list of reviews for the current product on page load
+
+  // sorting component will live within Reviews main component,
+  // and will control the state that is passed to List
+
   return (
-    <div>Ratings and Reviews</div>
+    <div>
+      <div>Ratings and Reviews</div>
+      <Search />
+      <List />
+      <ProductBreakdown />
+      <RatingsBreakdown />
+      {formState &&
+        <NewReview />
+      }
+    </div>
   )
 }
