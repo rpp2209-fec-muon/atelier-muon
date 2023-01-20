@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ProductInfo () {
 
-  return ([
-    <div> Product Information </div>
-  ])
+  return (
+    <div className='test'> Product Info </div>
+  )
+
 }
 
 export default ProductInfo;
