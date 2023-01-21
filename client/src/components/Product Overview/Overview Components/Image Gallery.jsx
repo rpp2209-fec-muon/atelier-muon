@@ -15,13 +15,13 @@ function ImageGallery (props) {
     .get('/products', { params: { type: '/styles', product_id: props.id, params: {} }})
       .then((data) => {
         // data.data.result gives me array of photos
-        console.log(data.data.result)
+        console.log('image data', data.data.results)
       })
       .catch(err => console.log(err));
   }
 
   return (
-    <div className='test' > Image Gallery </div>
+    null
   )
 }
 
