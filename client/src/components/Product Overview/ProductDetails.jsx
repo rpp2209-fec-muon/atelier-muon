@@ -4,14 +4,33 @@ import ImageGallery from './Overview Components/Image Gallery.jsx';
 import ProductInfo from './Overview Components/Product Information.jsx';
 import StyleSelector from './Overview Components/Style Selector.jsx';
 import AddToCart from './Overview Components/Add Cart.jsx';
+import axios from 'axios';
 
-function ProductDetailsPage () {
+function ProductDetailsPage (props) {
+
+  // create state to hold current view
+  const [exampleProduct, setExampleProduct] = useState([])
+
+  useEffect( () => {
+    if (exampleProduct.length === 0) {
+      axios
+      .get('/products', { params: { type: '', product_id: props.product, params: {} }})
+      .then((data) => {
+        console.log('GET Request Successful');
+        var product = []
+        product.push(data.data)
+        setExampleProduct(product);
+      })
+      .catch(err => console.log(err));
+      }
+  })
+
 
   return ([
-    <ImageGallery />,
-    <ProductInfo />,
-    <StyleSelector />,
-    <AddToCart />,
+    <ImageGallery product={exampleProduct} id={props.product}/>,
+    <ProductInfo product={exampleProduct}/>,
+    <StyleSelector product={exampleProduct}/>,
+    <AddToCart product={exampleProduct}/>,
   ])
 }
 

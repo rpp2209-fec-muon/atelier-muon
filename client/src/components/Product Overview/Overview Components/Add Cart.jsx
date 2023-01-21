@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function AddToCart () {
+function AddToCart (props) {
   return (
     <button className='test'> Add To Cart </button>
   )

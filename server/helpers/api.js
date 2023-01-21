@@ -9,6 +9,7 @@ let getProduct = (callback, params, product_id = '', type = '') => {
       'Authorization': process.env.API_KEY
     }
   };
+
   axios({
     method: 'get',
     url: options.url,
