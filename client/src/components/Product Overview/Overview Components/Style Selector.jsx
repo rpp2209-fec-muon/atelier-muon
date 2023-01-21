@@ -4,7 +4,6 @@ function StyleSelector (props) {
 
   // take the array of different styles
   // create buttons that are cicles by mapping through them
-  console.log('should be array of styles', props.styles);
 
   return ([
 
