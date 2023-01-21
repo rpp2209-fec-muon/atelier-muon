@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function StyleSelector () {
-
-  return ([
-    <div> Style Selector </div>
-  ])
+function StyleSelector (props) {
+  return (
+    <div className='test'> Style Selector </div>
+  )
 }
 
 export default StyleSelector;
