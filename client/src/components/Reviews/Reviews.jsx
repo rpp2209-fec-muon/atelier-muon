@@ -10,11 +10,13 @@ export default function Reviews(props) {
 
   const [formState, setFormState] = useState(false);
   const [sortState, setSortState] = useState('relevant');
-  const [listState, setListState] = useState([])
+  const [listState, setListState] = useState([]);
+  const [metaState, setMetaState] = useState({});
+
+  var product_id = Number(props.product_id.slice(1));
 
   // add review get helper function for sending get requests to the server
   const getReviews = () => {
-    var product_id = Number(props.product_id.slice(1));
     axios.get('/reviews', {
       params: {
         type: '',
@@ -28,7 +30,24 @@ export default function Reviews(props) {
         setListState(data.data.results);
       })
       .catch((err) => {
-        console.log('error fetching data');
+        console.log('error fetching reviews');
+      })
+  }
+
+  const getMetaData = () => {
+    axios.get('/reviews', {
+      params: {
+        type: '/meta',
+        params: {
+          product_id: product_id
+        }
+      }
+    })
+      .then((data) => {
+        setMetaState(data.data);
+      })
+      .catch((err) => {
+        console.log('error fetching metadata');
       })
   }
 
@@ -36,6 +55,7 @@ export default function Reviews(props) {
   // useEffect will load a list of reviews for the current product on page load
   useEffect(() => {
     getReviews();
+    getMetaData();
   }, []);
 
   // sorting component will live within Reviews main component,
@@ -46,8 +66,8 @@ export default function Reviews(props) {
       <h2>Ratings and Reviews</h2>
       <Search />
       <List list={listState}/>
-      <ProductBreakdown />
-      <RatingsBreakdown />
+      <ProductBreakdown meta={metaState}/>
+      <RatingsBreakdown meta={metaState}/>
       {formState &&
         <NewReview />
       }
