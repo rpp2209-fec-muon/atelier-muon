@@ -17,7 +17,7 @@ export default function App() {
     <div>
       <ProductDetailsPage />
       <RelatedProducts product_id={product} />
-      <Reviews />
+      <Reviews product_id={product}/>
     </div>
   );
 }
