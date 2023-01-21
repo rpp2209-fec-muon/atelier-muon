@@ -6,6 +6,10 @@ export default function List(props) {
   console.log(props.list);
 
   return (
-    <div></div>
+    <div>
+    {props.list.map((item) => {
+      return <Tile key={item.review_id} review={item}/>
+    })}
+    </div>
   )
 }

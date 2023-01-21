@@ -43,7 +43,7 @@ export default function Reviews(props) {
 
   return (
     <div>
-      <div>Ratings and Reviews</div>
+      <h2>Ratings and Reviews</h2>
       <Search />
       <List list={listState}/>
       <ProductBreakdown />
