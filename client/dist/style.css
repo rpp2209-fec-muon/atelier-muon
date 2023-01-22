@@ -6,3 +6,20 @@ body {
   border-style: solid;
   width: fit-content;
 }
+
+.overview-product-overview {
+  margin-bottom: 250px;
+}
+
+.overview-style {
+  float: right;
+  clear: both;
+}
+
+.overview-button {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-width: 3px;
+  margin: 10px;
+}
