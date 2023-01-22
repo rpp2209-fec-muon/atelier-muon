@@ -66,8 +66,12 @@ export default function Reviews(props) {
       <h2>Ratings and Reviews</h2>
       <Search />
       <List list={listState}/>
-      <ProductBreakdown meta={metaState}/>
-      <RatingsBreakdown meta={metaState}/>
+      {metaState.ratings &&
+        <RatingsBreakdown meta={metaState}/>
+      }
+      {metaState.characteristics &&
+        <ProductBreakdown meta={metaState}/>
+      }
       {formState &&
         <NewReview />
       }
