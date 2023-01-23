@@ -12,8 +12,11 @@ body {
 }
 
 .overview-style {
-  float: right;
-  clear: both;
+  width: 300px;
+  margin-top: 20px;
+  /* position: relative;
+  bottom: 600px;
+  left: 700px; */
 }
 
 .overview-button {
@@ -22,4 +25,36 @@ body {
   height: 70px;
   border-width: 3px;
   margin: 10px;
+}
+
+.overview-gallery {
+  width: 500px;
+  border-style: solid;
+  display: inline;
+  margin-bottom: 50px;
+}
+
+.overview-description {
+  width: 500px;
+}
+
+.overview-slogan-description {
+  float: left;
+  clear: both;
+}
+
+.overview-name {
+  margin: 0px 95px 25px 0px;
+}
+
+.overview-cart {
+  /* float: right;
+  clear: both; */
+  margin: 25px 80px 25px 0px;
+  font-size: 20px;
+  padding: 15px 30px;
+}
+
+.overview-category {
+  font-size: 20px;
 }

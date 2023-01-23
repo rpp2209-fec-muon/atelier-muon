@@ -13,6 +13,9 @@ function ProductOverview (props) {
   const [allStyles, setStyles] = useState([])
   const [allImages, setImages] = useState([])
 
+  // create style image state to be updated with onclick function for next
+  // style image
+
   useEffect( () => {
     if (exampleProduct.length === 0 && allStyles.length === 0) {
       getStyles()
@@ -43,10 +46,13 @@ function ProductOverview (props) {
     .catch(err => console.log(err));
   }
 
+  // create onClick function to update the style image to pass down
+  // the image to our image gallery
+
 
   return ([
     <div className='overview-product-overview'>
-      <ImageGallery product={exampleProduct} id={props.product}/>
+      <ImageGallery styles={allStyles} id={props.product}/>
       <ProductInfo product={exampleProduct}/>
       <StyleSelector styles={allStyles}/>
       <AddToCart product={exampleProduct}/>

@@ -3,16 +3,19 @@ import axios from 'axios';
 
 function ImageGallery (props) {
 
-  const [styles, setStyles] = useState([])
+  // just need a default image here for now, we can default style one
+  // its an array so props.styles[0].photos.url is our src for default 1
+  console.log('images', props.styles);
 
-  useEffect( () => {
-    getStyle();
-    console.log(props.id);
-  })
-
-  return (
-    null
-  )
+  if(props.styles.length) {
+    return (
+      <img className='overview-gallery' src={props.styles[0].photos[0].thumbnail_url}></img>
+    )
+  } else {
+    return (
+      null
+    )
+  }
 }
 
 export default ImageGallery;
