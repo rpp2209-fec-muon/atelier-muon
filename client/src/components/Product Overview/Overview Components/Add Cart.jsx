@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function AddToCart (props) {
   return (
-    <button className='test'> Add To Cart </button>
+    <button className='overview-cart'> <div className='overview-cart-text'>Add To Cart</div> </button>
   )
 }
 
