@@ -92,3 +92,55 @@ body {
   padding: 20px;
 }
 
+/*-------Star--------*/
+
+.star {
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  color: #ddd;
+}
+
+.star-fill:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+
+.star-quarter:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25%;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+
+.star-half:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+
+.star-threeQuarter:after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75%;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
