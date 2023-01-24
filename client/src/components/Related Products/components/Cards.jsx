@@ -126,7 +126,7 @@ img: GET /products/:product_id/styles
     }
 
     return(
-      <div>
+      <div className="rp-card" data-testid="rp-card">
         <img src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div>{this.state.category}</div>
