@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Price from '../../Global/Price.jsx';
 
 class Cards extends React.Component {
   constructor(props) {
@@ -7,8 +8,6 @@ class Cards extends React.Component {
     this.state = {
       product_id: props.product_id,
       photos: [],
-      original_price: '',
-      sale_price: null,
       style_name: '',
       category: '',
       name: '',
@@ -55,8 +54,6 @@ img: GET /products/:product_id/styles
             });
             this.setState({
               photos: newPhotos,
-              original_price: style.original_price,
-              sale_price: style.sale_price,
               style_name: style.name
             });
           }
@@ -68,8 +65,6 @@ img: GET /products/:product_id/styles
           });
           this.setState({
             photos: newPhotos,
-            original_price: data.data.results[0].original_price,
-            sale_price: data.data.results[0].sale_price,
             style_name: data.data.results[0].name
           });
         }
@@ -116,23 +111,13 @@ img: GET /products/:product_id/styles
   }
 
   render () {
-    let price, sale;
-    if (this.state.sale_price === null) {
-      price = <div>{this.state.original_price}</div>;
-      sale = <div></div>;
-    } else {
-      price =  <div style="text-decoration: line-through;">{this.state.original_price}</div>;
-      sale  =  <div>{this.state.sale_price}</div>;
-    }
-
     return(
       <div>
         <img src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div>{this.state.category}</div>
         <div>{this.state.name} {this.state.style_name}</div>
-        <div>{price}</div>
-        <div>{sale}</div>
+        <Price product_id={this.state.product_id} />
         <div>{this.state.ratings}</div>
 
       </div>
