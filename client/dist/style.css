@@ -70,3 +70,25 @@ body {
   margin: 0px 5px 5px 0px;
   border-style: solid;
 }
+
+
+/* ============ REVIEWS STYLES =============== */
+
+/* Flex and Positioning */
+
+.reviews-flexParent {
+  display: flex;
+  flex-direction: row ltr;
+  justify-content: center;
+}
+
+.reviews-flexBreakdownParent {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.reviews-flexListParent {
+  padding: 20px;
+}
+
