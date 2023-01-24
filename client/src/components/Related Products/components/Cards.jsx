@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Price from '../../Global/Price.jsx';
+import Star from '../../Global/Star.jsx';
 
 class Cards extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Cards extends React.Component {
       style_name: '',
       category: '',
       name: '',
-      ratings: ''
+      ratings: 0
     }
   }
 /*
@@ -96,28 +97,13 @@ img: GET /products/:product_id/styles
   ratingTranslate(ratings) {
     var total = ratings[1] * 1 + ratings[2] * 2 + ratings[3] * 3 + ratings[4] * 4 + ratings[5] * 5;
     var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
-    var rating = '';
-    var ratePoint = Math.floor(total / totalRate);
-    if (ratePoint === 0) {
-      rating = '☆☆☆☆☆'
-    } else if (ratePoint === 1) {
-      rating = '★☆☆☆☆'
-    } else if (ratePoint === 2) {
-      rating = '★★☆☆☆'
-    } else if (ratePoint === 3) {
-      rating = '★★★☆☆'
-    } else if (ratePoint === 4) {
-      rating = '★★★★☆'
-    } else {
-      rating = '★★★★★'
-    }
+    var rating =  total / totalRate;
     this.setState({
       ratings: rating
     });
   }
 
   render () {
-    console.log(this.state);
     return(
       <div>
         <img src={this.state.photos[0] !== null ? this.state.photos[0] :
@@ -125,7 +111,7 @@ img: GET /products/:product_id/styles
         <div>{this.state.category}</div>
         <div>{this.state.name} {this.state.style_name}</div>
         <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
-        <div>{this.state.ratings}</div>
+        <Star ratings={this.state.ratings} />
       </div>
     )
   }
