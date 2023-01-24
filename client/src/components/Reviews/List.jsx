@@ -6,7 +6,7 @@ export default function List(props) {
   console.log(props.list);
 
   return (
-    <div>
+    <div className="reviews-flexListChild">
     {props.list.map((item) => {
       return <Tile key={item.review_id} review={item}/>
     })}
