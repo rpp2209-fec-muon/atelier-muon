@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Price from '../../Global/Price.jsx';
 
 class Cards extends React.Component {
   constructor(props) {
@@ -116,25 +117,15 @@ img: GET /products/:product_id/styles
   }
 
   render () {
-    let price, sale;
-    if (this.state.sale_price === null) {
-      price = <div>{this.state.original_price}</div>;
-      sale = <div></div>;
-    } else {
-      price =  <div style="text-decoration: line-through;">{this.state.original_price}</div>;
-      sale  =  <div>{this.state.sale_price}</div>;
-    }
-
+    console.log(this.state);
     return(
       <div>
         <img src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div>{this.state.category}</div>
         <div>{this.state.name} {this.state.style_name}</div>
-        <div>{price}</div>
-        <div>{sale}</div>
+        <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
         <div>{this.state.ratings}</div>
-
       </div>
     )
   }
