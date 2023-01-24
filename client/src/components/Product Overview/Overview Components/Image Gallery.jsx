@@ -8,9 +8,15 @@ function ImageGallery (props) {
   console.log('images', props.styles);
 
   if(props.styles.length) {
-    return (
-      <img className='overview-gallery' src={props.styles[0].photos[0].thumbnail_url}></img>
-    )
+    return ([
+      <img className='overview-gallery' src={props.styles[0].photos[0].thumbnail_url}></img>,
+      <div className='overview-thumbnail'>{props.styles[0].photos.map( (currPhotoObj) => {
+        return (
+            <img className='overview-thumbnail-photos' src={currPhotoObj.url}></img>
+
+        )
+      })}</div>
+    ])
   } else {
     return (
       null
