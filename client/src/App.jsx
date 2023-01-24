@@ -15,9 +15,9 @@ export default function App() {
 
   return (
     <div>
-      {/* <ProductOverview product={product}/> */}
+      <ProductOverview product={product}/>
       <RelatedProducts product_id={product} />
-      {/* <Reviews product_id={product}/> */}
+      <Reviews product_id={product}/> 
     </div>
   );
 }
