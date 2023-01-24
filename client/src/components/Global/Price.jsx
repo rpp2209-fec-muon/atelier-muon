@@ -48,7 +48,7 @@ class Price extends React.Component {
       price = <div>{this.state.original_price}</div>;
       sale = <div></div>;
     } else {
-      price =  <div style="text-decoration: line-through;">{this.state.original_price}</div>;
+      price =  <div><del>{this.state.original_price}</del></div>;
       sale  =  <div>{this.state.sale_price}</div>;
     }
 
