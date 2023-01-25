@@ -11,7 +11,7 @@ function StyleSelector (props) {
       <div> Select Your Style </div>
       {props.styles.map( (currStyle, i) => {
         return (
-          <button key={currStyle.style_id} className='overview-button'> Style {i + 1}</button>
+          <button onClick={props.update} value={currStyle.style_id} key={currStyle.style_id} className='overview-button'> Style {i + 1}</button>
         )
       })}
     </div>
