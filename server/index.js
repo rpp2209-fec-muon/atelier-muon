@@ -56,4 +56,9 @@ app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 });
 
-module.exports = app;
+var handler = function() {
+  app.close();
+};
+
+module.exports.app = app;
+module.exports.handler = handler;

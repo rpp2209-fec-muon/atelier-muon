@@ -1,6 +1,7 @@
 const request = require("supertest");
 
-const app = require("../server/index.js");
+const {app, handler} = require("../server/index.js");
+
 
 describe("Products Test", () => {
   test("GET /products", (done) => {
