@@ -25,10 +25,10 @@ class RelatedProducts extends React.Component {
 
   render () {
     return(
-      <div>
+      <div className ="rp-related">
         <h3>Related Products</h3>
-          {this.state.related.map((product) => <Cards product_id={product} key={product} />)}
-        <h3>Outfits</h3>
+        <div className="rp-cards-list">{this.state.related.map((product) => <Cards product_id={product} key={product} />)}</div>
+        <h3>My Outfits</h3>
       </div>
     )
   }
