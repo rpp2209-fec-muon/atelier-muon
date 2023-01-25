@@ -12,6 +12,7 @@ function ProductOverview (props) {
   const [exampleProduct, setExampleProduct] = useState([])
   const [productStyles, setProductStyles] = useState([])
   const [currentStyle, setCurrentStyle] = useState([])
+  const [defaultImage, setDefault] = useState([false])
 
   // create style image state to be updated with onclick function for next
   // style image
@@ -47,12 +48,26 @@ function ProductOverview (props) {
     .catch(err => console.log(err));
   }
 
+  function updateStyle (e) {
+    e.preventDefault();
+    // e.target.value gives us style ID
+    // can sort through productStyles array and match id to correct object
+
+    for (var i = 0; i < productStyles.length; i++) {
+      if (productStyles[i]['style_id'].toString() === e.target.value) {
+        console.log(productStyles[i]['style_id'])
+        setCurrentStyle(productStyles[i])
+        setDefault(true);
+      }
+    }
+  }
+
   if (productStyles.length && currentStyle.photos.length) {
     return ([
       <div className='overview-product-overview'>
-        <ImageGallery style={currentStyle} id={props.product}/>
+        <ImageGallery style={currentStyle} id={props.product} default={defaultImage}/>
         <ProductInfo product={exampleProduct}/>
-        <StyleSelector styles={productStyles}/>
+        <StyleSelector styles={productStyles} update={updateStyle}/>
         <AddToCart product={exampleProduct}/>
       </div>
     ])

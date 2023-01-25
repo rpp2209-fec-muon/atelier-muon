@@ -28,6 +28,7 @@ body {
 }
 
 .overview-gallery {
+  height: 700px;
   width: 500px;
   border-style: solid;
   display: inline;
@@ -65,8 +66,8 @@ body {
 }
 
 .overview-thumbnail-photos {
-  width: 100px;
-  height: 100px;
+  width: 82.5px;
+  height: 112.5px;
   margin: 0px 5px 5px 0px;
   border-style: solid;
 }

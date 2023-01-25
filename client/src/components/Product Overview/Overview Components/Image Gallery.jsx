@@ -9,9 +9,14 @@ function ImageGallery (props) {
   // create a state for the current rendered big image
   const [currPhoto, setCurrPhoto] = useState('');
 
+  // create two states one for the next image
+  // one for the default image
+  // default image will be passed down from the product overview
+  //
+
   // create useEffect here to set current photo immediately to default
   useEffect ( () => {
-    if (currPhoto === '') {
+    if (currPhoto === '' || props.default === true) {
       setCurrPhoto(props.style.photos[0].thumbnail_url);
     }
   })
@@ -29,7 +34,7 @@ function ImageGallery (props) {
       {props.style.photos.map( (currPhotoObj, i) => {
       var test = i;
       return (
-          <img onClick={updatePhoto} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+          <img key={i} onClick={updatePhoto} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
           )
       })}
     </div>
