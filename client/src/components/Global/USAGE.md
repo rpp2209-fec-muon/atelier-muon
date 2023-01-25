@@ -32,3 +32,6 @@ import Star from '../../Global/Star.jsx';
 
 ```
 >ratings: rate point, ex: 3.11111; 2.5
+
+<Price product_id={/*product id with / string */} />
+```

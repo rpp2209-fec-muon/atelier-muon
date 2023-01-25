@@ -9,10 +9,10 @@ class Cards extends React.Component {
     this.state = {
       product_id: props.product_id,
       photos: [],
-      original_price: '',
-      sale_price: null,
       style_name: '',
       category: '',
+      original_price: '',
+      sale_price: null,
       name: '',
       ratings: 0
     }
@@ -56,9 +56,9 @@ img: GET /products/:product_id/styles
               newPhotos.push(photo.thumbnail_url);
             });
             this.setState({
-              photos: newPhotos,
               original_price: style.original_price,
               sale_price: style.sale_price,
+              photos: newPhotos,
               style_name: style.name
             });
           }
@@ -70,9 +70,9 @@ img: GET /products/:product_id/styles
           });
           this.setState({
             photos: newPhotos,
+            style_name: data.data.results[0].name,
             original_price: data.data.results[0].original_price,
-            sale_price: data.data.results[0].sale_price,
-            style_name: data.data.results[0].name
+            sale_price: data.data.results[0].sale_price
           });
         }
         console.log("GET Products Styles Successful");
@@ -105,13 +105,17 @@ img: GET /products/:product_id/styles
 
   render () {
     return(
-      <div className="rp-card" data-testid="rp-card">
-        <img src={this.state.photos[0] !== null ? this.state.photos[0] :
+      <div className="rp-card">
+        <img className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
-        <div>{this.state.category}</div>
-        <div>{this.state.name} {this.state.style_name}</div>
-        <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
-        <Star ratings={this.state.ratings} />
+        <div className="rp-card-category">{this.state.category}</div>
+        <div className="rp-card-name">{this.state.name} {this.state.style_name}</div>
+        <div className="rp-card-price">
+          <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
+        </div>
+        <div className="rp-card-star">
+          <Star ratings={this.state.ratings} />
+        </div>
       </div>
     )
   }
