@@ -10,14 +10,15 @@ function ProductOverview (props) {
 
   // create state to hold current view
   const [exampleProduct, setExampleProduct] = useState([])
-  const [allStyles, setStyles] = useState([])
-  const [allImages, setImages] = useState([])
+  const [productStyles, setProductStyles] = useState([])
+  const [currentStyle, setCurrentStyle] = useState([])
+  const [defaultImage, setDefault] = useState([false])
 
   // create style image state to be updated with onclick function for next
   // style image
 
   useEffect( () => {
-    if (exampleProduct.length === 0 && allStyles.length === 0) {
+    if (exampleProduct.length === 0 && productStyles.length === 0) {
       getStyles()
       getProduct()
     }
@@ -29,7 +30,8 @@ function ProductOverview (props) {
       .then((data) => {
         // data.data.results gives me array of styles that contain photos
         console.log('style data', data.data.results)
-        setStyles(data.data.results);
+        setProductStyles(data.data.results);
+        setCurrentStyle(data.data.results[0])
       })
       .catch(err => console.log(err));
   }
@@ -46,18 +48,32 @@ function ProductOverview (props) {
     .catch(err => console.log(err));
   }
 
-  // create onClick function to update the style image to pass down
-  // the image to our image gallery
+  function updateStyle (e) {
+    e.preventDefault();
+    // e.target.value gives us style ID
+    // can sort through productStyles array and match id to correct object
 
+    for (var i = 0; i < productStyles.length; i++) {
+      if (productStyles[i]['style_id'].toString() === e.target.value) {
+        console.log(productStyles[i]['style_id'])
+        setCurrentStyle(productStyles[i])
+        setDefault(true);
+      }
+    }
+  }
 
-  return ([
-    <div className='overview-product-overview'>
-      <ImageGallery styles={allStyles} id={props.product}/>
-      <ProductInfo product={exampleProduct}/>
-      <StyleSelector styles={allStyles}/>
-      <AddToCart product={exampleProduct}/>
-    </div>
-  ])
+  if (productStyles.length && currentStyle.photos.length) {
+    return ([
+      <div className='overview-product-overview'>
+        <ImageGallery style={currentStyle} id={props.product} default={defaultImage}/>
+        <ProductInfo product={exampleProduct}/>
+        <StyleSelector styles={productStyles} update={updateStyle}/>
+        <AddToCart product={exampleProduct}/>
+      </div>
+    ])
+  } else {
+    return null
+  }
 }
 
 export default ProductOverview;

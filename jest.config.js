@@ -1,5 +1,3 @@
-const config = {
-  "preset": "jest-puppeteer"
+module.exports = {
+  "testEnvironment": "jsdom"
 }
-
-module.exports = config;

@@ -28,6 +28,7 @@ body {
 }
 
 .overview-gallery {
+  height: 700px;
   width: 500px;
   border-style: solid;
   display: inline;
@@ -65,12 +66,34 @@ body {
 }
 
 .overview-thumbnail-photos {
-  width: 100px;
-  height: 100px;
+  width: 82.5px;
+  height: 112.5px;
   margin: 0px 5px 5px 0px;
   border-style: solid;
 }
-/*---------Star--------*/
+
+
+/* ============ REVIEWS STYLES =============== */
+
+/* Flex and Positioning */
+
+.reviews-flexParent {
+  display: flex;
+  flex-direction: row ltr;
+  justify-content: center;
+}
+
+.reviews-flexBreakdownParent {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.reviews-flexListParent {
+  padding: 20px;
+}
+
+/*-------Star--------*/
 
 .star {
   display: inline-block;
@@ -183,3 +206,4 @@ body {
 }
 
 /*---------------------*/
+

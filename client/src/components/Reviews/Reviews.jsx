@@ -62,16 +62,22 @@ export default function Reviews(props) {
   // and will control the state that is passed to List
 
   return (
-    <div>
-      <h2>Ratings and Reviews</h2>
-      <Search />
-      <List list={listState}/>
-      {metaState.ratings &&
-        <RatingsBreakdown meta={metaState}/>
-      }
-      {metaState.characteristics &&
-        <ProductBreakdown meta={metaState}/>
-      }
+    <div className="reviews-flexParent">
+      <div className="reviews-flexBreakdownParent">
+        <div><b>Ratings and Reviews</b></div>
+        {metaState.ratings &&
+          <RatingsBreakdown meta={metaState}/>
+        }
+        {metaState.characteristics &&
+          <ProductBreakdown meta={metaState}/>
+        }
+      </div>
+
+      <div className="reviews-flexListParent">
+        <Search />
+        <List list={listState}/>
+      </div>
+
       {formState &&
         <NewReview />
       }
