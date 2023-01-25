@@ -105,13 +105,17 @@ img: GET /products/:product_id/styles
 
   render () {
     return(
-      <div>
-        <img src={this.state.photos[0] !== null ? this.state.photos[0] :
+      <div className="rp-card">
+        <img className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
-        <div>{this.state.category}</div>
-        <div>{this.state.name} {this.state.style_name}</div>
-        <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
-        <Star ratings={this.state.ratings} />
+        <div className="rp-card-category">{this.state.category}</div>
+        <div className="rp-card-name">{this.state.name} {this.state.style_name}</div>
+        <div className="rp-card-price">
+          <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
+        </div>
+        <div className="rp-card-star">
+          <Star ratings={this.state.ratings} />
+        </div>
       </div>
     )
   }

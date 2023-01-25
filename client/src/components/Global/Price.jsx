@@ -12,17 +12,14 @@ class Price extends React.Component {
   render () {
     let price, sale;
     if (this.props.sale_price === null) {
-      price = <div>{this.props.original_price}</div>;
-      sale = <div></div>;
+      price = <div>${this.props.original_price}</div>;
     } else {
-      price =  <div><del>{this.props.original_price}</del></div>;
-      sale  =  <div>{this.props.sale_price}</div>;
+      price =  <div><del>${this.props.original_price}</del>  ${this.props.sale_price}</div>;
     }
 
     return(
-      <div>
+      <div className="g-price">
         <div>{price}</div>
-        <div>{sale}</div>
       </div>
     )
   }
