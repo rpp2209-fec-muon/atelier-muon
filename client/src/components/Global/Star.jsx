@@ -4,19 +4,12 @@ class Star extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ratings: props.ratings,
-      stars: []
+
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.ratings !== prevProps.ratings) {
-      this.pointToStar();
-    }
-  }
 
-  pointToStar() {
-    var point = this.props.ratings;
+  pointToStar(point) {
     var arr = [];
     for (var i = 0; i < 5; i ++) {
       if (point >= 1) {
@@ -35,15 +28,14 @@ class Star extends React.Component {
         arr.push("");
       }
     }
-    this.setState({
-      stars: arr
-    });
+    return arr;
   }
 
   render () {
+    const stars = this.pointToStar(this.props.ratings);
     return(
       <div>
-        {this.state.stars.map((star, i) =>  <span className={`star fa fa-star ${star}`} key={i}></span>)}
+        {stars.map((star, i) =>  <span className={`star fa fa-star ${star}`} key={i}></span>)}
       </div>
     )
   }

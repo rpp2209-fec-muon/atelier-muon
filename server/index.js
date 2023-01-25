@@ -16,6 +16,7 @@ app.use(express.json());
 
 // routes
 
+
 app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
@@ -55,5 +56,3 @@ app.put('/reviews', (req, res) => {
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
 });
-
-module.exports = app;
