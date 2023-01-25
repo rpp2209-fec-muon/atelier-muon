@@ -15,26 +15,14 @@ function ImageGallery (props) {
   //
 
   // create useEffect here to set current photo immediately to default
-  useEffect ( () => {
-    if (currPhoto === '' || props.default === true) {
-      setCurrPhoto(props.style.photos[0].thumbnail_url);
-    }
-  })
-
-
-  function updatePhoto (e) {
-    // onclick function that updates the photo
-    e.preventDefault();
-    setCurrPhoto(props.style.photos[e.target.id].thumbnail_url);
-  }
 
   return ([
-    <img className='overview-gallery' src={currPhoto}></img>,
-    <div className='overview-thumbnail'>
+    <img key={'main-photo'} className='overview-gallery' src={props.currPhoto}></img>,
+    <div key={'overview-thumbnail-div'} className='overview-thumbnail'>
       {props.style.photos.map( (currPhotoObj, i) => {
       var test = i;
       return (
-          <img key={i} onClick={updatePhoto} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
           )
       })}
     </div>

@@ -5,8 +5,7 @@ function StyleSelector (props) {
   // take the array of different styles
   // create buttons that are cicles by mapping through them
 
-  return ([
-
+  return (
     <div className='overview-style'>
       <div> Select Your Style </div>
       {props.styles.map( (currStyle, i) => {
@@ -15,7 +14,7 @@ function StyleSelector (props) {
         )
       })}
     </div>
-  ])
+  )
 }
 
 export default StyleSelector;
