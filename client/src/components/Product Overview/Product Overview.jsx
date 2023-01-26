@@ -26,7 +26,7 @@ function ProductOverview (props) {
 
   function getStyles () {
     axios
-    .get('/products', { params: { type: '/styles', product_id: props.product, params: {} }})
+    .get('/products', { params: { type: '/styles', product_id: props.product_id, params: {} }})
       .then((data) => {
         // data.data.results gives me array of styles that contain photos
         setProductStyles(data.data.results);
@@ -38,7 +38,7 @@ function ProductOverview (props) {
 
   function getProduct () {
     axios
-    .get('/products', { params: { type: '', product_id: props.product, params: {} }})
+    .get('/products', { params: { type: '', product_id: props.product_id, params: {} }})
     .then((data) => {
       console.log('GET Request Successful');
       var product = []

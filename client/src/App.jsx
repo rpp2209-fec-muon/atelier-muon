@@ -21,15 +21,9 @@ export default function App() {
 
   return (
     <div>
-<<<<<<< overview-styles-click
-      <ProductOverview product_id={product}/>
-      <RelatedProducts product_id={product} />
-      <Reviews product_id={product}/>
-=======
-      <ProductOverview key={`o-${product}`} product={product}/>
+      <ProductOverview key={`o-${product}`} product_id={product}/>
       <RelatedProducts  key={`rp-${product}`} product_id={product} onClick={(product_id) => changePage(product_id)}/>
       <Reviews key={`r-${product}`} product_id={product}/>
->>>>>>> main
     </div>
   );
 }
