@@ -16,6 +16,7 @@ app.use(express.json());
 
 // routes
 
+
 app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {

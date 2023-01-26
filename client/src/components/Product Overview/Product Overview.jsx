@@ -12,13 +12,13 @@ function ProductOverview (props) {
   const [exampleProduct, setExampleProduct] = useState([])
   const [productStyles, setProductStyles] = useState([])
   const [currentStyle, setCurrentStyle] = useState([])
-  const [defaultImage, setDefault] = useState([false])
+  const [currPhoto, setCurrPhoto] = useState('');
 
   // create style image state to be updated with onclick function for next
   // style image
 
   useEffect( () => {
-    if (exampleProduct.length === 0 && productStyles.length === 0) {
+    if (exampleProduct.length === 0 && productStyles.length === 0 && currPhoto === '') {
       getStyles()
       getProduct()
     }
@@ -26,19 +26,19 @@ function ProductOverview (props) {
 
   function getStyles () {
     axios
-    .get('/products', { params: { type: '/styles', product_id: props.product, params: {} }})
+    .get('/products', { params: { type: '/styles', product_id: props.product_id, params: {} }})
       .then((data) => {
         // data.data.results gives me array of styles that contain photos
-        console.log('style data', data.data.results)
         setProductStyles(data.data.results);
         setCurrentStyle(data.data.results[0])
+        setCurrPhoto(data.data.results[0].photos[0].thumbnail_url)
       })
       .catch(err => console.log(err));
   }
 
   function getProduct () {
     axios
-    .get('/products', { params: { type: '', product_id: props.product, params: {} }})
+    .get('/products', { params: { type: '', product_id: props.product_id, params: {} }})
     .then((data) => {
       console.log('GET Request Successful');
       var product = []
@@ -57,20 +57,26 @@ function ProductOverview (props) {
       if (productStyles[i]['style_id'].toString() === e.target.value) {
         console.log(productStyles[i]['style_id'])
         setCurrentStyle(productStyles[i])
-        setDefault(true);
+        setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
       }
     }
   }
 
+  function updatePhoto (e) {
+    // onclick function that updates the photo
+    e.preventDefault();
+    setCurrPhoto(currentStyle.photos[e.target.id].thumbnail_url);
+  }
+
   if (productStyles.length && currentStyle.photos.length) {
-    return ([
-      <div className='overview-product-overview'>
-        <ImageGallery style={currentStyle} id={props.product} default={defaultImage}/>
-        <ProductInfo product={exampleProduct}/>
-        <StyleSelector styles={productStyles} update={updateStyle}/>
-        <AddToCart product={exampleProduct}/>
+    return (
+      <div>
+        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
+        <ProductInfo key={'2'} product={exampleProduct}/>
+        <StyleSelector key={'3'} styles={productStyles} update={updateStyle}/>
+        <AddToCart key={'4'} product={exampleProduct}/>
       </div>
-    ])
+    )
   } else {
     return null
   }

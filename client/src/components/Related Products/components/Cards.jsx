@@ -7,7 +7,6 @@ class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: props.product_id,
       photos: [],
       style_name: '',
       category: '',
@@ -32,20 +31,19 @@ img: GET /products/:product_id/styles
 
   getProduct() {
     axios
-    .get('/products', { params: { type: '', product_id: `/${this.state.product_id}`, params: {} }})
+    .get('/products', { params: { type: '', product_id: `/${this.props.product_id}`, params: {} }})
       .then((data) => {
         this.setState({
           category: data.data.category,
           name: data.data.name
         });
-        console.log("GET Products Successful");
       })
       .catch(err => console.log(err));
   }
 
   getStyle() {
     axios
-    .get('/products', { params: { type: '/styles', product_id: `/${this.state.product_id}`, params: {} }})
+    .get('/products', { params: { type: '/styles', product_id: `/${this.props.product_id}`, params: {} }})
       .then((data) => {
         var hasDefault = false;
         data.data.results.forEach((style) => {
@@ -75,26 +73,29 @@ img: GET /products/:product_id/styles
             sale_price: data.data.results[0].sale_price
           });
         }
-        console.log("GET Products Styles Successful");
       })
       .catch(err => console.log(err));
   }
 
   getRating() {
-    var int_product_id = parseInt(this.state.product_id);
+    var int_product_id = parseInt(this.props.product_id);
     axios
       .get('/reviews', { params: { type: '/meta', params: {
         product_id: int_product_id
       }}})
       .then((data) => {
         this.ratingTranslate(data.data.ratings);
-        console.log("GET Reviews meta Successful");
       })
       .catch(err => console.log(err));
 
   }
 
   ratingTranslate(ratings) {
+    for (var i = 1; i <= 5; i ++) {
+      if (ratings[i] === undefined) {
+        ratings[i] = 0;
+      }
+    }
     var total = ratings[1] * 1 + ratings[2] * 2 + ratings[3] * 3 + ratings[4] * 4 + ratings[5] * 5;
     var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
     var rating =  total / totalRate;
@@ -103,9 +104,13 @@ img: GET /products/:product_id/styles
     });
   }
 
+  changePage() {
+    this.props.onClick(`/${this.props.product_id}`);
+  }
+
   render () {
     return(
-      <div className="rp-card">
+      <div className="rp-card" data-testid="rp-card" onClick={this.changePage.bind(this)}>
         <img className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div className="rp-card-category">{this.state.category}</div>
@@ -114,7 +119,7 @@ img: GET /products/:product_id/styles
           <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
         </div>
         <div className="rp-card-star">
-          <Star ratings={this.state.ratings} />
+          <Star key={this.props.product_id} ratings={this.state.ratings} />
         </div>
       </div>
     )
