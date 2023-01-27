@@ -10,7 +10,7 @@ export default function RatingsBreakdown(props) {
   }
 
   return (
-    <div className="reviews-flexBreakdownChild">
+    <div className="reviews-flexBreakdownChild" data-testid="ratings-parent-div">
       <h2>{getAverageRating(props.meta.ratings)}</h2>
     </div>
   )
