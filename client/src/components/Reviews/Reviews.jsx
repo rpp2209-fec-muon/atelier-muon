@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
-import NewReview from './NewReview.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Search from './Search.jsx';
+import StarRating from './StarRating.jsx';
 const axios = require('axios');
 
 export default function Reviews(props) {
@@ -78,8 +79,10 @@ export default function Reviews(props) {
         <List list={listState}/>
       </div>
 
+      <button onClick={() => {setFormState(true)}}>Add A Review</button>
+
       {formState &&
-        <NewReview />
+        <NewReviewModal />
       }
     </div>
   )

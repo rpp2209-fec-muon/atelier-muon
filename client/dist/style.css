@@ -89,6 +89,23 @@ body {
   padding: 20px;
 }
 
+/* New Review Modal */
+
+.star-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
+
+
 /*-------Star--------*/
 
 .star {
