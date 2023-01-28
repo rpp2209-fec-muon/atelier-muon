@@ -5,6 +5,7 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Search from './Search.jsx';
 import StarRating from './StarRating.jsx';
+import Sort from './Sort.jsx';
 const axios = require('axios');
 
 export default function Reviews(props) {
@@ -57,6 +58,11 @@ export default function Reviews(props) {
     setModalState(false);
   }
 
+  const handleSortChange = (criteria) => {
+    setSortState(criteria);
+    getReviews();
+  }
+
 
   // useEffect will load a list of reviews for the current product on page load
   useEffect(() => {
@@ -81,7 +87,7 @@ export default function Reviews(props) {
         </div>
 
         <div className="reviews-flexListParent">
-          <Search />
+          <Sort handleSortChange={handleSortChange}/>
           <List list={listState}/>
           <button onClick={() => {setModalState(true)}}>Add A Review</button>
         </div>
