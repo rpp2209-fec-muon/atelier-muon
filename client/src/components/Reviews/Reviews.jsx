@@ -9,7 +9,7 @@ const axios = require('axios');
 
 export default function Reviews(props) {
 
-  const [formState, setFormState] = useState(false);
+  const [modalState, setModalState] = useState(false);
   const [sortState, setSortState] = useState('relevant');
   const [listState, setListState] = useState([]);
   const [metaState, setMetaState] = useState({});
@@ -52,6 +52,11 @@ export default function Reviews(props) {
       })
   }
 
+  // on click handler for closing the new review modal
+  const closeModal = () => {
+    setModalState(false);
+  }
+
 
   // useEffect will load a list of reviews for the current product on page load
   useEffect(() => {
@@ -78,11 +83,11 @@ export default function Reviews(props) {
         <div className="reviews-flexListParent">
           <Search />
           <List list={listState}/>
-          <button onClick={() => {setFormState(true)}}>Add A Review</button>
+          <button onClick={() => {setModalState(true)}}>Add A Review</button>
         </div>
       </div>
-      {formState &&
-        <NewReviewModal />
+      {modalState &&
+        <NewReviewModal closeModal={closeModal}/>
       }
     </div>
   )
