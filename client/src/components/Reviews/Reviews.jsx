@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import List from './List.jsx';
-import NewReview from './NewReview.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Search from './Search.jsx';
+import StarRating from './StarRating.jsx';
 const axios = require('axios');
 
 export default function Reviews(props) {
 
-  const [formState, setFormState] = useState(false);
+  const [modalState, setModalState] = useState(false);
   const [sortState, setSortState] = useState('relevant');
   const [listState, setListState] = useState([]);
   const [metaState, setMetaState] = useState({});
@@ -51,6 +52,11 @@ export default function Reviews(props) {
       })
   }
 
+  // on click handler for closing the new review modal
+  const closeModal = () => {
+    setModalState(false);
+  }
+
 
   // useEffect will load a list of reviews for the current product on page load
   useEffect(() => {
@@ -62,24 +68,26 @@ export default function Reviews(props) {
   // and will control the state that is passed to List
 
   return (
-    <div className="reviews-flexParent" data-testid="reviews-parent-div">
-      <div className="reviews-flexBreakdownParent">
-        <div><b>Ratings and Reviews</b></div>
-        {metaState.ratings &&
-          <RatingsBreakdown meta={metaState}/>
-        }
-        {metaState.characteristics &&
-          <ProductBreakdown meta={metaState}/>
-        }
-      </div>
+    <div>
+      <div className="reviews-flexParent" data-testid="reviews-parent-div">
+        <div className="reviews-flexBreakdownParent">
+          <div><b>Ratings and Reviews</b></div>
+          {metaState.ratings &&
+            <RatingsBreakdown meta={metaState}/>
+          }
+          {metaState.characteristics &&
+            <ProductBreakdown meta={metaState}/>
+          }
+        </div>
 
-      <div className="reviews-flexListParent">
-        <Search />
-        <List list={listState}/>
+        <div className="reviews-flexListParent">
+          <Search />
+          <List list={listState}/>
+          <button onClick={() => {setModalState(true)}}>Add A Review</button>
+        </div>
       </div>
-
-      {formState &&
-        <NewReview />
+      {modalState &&
+        <NewReviewModal closeModal={closeModal}/>
       }
     </div>
   )
