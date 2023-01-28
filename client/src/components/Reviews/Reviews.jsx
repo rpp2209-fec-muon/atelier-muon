@@ -18,13 +18,13 @@ export default function Reviews(props) {
   var product_id = Number(props.product_id.slice(1));
 
   // add review get helper function for sending get requests to the server
-  const getReviews = () => {
+  const getReviews = (sortCriteria) => {
     axios.get('/reviews', {
       params: {
         type: '',
         params: {
           product_id: product_id,
-          sort: sortState
+          sort: sortCriteria
         }
       }
     })
@@ -60,13 +60,13 @@ export default function Reviews(props) {
 
   const handleSortChange = (criteria) => {
     setSortState(criteria);
-    getReviews();
+    getReviews(criteria);
   }
 
 
   // useEffect will load a list of reviews for the current product on page load
   useEffect(() => {
-    getReviews();
+    getReviews(sortState);
     getMetaData();
   }, []);
 
