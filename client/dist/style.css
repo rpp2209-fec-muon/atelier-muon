@@ -89,6 +89,28 @@ body {
   padding: 20px;
 }
 
+.reviews-modalOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+
+.reviews-modalContainer {
+  width: 60%;
+  height: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: auto;
+  background-color: white;
+}
+
 /* New Review Modal */
 
 .star-button {

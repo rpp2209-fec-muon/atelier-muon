@@ -63,24 +63,24 @@ export default function Reviews(props) {
   // and will control the state that is passed to List
 
   return (
-    <div className="reviews-flexParent">
-      <div className="reviews-flexBreakdownParent">
-        <div><b>Ratings and Reviews</b></div>
-        {metaState.ratings &&
-          <RatingsBreakdown meta={metaState}/>
-        }
-        {metaState.characteristics &&
-          <ProductBreakdown meta={metaState}/>
-        }
+    <div>
+      <div className="reviews-flexParent">
+        <div className="reviews-flexBreakdownParent">
+          <div><b>Ratings and Reviews</b></div>
+          {metaState.ratings &&
+            <RatingsBreakdown meta={metaState}/>
+          }
+          {metaState.characteristics &&
+            <ProductBreakdown meta={metaState}/>
+          }
+        </div>
+
+        <div className="reviews-flexListParent">
+          <Search />
+          <List list={listState}/>
+          <button onClick={() => {setFormState(true)}}>Add A Review</button>
+        </div>
       </div>
-
-      <div className="reviews-flexListParent">
-        <Search />
-        <List list={listState}/>
-      </div>
-
-      <button onClick={() => {setFormState(true)}}>Add A Review</button>
-
       {formState &&
         <NewReviewModal />
       }

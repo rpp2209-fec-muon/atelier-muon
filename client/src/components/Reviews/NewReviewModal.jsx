@@ -4,8 +4,8 @@ import StarRating from './StarRating.jsx';
 export default function NewReviewModal() {
 
   return (
-    <div className='modalOverlay'>
-      <div className='modalContainer'>
+    <div className='reviews-modalOverlay'>
+      <div className='reviews-modalContainer'>
         <StarRating />
       </div>
     </div>
