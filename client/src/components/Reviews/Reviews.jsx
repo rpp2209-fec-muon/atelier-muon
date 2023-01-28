@@ -69,7 +69,7 @@ export default function Reviews(props) {
 
   return (
     <div>
-      <div className="reviews-flexParent">
+      <div className="reviews-flexParent" data-testid="reviews-parent-div">
         <div className="reviews-flexBreakdownParent">
           <div><b>Ratings and Reviews</b></div>
           {metaState.ratings &&

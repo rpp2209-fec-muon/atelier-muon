@@ -32,6 +32,7 @@ function ProductOverview (props) {
         setProductStyles(data.data.results);
         setCurrentStyle(data.data.results[0])
         setCurrPhoto(data.data.results[0].photos[0].thumbnail_url)
+        return (data.data.results);
       })
       .catch(err => console.log(err));
   }
@@ -43,6 +44,7 @@ function ProductOverview (props) {
       console.log('GET Request Successful');
       var product = []
       product.push(data.data)
+      console.log('result', data.data)
       setExampleProduct(product);
     })
     .catch(err => console.log(err));
@@ -70,7 +72,7 @@ function ProductOverview (props) {
 
   if (productStyles.length && currentStyle.photos.length) {
     return (
-      <div>
+      <div id={'test-id' + props.product_id}>
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
         <ProductInfo key={'2'} product={exampleProduct}/>
         <StyleSelector key={'3'} styles={productStyles} update={updateStyle}/>

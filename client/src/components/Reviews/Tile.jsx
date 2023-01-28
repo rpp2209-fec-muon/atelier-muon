@@ -5,7 +5,7 @@ export default function Tile(props) {
   var review = props.review;
 
   return (
-    <div>
+    <div data-testid="tile-instance">
       <div><b>{review.summary}</b></div>
       <div>{review.body}</div>
       {review.recommend &&

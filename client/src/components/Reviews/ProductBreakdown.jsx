@@ -4,7 +4,7 @@ export default function ProductBreakdown(props) {
   var factors = props.meta.characteristics;
 
   return (
-    <div className="reviews-flexBreakdownChild">
+    <div className="reviews-flexBreakdownChild" data-testid="product-parent-div">
       {factors.Size &&
         <div>
           <div>Size</div>
