@@ -8,7 +8,6 @@ class Star extends React.Component {
     }
   }
 
-
   pointToStar(point) {
     var arr = [];
     for (var i = 0; i < 5; i ++) {

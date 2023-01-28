@@ -25,14 +25,14 @@ body {
 
 .overview-gallery {
   height: 700px;
-  width: 500px;
+  width: 600px;
   border-style: solid;
   display: inline;
   margin-bottom: 10px;
 }
 
 .overview-description {
-  width: 500px;
+  width: 600px;
 }
 
 /* .overview-slogan-description {
@@ -57,7 +57,7 @@ body {
 }
 
 .overview-thumbnail {
-  width: 500px;
+  width: 600px;
   margin-bottom: 25px;
 }
 
