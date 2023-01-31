@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Cards from './components/Cards.jsx';
 import AddOutfit from './components/AddOutfit.jsx';
+import Left from './components/Left.jsx';
+import Right from './components/Right.jsx';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -24,8 +26,6 @@ class RelatedProducts extends React.Component {
     .get('/products', { params: { type: '/related', product_id: this.props.product_id, params: {} }})
     .then((data) => {
       var newData = this.uniqueArray(data.data);
-
-      console.log(newData);
       this.setState({
         related: newData
       })
@@ -101,10 +101,37 @@ class RelatedProducts extends React.Component {
     } else {
       var outfit = [];
     }
-    console.log("outfit", outfit);
     this.setState({
       outfit: outfit
     })
+  }
+
+  relatedLast() {
+    var newPage = this.state.r_page - 1;
+    this.setState({
+      r_page: newPage
+    });
+  }
+
+  relatedNext() {
+    var newPage = this.state.r_page + 1;
+    this.setState({
+      r_page: newPage
+    });
+  }
+
+  outfitLast() {
+    var newPage = this.state.o_page - 1;
+    this.setState({
+      o_page: newPage
+    });
+  }
+
+  outfitNext() {
+    var newPage = this.state.o_page + 1;
+    this.setState({
+      o_page: newPage
+    });
   }
 
   render () {
@@ -112,17 +139,27 @@ class RelatedProducts extends React.Component {
     var o = this.state.o_page * 3;
     const relatedList = this.state.related.slice(r, r + 4);
     const outfitList = this.state.outfit.slice(o, o + 3);
+
+    let relatedNext = false;
+    let outfitNext = false;
+
+    if (this.state.related.length > r + 4) { relatedNext = true };
+    if (this.state.outfit.length > o + 3) { outfitNext = true };
     return(
       <div className="rp-related" data-testid="rp-related">
         <h3>Related Products</h3>
         <div className="rp-cards-list">
+          <Left page={this.state.r_page} onLast={this.relatedLast.bind(this)}/>
           {relatedList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'r'}/>)}
+          <Right show={relatedNext} onNext={this.relatedNext.bind(this)} />
         </div>
         <h3>Your Outfit</h3>
           <div className="rp-outfit-list">
+            <Left page={this.state.o_page} onLast={this.outfitLast.bind(this)}/>
             <AddOutfit onClick={this.addToOutfit.bind(this)}/>
             {outfitList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'o'}
             onRemove={this.removeOutfit.bind(this)}/>)}
+            <Right show={outfitNext} onNext={this.outfitNext.bind(this)} />
           </div>
       </div>
     )

@@ -115,9 +115,9 @@ img: GET /products/:product_id/styles
   render () {
     let action;
     if (this.props.kind === 'o') {
-      action = <span className="minus fa fa-times-circle-o" onClick={this.removeOutfit.bind(this)}></span>;
+      action = <span className="rp-times fa fa-times-circle-o" onClick={this.removeOutfit.bind(this)}></span>;
     } else {
-      action = <span className="star-o fa fa-star-o"></span>;
+      action = <span className="rp-star-o fa fa-star-o"></span>;
     }
     return(
       <div className="rp-card" data-testid="rp-card">

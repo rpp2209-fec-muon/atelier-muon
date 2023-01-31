@@ -298,5 +298,41 @@ body {
   color: rgb(251, 6, 6);
 }
 
+.rp-left {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-left {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-left:hover {
+  color: rgb(251, 6, 6);
+}
+
+.rp-right {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-right {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-right:hover {
+  color: rgb(251, 6, 6);
+}
+
 /*---------------------*/
 
