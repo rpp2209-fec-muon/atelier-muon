@@ -49,6 +49,28 @@ function ProductOverview (props) {
     setCheckmark(checks);
   }
 
+  function ratingTranslate(ratings) {
+    for (var i = 1; i <= 5; i ++) {
+      if (ratings[i] === undefined) {
+        ratings[i] = 0;
+      }
+    }
+    var total = ratings[1] * 1 + ratings[2] * 2 + ratings[3] * 3 + ratings[4] * 4 + ratings[5] * 5;
+    var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
+    var rating =  total / totalRate;
+    setRating(rating);
+  }
+
+  function getSKUs (style) {
+    var sizes = [];
+    for (var key in style.skus) {
+      if (style.skus[key].quantity > 0) {
+        sizes.push(style.skus[key])
+      }
+    }
+    setSKUs(sizes);
+  }
+
   // ---------------------------- get methods ---------------------------- //
 
   function getStyles () {
@@ -94,28 +116,6 @@ function ProductOverview (props) {
       })
       .catch(err => console.log(err));
 
-  }
-
-  function ratingTranslate(ratings) {
-    for (var i = 1; i <= 5; i ++) {
-      if (ratings[i] === undefined) {
-        ratings[i] = 0;
-      }
-    }
-    var total = ratings[1] * 1 + ratings[2] * 2 + ratings[3] * 3 + ratings[4] * 4 + ratings[5] * 5;
-    var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
-    var rating =  total / totalRate;
-    setRating(rating);
-  }
-
-  function getSKUs (style) {
-    var sizes = [];
-    for (var key in style.skus) {
-      if (style.skus[key].quantity > 0) {
-        sizes.push(style.skus[key])
-      }
-    }
-    setSKUs(sizes);
   }
 
   // ---------------------------- update methods ---------------------------- //
