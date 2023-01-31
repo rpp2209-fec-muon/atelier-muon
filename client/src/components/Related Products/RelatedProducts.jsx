@@ -51,7 +51,7 @@ class RelatedProducts extends React.Component {
     var id = this.props.product_id.slice(1);
     id = parseInt(id);
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = null;
@@ -77,7 +77,7 @@ class RelatedProducts extends React.Component {
   removeOutfit(id) {
     // console.log("**", id);
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = null;
@@ -96,7 +96,7 @@ class RelatedProducts extends React.Component {
 
   getOutfitList() {
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = [];
