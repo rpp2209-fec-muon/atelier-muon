@@ -207,8 +207,9 @@ body {
 
 /*--Related Products---*/
 .rp-related {
+  display: block;
   float: inline-end;
-  height: 1000px;
+  height: 100%;
   margin-left: 200px;
   margin-right:auto;
   width: 2000px;
@@ -218,9 +219,27 @@ body {
   content: "";
   clear: both;
   display: table;
-  height: 50%;
+  height: 475px;
 }
 
+.rp-outfit-list {
+  content: "";
+  clear: both;
+  display: table;
+  height: 475px;
+}
+
+.rp-card-addoutfit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rp-card-addoutfit-text {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  font-size: 30px;
+}
 .rp-card {
   float: left;
   display: block;
@@ -229,6 +248,11 @@ body {
   width: 250px;
   border: 1px solid #ddd;
   margin-left: 20px;
+}
+
+.rp-card:hover {
+  border: 3px solid rgba(0, 0, 0, 0.538);
+  cursor: pointer;
 }
 
 .rp-card-img {
@@ -259,6 +283,55 @@ body {
   position: absolute;
   bottom: 0;
   font-size: 1.5em;
+}
+.rp-card-action {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.rp-card-action:hover {
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  color: rgb(251, 6, 6);
+}
+
+.rp-left {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-left {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-left:hover {
+  color: rgb(251, 6, 6);
+}
+
+.rp-right {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-right {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-right:hover {
+  color: rgb(251, 6, 6);
 }
 
 /*---------------------*/
