@@ -23,7 +23,7 @@ export default function App() {
     <div>
       <ProductOverview key={`o-${product}`} product_id={product}/>
       <RelatedProducts  key={`rp-${product}`} product_id={product} onClick={(product_id) => changePage(product_id)}/>
-      <Reviews key={`r-${product}`} product_id={product}/>
+      <Reviews id='reviews-component' key={`r-${product}`} product_id={product}/>
     </div>
   );
 }
