@@ -159,6 +159,7 @@ function ProductOverview (props) {
       }
     }
     setSize(JSON.stringify(data));
+    setItemQuantity('1')
     setQuantity(count);
   }
 
