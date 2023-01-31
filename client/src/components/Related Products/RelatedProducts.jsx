@@ -19,8 +19,6 @@ class RelatedProducts extends React.Component {
   componentDidMount() {
     this.getRelatedList();
     this.getOutfitList();
-    var getdata1 = localStorage.getItem('123');
-    console.log("**", getdata1)
   }
 
   getRelatedList() {
