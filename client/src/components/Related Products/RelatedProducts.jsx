@@ -19,6 +19,8 @@ class RelatedProducts extends React.Component {
   componentDidMount() {
     this.getRelatedList();
     this.getOutfitList();
+    var getdata1 = localStorage.getItem('123');
+    console.log("**", getdata1)
   }
 
   getRelatedList() {
@@ -51,7 +53,7 @@ class RelatedProducts extends React.Component {
     var id = this.props.product_id.slice(1);
     id = parseInt(id);
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = null;
@@ -77,7 +79,7 @@ class RelatedProducts extends React.Component {
   removeOutfit(id) {
     // console.log("**", id);
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = null;
@@ -96,7 +98,7 @@ class RelatedProducts extends React.Component {
 
   getOutfitList() {
     var getdata = localStorage.getItem('outfit');
-    if (getdata !== "undefined") {
+    if (getdata !== "undefined" && getdata !== null) {
       var outfit = JSON.parse(getdata);
     } else {
       var outfit = [];
