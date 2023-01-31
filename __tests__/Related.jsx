@@ -1,28 +1,39 @@
 // import react-testing methods
-import {render, fireEvent, waitFor, screen} from '@testing-library/react'
-import React from 'react';
+import {render, fireEvent, waitFor, screen, cleanup} from '@testing-library/react';
+import * as React from 'react';
+
 
 // Importing the jest testing library
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import Cards from "../client/src/components/Related Products/components/Cards.jsx";
 import RelatedProducts from "../client/src/components/Related Products/RelatedProducts.jsx";
 
 // afterEach function runs after each test suite is executed
-afterEach(() => {
-})
+afterEach(() => {cleanup();})
+
+// Integration Test
+describe("RelatedProducts Component" , () => {
+
+  test("RelatedProducts Rendering", async () => {
+      render(<RelatedProducts product_id={'/71697'} key={'/71697'}/>);
+      const linkElement = screen.getByTestId("rp-related");
+      await expect(linkElement).toBeInTheDocument();
+  });
+});
+
 // Unit test
 describe("Cards Component" , () => {
 
   test("Card Rendering", async () => {
-    render(<Cards product_id={71697} key={71697}/>);
+    render(<Cards product_id={71697} key={71697} onclick={()=>{}}/>);
     const linkElement = screen.getByTestId("rp-card");
     await expect(linkElement).toBeInTheDocument();
   });
 
-  test("Product Category", async () => {
-    // render(<Cards product_id={71697} key={71697}/>);
-    // const linkElement = screen.getByTestId("rp-card");
-    // await expect(linkElement).toBeInTheDocument();
+  xtest("Product Category", async () => {
+    render(<Cards product_id={71697} key={71697}/>);
+    const linkElement = screen.getByText("rp-card");
+    await expect(linkElement).toBeInTheDocument();
   });
 
   test("Product Name", async () => {
@@ -75,12 +86,3 @@ xdescribe("Comparison Modal" , () => {
   });
 });
 
-// Integration Test
-describe("RelatedProducts Component" , () => {
-
-  test("RelatedProducts Rendering", async () => {
-      render(<RelatedProducts product_id={'/71697'} key={'/71697'}/>);
-      const linkElement = screen.getByTestId("rp-related");
-      await expect(linkElement).toBeInTheDocument();
-  });
-});
