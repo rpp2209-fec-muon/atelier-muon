@@ -60,12 +60,38 @@ class RelatedProducts extends React.Component {
       var list = [];
       list.push(id);
       localStorage.setItem('outfit', JSON.stringify(list));
+      this.setState({
+        outfit: list
+      })
     } else {
       if(outfit.indexOf(id) === -1) {
         outfit.push(id);
         localStorage.setItem('outfit', JSON.stringify(outfit));
+        this.setState({
+          outfit: outfit
+        })
       }
     }
+  }
+
+  removeOutfit(id) {
+    // console.log("**", id);
+    var getdata = localStorage.getItem('outfit');
+    if (getdata !== "undefined") {
+      var outfit = JSON.parse(getdata);
+    } else {
+      var outfit = null;
+    }
+    for( var i = 0; i < outfit.length; i++){
+
+      if ( outfit[i] === id) {
+        outfit.splice(i, 1);
+      }
+    }
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+    this.setState({
+      outfit: outfit
+    })
   }
 
   getOutfitList() {
@@ -95,7 +121,8 @@ class RelatedProducts extends React.Component {
         <h3>Your Outfit</h3>
           <div className="rp-outfit-list">
             <AddOutfit onClick={this.addToOutfit.bind(this)}/>
-            {outfitList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'o'}/>)}
+            {outfitList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'o'}
+            onRemove={this.removeOutfit.bind(this)}/>)}
           </div>
       </div>
     )

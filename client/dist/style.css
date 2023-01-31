@@ -284,6 +284,19 @@ body {
   bottom: 0;
   font-size: 1.5em;
 }
+.rp-card-action {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.rp-card-action:hover {
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  color: rgb(251, 6, 6);
+}
 
 /*---------------------*/
 

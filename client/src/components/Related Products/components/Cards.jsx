@@ -108,17 +108,30 @@ img: GET /products/:product_id/styles
     this.props.onClick(`/${this.props.product_id}`);
   }
 
+  removeOutfit() {
+    this.props.onRemove(this.props.product_id);
+  }
+
   render () {
+    let action;
+    if (this.props.kind === 'o') {
+      action = <span className="minus fa fa-minus" onClick={this.removeOutfit.bind(this)}></span>;
+    } else {
+      action = <span className="star-o fa fa-star-o"></span>;
+    }
     return(
-      <div className="rp-card" data-testid="rp-card" onClick={this.changePage.bind(this)}>
-        <img className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
+      <div className="rp-card" data-testid="rp-card">
+        <div className="rp-card-action">
+          {action}
+        </div>
+        <img onClick={this.changePage.bind(this)} className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
-        <div className="rp-card-category">{this.state.category}</div>
-        <div className="rp-card-name">{this.state.name} {this.state.style_name}</div>
-        <div className="rp-card-price">
+        <div onClick={this.changePage.bind(this)} className="rp-card-category">{this.state.category}</div>
+        <div onClick={this.changePage.bind(this)} className="rp-card-name">{this.state.name} {this.state.style_name}</div>
+        <div onClick={this.changePage.bind(this)} className="rp-card-price">
           <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
         </div>
-        <div className="rp-card-star">
+        <div onClick={this.changePage.bind(this)} className="rp-card-star">
           <Star key={this.props.product_id} ratings={this.state.ratings} />
         </div>
       </div>
