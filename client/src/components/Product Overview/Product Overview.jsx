@@ -20,6 +20,7 @@ function ProductOverview (props) {
   const [quantity, setQuantity] = useState([])
   const [SKUs, setSKUs] = useState([])
   const [size, setSize] = useState('Select Size');
+  const [itemQuantity, setItemQuantity] = useState('-');
 
 
   // create style image state to be updated with onclick function for next
@@ -131,6 +132,7 @@ function ProductOverview (props) {
         setCurrentStyle(productStyles[i])
         getSKUs(productStyles[i]);
         setSize('Select Size');
+        setItemQuantity('-');
         setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
         setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
         checkMarks(i, productStyles);
@@ -151,13 +153,19 @@ function ProductOverview (props) {
     var data = JSON.parse(e.target.value);
 
     var count = []
-    for (var i = 0; i < data.quantity; i++) {
+    for (var i = 1; i <= data.quantity; i++) {
       if (count.length < 15) {
         count.push(i);
       }
     }
     setSize(JSON.stringify(data));
     setQuantity(count);
+  }
+
+  function quantityChange (e) {
+    e.preventDefault();
+
+    setItemQuantity(e.target.value);
   }
 
   // ---------------------------- render component ---------------------------- //
@@ -169,7 +177,7 @@ function ProductOverview (props) {
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
         <ProductInfo key={'2'} product={currentProduct} star={rating} price={price}/>
         <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
-        <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} productSize={size}/>
+        <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange}/>
       </div>
     )
   } else {

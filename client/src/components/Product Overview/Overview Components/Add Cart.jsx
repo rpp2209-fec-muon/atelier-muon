@@ -4,7 +4,7 @@ function AddToCart (props) {
 
   if (props.skus.length) {
     return ([
-      <select value={props.productSize} className='overview-cart' key={'select-drop-down'} onChange={props.update}>
+      <select value={props.chosenSize} className='overview-cart' key={'select-drop-down'} onChange={props.update}>
         <option value='Select Size'> Select Size </option>
         {props.skus.map( (currUnit, i) => {
             return (
@@ -12,10 +12,11 @@ function AddToCart (props) {
             )
         })}
       </select>,
-      <select className='overview-cart' key={'select-quantity'}>
+      <select value={props.chosenQuantity} className='overview-cart' key={'select-quantity'} onChange={props.update2}>
+        <option value='-'> - </option>
         {props.quantity.map( (currValue, i) => {
           return (
-            <option key={i+currValue} value={currValue+1}> {currValue+1} </option>
+            <option key={currValue} value={currValue.toString()}> {currValue} </option>
           )
         })}
       </select>,
@@ -29,7 +30,6 @@ function AddToCart (props) {
       </select>,
       <select className='overview-cart' key={'select-quantity'}>
       </select>,
-      <button key={'add-cart-button'} className='overview-cart'> <div className='overview-cart-text'>Add To Cart</div> </button>,
       <button key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
     ])
   }
