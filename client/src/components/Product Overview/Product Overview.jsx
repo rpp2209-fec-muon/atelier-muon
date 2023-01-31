@@ -15,6 +15,7 @@ function ProductOverview (props) {
   const [currPhoto, setCurrPhoto] = useState('');
   const [rating, setRating] = useState(0);
   const [price, setPrice] = useState({});
+  const [checkmark, setCheckmark] = useState([])
 
 
   // create style image state to be updated with onclick function for next
@@ -28,6 +29,23 @@ function ProductOverview (props) {
     }
   })
 
+
+  // ---------------------------- sub methods ---------------------------- //
+
+  function checkMarks (index, styles) {
+    var checks = [];
+    for (var i = 0; i < styles.length; i++) {
+      if (i === index) {
+        checks.push(true);
+      } else {
+        checks.push(false);
+      }
+    }
+    setCheckmark(checks);
+  }
+
+  // ---------------------------- get methods ---------------------------- //
+
   function getStyles () {
     axios
     .get('/products', { params: { type: '/styles', product_id: props.product_id, params: {} }})
@@ -35,6 +53,7 @@ function ProductOverview (props) {
         // data.data.results gives me array of styles that contain photos
         setProductStyles(data.data.results);
         console.log('styles data', data.data.results);
+        checkMarks(0, data.data.results)
         setPrice({original: data.data.results[0].original_price, sale: data.data.results[0].sale_price});
         setCurrentStyle(data.data.results[0]);
         setCurrPhoto(data.data.results[0].photos[0].thumbnail_url);
@@ -54,26 +73,6 @@ function ProductOverview (props) {
       setCurrentProduct(product);
     })
     .catch(err => console.log(err));
-  }
-
-  function updateStyle (e) {
-    e.preventDefault();
-    // e.target.value gives us style ID
-    // can sort through productStyles array and match id to correct object
-
-    for (var i = 0; i < productStyles.length; i++) {
-      if (productStyles[i]['style_id'].toString() === e.target.value) {
-        setCurrentStyle(productStyles[i])
-        setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
-        setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
-      }
-    }
-  }
-
-  function updatePhoto (e) {
-    // onclick function that updates the photo
-    e.preventDefault();
-    setCurrPhoto(currentStyle.photos[e.target.id].thumbnail_url);
   }
 
   function getRating() {
@@ -103,12 +102,41 @@ function ProductOverview (props) {
     setRating(rating);
   }
 
+  // ---------------------------- update methods ---------------------------- //
+
+  function updateStyle (e) {
+    e.preventDefault();
+    // e.target.value gives us style ID
+
+    // can sort through productStyles array and match id to correct object
+
+    console.log('might be image', e.target.alt)
+
+    for (var i = 0; i < productStyles.length; i++) {
+      if (productStyles[i]['style_id'].toString() === e.target.alt) {
+        setCurrentStyle(productStyles[i])
+        setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
+        setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
+        checkMarks(i, productStyles);
+      }
+    }
+  }
+
+  function updatePhoto (e) {
+    // onclick function that updates the photo
+    e.preventDefault();
+    setCurrPhoto(currentStyle.photos[e.target.id].thumbnail_url);
+  }
+
+  // ---------------------------- render component ---------------------------- //
+
+
   if (productStyles.length && currentStyle.photos.length) {
     return (
       <div id={'test-id' + props.product_id}>
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
         <ProductInfo key={'2'} product={currentProduct} star={rating} price={price}/>
-        <StyleSelector key={'3'} styles={productStyles} update={updateStyle}/>
+        <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
         <AddToCart key={'4'} product={currentProduct}/>
       </div>
     )

@@ -15,14 +15,6 @@ body {
   left: 700px; */
 }
 
-.overview-button {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  border-width: 3px;
-  margin: 10px;
-}
-
 .overview-gallery {
   height: 700px;
   width: 600px;
@@ -54,6 +46,7 @@ body {
 
 .overview-category {
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .overview-thumbnail {
@@ -67,6 +60,34 @@ body {
   margin: 0px 5px 5px 0px;
   border-style: solid;
 }
+
+.overview-button {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-width: 3px;
+  margin: 10px;
+}
+
+.overview-style-thumbnail {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 1px;
+  right: 6px;
+}
+
+.overview-checkmark {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 75px;
+  left: 25px;
+}
+
+
 
 
 /* ============ REVIEWS STYLES =============== */
