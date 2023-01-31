@@ -7,11 +7,9 @@ function StyleSelector (props) {
 
   // create state to hold checkmark array
 
-  console.log('should be array of booleans', props.check);
-
   return ([
-    <h3> Style > {props.style.name}</h3>,
-    <div className='overview-style'>
+    <h3 key={'style-heading'} > Style > {props.style.name}</h3>,
+    <div key={'style-buttons'} className='overview-style'>
       {props.styles.map( (currStyle, i) => {
           if (props.check[i] === true) {
             return (

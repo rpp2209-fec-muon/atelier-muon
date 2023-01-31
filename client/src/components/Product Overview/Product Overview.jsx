@@ -15,7 +15,12 @@ function ProductOverview (props) {
   const [currPhoto, setCurrPhoto] = useState('');
   const [rating, setRating] = useState(0);
   const [price, setPrice] = useState({});
-  const [checkmark, setCheckmark] = useState([])
+  const [checkmark, setCheckmark] = useState([]);
+  // create state to hold quantity
+  const [quantity, setQuantity] = useState([])
+  const [SKUs, setSKUs] = useState([])
+  const [size, setSize] = useState('Select Size');
+  const [itemQuantity, setItemQuantity] = useState('-');
 
 
   // create style image state to be updated with onclick function for next
@@ -56,6 +61,7 @@ function ProductOverview (props) {
         checkMarks(0, data.data.results)
         setPrice({original: data.data.results[0].original_price, sale: data.data.results[0].sale_price});
         setCurrentStyle(data.data.results[0]);
+        getSKUs(data.data.results[0])
         setCurrPhoto(data.data.results[0].photos[0].thumbnail_url);
         return (data.data.results);
       })
@@ -102,12 +108,21 @@ function ProductOverview (props) {
     setRating(rating);
   }
 
+  function getSKUs (style) {
+    var sizes = [];
+    for (var key in style.skus) {
+      if (style.skus[key].quantity > 0) {
+        sizes.push(style.skus[key])
+      }
+    }
+    setSKUs(sizes);
+  }
+
   // ---------------------------- update methods ---------------------------- //
 
   function updateStyle (e) {
     e.preventDefault();
     // e.target.value gives us style ID
-
     // can sort through productStyles array and match id to correct object
 
     console.log('might be image', e.target.alt)
@@ -115,6 +130,9 @@ function ProductOverview (props) {
     for (var i = 0; i < productStyles.length; i++) {
       if (productStyles[i]['style_id'].toString() === e.target.alt) {
         setCurrentStyle(productStyles[i])
+        getSKUs(productStyles[i]);
+        setSize('Select Size');
+        setItemQuantity('-');
         setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
         setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
         checkMarks(i, productStyles);
@@ -128,6 +146,29 @@ function ProductOverview (props) {
     setCurrPhoto(currentStyle.photos[e.target.id].thumbnail_url);
   }
 
+
+  function sizeChange (e) {
+    e.preventDefault();
+
+    var data = JSON.parse(e.target.value);
+
+    var count = []
+    for (var i = 1; i <= data.quantity; i++) {
+      if (count.length < 15) {
+        count.push(i);
+      }
+    }
+    setSize(JSON.stringify(data));
+    setItemQuantity('1')
+    setQuantity(count);
+  }
+
+  function quantityChange (e) {
+    e.preventDefault();
+
+    setItemQuantity(e.target.value);
+  }
+
   // ---------------------------- render component ---------------------------- //
 
 
@@ -137,7 +178,7 @@ function ProductOverview (props) {
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
         <ProductInfo key={'2'} product={currentProduct} star={rating} price={price}/>
         <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
-        <AddToCart key={'4'} product={currentProduct}/>
+        <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange}/>
       </div>
     )
   } else {
