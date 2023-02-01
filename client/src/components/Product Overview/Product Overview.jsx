@@ -52,6 +52,7 @@ function ProductOverview (props) {
   }
 
   function ratingTranslate(ratings) {
+
     for (var i = 1; i <= 5; i ++) {
       if (ratings[i] === undefined) {
         ratings[i] = 0;
@@ -61,7 +62,7 @@ function ProductOverview (props) {
     var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
     var rating =  total / totalRate;
     setRating(rating);
-    setReviews(total)
+    setReviews(totalRate)
   }
 
   function getSKUs (style) {
@@ -100,7 +101,6 @@ function ProductOverview (props) {
     .then((data) => {
       console.log('GET Request Successful');
       var product = []
-      console.log('product info', data.data)
       product.push(data.data)
       setCurrentProduct(product);
     })
@@ -118,7 +118,6 @@ function ProductOverview (props) {
         ratingTranslate(data.data.ratings);
       })
       .catch(err => console.log(err));
-
   }
 
   // ---------------------------- update methods ---------------------------- //

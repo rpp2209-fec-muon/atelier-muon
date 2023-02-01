@@ -8,8 +8,8 @@ function StyleSelector (props) {
   // create state to hold checkmark array
 
   return ([
-    <h3 key={'style-heading'} > Style > {props.style.name}</h3>,
-    <div key={'style-buttons'} className='overview-style'>
+    <h3 data-testid='overview-style-heading' key={'style-heading'} > Style > {props.style.name}</h3>,
+    <div data-testid='overview-mapped-styles' key={'style-buttons'} className='overview-style'>
       {props.styles.map( (currStyle, i) => {
           if (props.check[i] === true) {
             return (

@@ -19,7 +19,7 @@ function AddToCart (props) {
 
   if (props.skus.length) {
     return ([
-      <select value={props.chosenSize} className='overview-cart' key={'select-drop-down'} onChange={props.update}>
+      <select data-testid='overview-cart-select1' value={props.chosenSize} className='overview-cart' key={'select-drop-down'} onChange={props.update}>
         <option value='Select Size'> Select Size </option>
         {props.skus.map( (currUnit, i) => {
             return (
@@ -27,7 +27,7 @@ function AddToCart (props) {
             )
         })}
       </select>,
-      <select value={props.chosenQuantity} className='overview-cart' key={'select-quantity'} onChange={props.update2}>
+      <select data-testid='overview-cart-select2' value={props.chosenQuantity} className='overview-cart' key={'select-quantity'} onChange={props.update2}>
         <option value='-'> - </option>
         {props.quantity.map( (currValue, i) => {
           return (
@@ -36,16 +36,16 @@ function AddToCart (props) {
         })}
       </select>,
       <button onClick={addToCart} key={'add-cart-button'} className='overview-cart'> <div className='overview-cart-text'>Add To Cart</div> </button>,
-      <button key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
+      <button data-testid='overview-cart-button' key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
     ])
   } else {
     return ([
-      <select className='overview-cart' key={'select-drop-down'} onChange={props.update}>
+      < select className='overview-cart' data-testid='overview-cart-select3' key={'select-drop-down'} onChange={props.update}>
         <option value='Select Your Size'> OUT OF STOCK </option>
       </select>,
-      <select className='overview-cart' key={'select-quantity'}>
+      <select data-testid='overview-cart-select4' className='overview-cart' key={'select-quantity'}>
       </select>,
-      <button key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
+      <button data-testid='overview-cart-button' key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
     ])
   }
 }
