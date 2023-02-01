@@ -48,6 +48,16 @@ app.post('/reviews', (req, res) => {
   })
 })
 
+app.post('/cart', (req, res) => {
+  helper.postCart(req.body, (err, data) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.status(201).send(data);
+    }
+  })
+})
+
 app.put('/reviews', (req, res) => {
   //helper.putReview
 })
