@@ -16,15 +16,20 @@ body {
 }
 
 .overview-gallery {
-  height: 700px;
-  width: 600px;
+  height: 500px;
+  width: 400px;
   border-style: solid;
   display: inline;
   margin-bottom: 10px;
+  border-left-width: 50px;
+  border-right-width: 50px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-color: lightgray;
 }
 
 .overview-description {
-  width: 600px;
+  width: 500px;
 }
 
 /* .overview-slogan-description {
@@ -51,15 +56,18 @@ body {
 }
 
 .overview-thumbnail {
-  width: 600px;
+  width: 400px;
   margin-bottom: 25px;
+  position: relative;
+  left: 50px;
 }
 
 .overview-thumbnail-photos {
-  width: 82.5px;
-  height: 112.5px;
+  width: 50px;
+  height: 50px;
   margin: 0px 5px 5px 0px;
   border-style: solid;
+  border-color: lightgray;
 }
 
 .overview-button {
@@ -90,6 +98,38 @@ body {
 
 .overview-scroll-reviews:hover {
   color: lightblue;
+}
+
+.fullscreen-container {
+  height: 100%;
+  width: 100%;
+}
+
+.fullscreen {
+  height: 80%;
+  width: 80%;
+  border-style: solid;
+  border-right-width: 50px;
+  border-left-width: 50px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-color: lightgray;
+}
+
+.overview-expanded-image {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  right: 37px;
+  bottom: 20px;
+}
+
+.overview-expanded-image-2 {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  right: 37px;
+  bottom: 15px;
 }
 
 
