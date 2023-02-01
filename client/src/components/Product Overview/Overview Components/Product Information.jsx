@@ -7,7 +7,7 @@ function ProductInfo (props) {
   var currProduct = props.product[0];
 
   function reviewScroll () {
-    var element = document.getElementById('reviews-component');
+    var element = document.getElementById('reviews-component')
     element.scrollIntoView();
   }
 
@@ -15,7 +15,7 @@ function ProductInfo (props) {
     return ([
       <div key={'overview-name-div'} className='overview-name'>
         <Star ratings={props.star}/>
-        <div className='overview-scroll-reviews' onClick={reviewScroll}> See all ... reviews...</div>
+        <u className='overview-scroll-reviews' onClick={reviewScroll}> See all {props.reviews} reviews...</u>
         <div className='overview-category'> {currProduct.category} </div>
         <h1> {currProduct.name} </h1>
         <h3><Price original_price={props.price.original} sale_price={props.price.sale}/></h3>

@@ -21,6 +21,7 @@ function ProductOverview (props) {
   const [SKUs, setSKUs] = useState([])
   const [size, setSize] = useState('Select Size');
   const [itemQuantity, setItemQuantity] = useState('-');
+  const [reviews, setReviews] = useState(0)
 
 
   // create style image state to be updated with onclick function for next
@@ -59,6 +60,7 @@ function ProductOverview (props) {
     var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
     var rating =  total / totalRate;
     setRating(rating);
+    setReviews(total)
   }
 
   function getSKUs (style) {
@@ -111,7 +113,6 @@ function ProductOverview (props) {
         product_id: int_product_id
       }}})
       .then((data) => {
-
         ratingTranslate(data.data.ratings);
       })
       .catch(err => console.log(err));
@@ -176,7 +177,7 @@ function ProductOverview (props) {
     return (
       <div id={'test-id' + props.product_id}>
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
-        <ProductInfo key={'2'} product={currentProduct} star={rating} price={price}/>
+        <ProductInfo key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
         <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
         <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange}/>
       </div>
