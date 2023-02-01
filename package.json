@@ -28,6 +28,7 @@
     "@testing-library/react": "^13.4.0",
     "axios": "^1.2.3",
     "babel-loader": "^9.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "install": "^0.13.0",
