@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function AddToCart (props) {
+
+  function addToCart () {
+    if (props.chosenSize && props.chosenQuantity) {
+      // props.chosenSize, props.chosenQuantity gives us size/quant
+      // cart api interation
+      console.log('what is our skus', props.chosenSKU);
+      axios
+      .post('/cart', {sku_id: props.chosenSKU, count: parseInt(props.chosenQuantity)})
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+    }
+  }
 
   if (props.skus.length) {
     return ([
@@ -8,7 +23,7 @@ function AddToCart (props) {
         <option value='Select Size'> Select Size </option>
         {props.skus.map( (currUnit, i) => {
             return (
-              <option key={i + currUnit.size} value={ JSON.stringify({quantity: currUnit.quantity, size: currUnit.size})}> {currUnit.size} </option>
+              <option key={i + currUnit.size} value={ JSON.stringify({quantity: currUnit.quantity, size: currUnit.size, sku_id: currUnit.sku_id})}> {currUnit.size} </option>
             )
         })}
       </select>,
@@ -20,7 +35,7 @@ function AddToCart (props) {
           )
         })}
       </select>,
-      <button key={'add-cart-button'} className='overview-cart'> <div className='overview-cart-text'>Add To Cart</div> </button>,
+      <button onClick={addToCart} key={'add-cart-button'} className='overview-cart'> <div className='overview-cart-text'>Add To Cart</div> </button>,
       <button key={'outfit-star-button'} className='overview-cart'> <span className={`star fa fa-star`}></span> </button>
     ])
   } else {
