@@ -1,6 +1,6 @@
 const request = require("supertest");
 
-const {app, handler} = require("../server/index.js");
+const app = require("../server/index.js");
 
 
 describe("Products Test", () => {

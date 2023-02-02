@@ -126,9 +126,9 @@ img: GET /products/:product_id/styles
         </div>
         <img onClick={this.changePage.bind(this)} className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
-        <div onClick={this.changePage.bind(this)} className="rp-card-category">{this.state.category}</div>
-        <div onClick={this.changePage.bind(this)} className="rp-card-name">{this.state.name} {this.state.style_name}</div>
-        <div onClick={this.changePage.bind(this)} className="rp-card-price">
+        <div onClick={this.changePage.bind(this)} className="rp-card-category" data-testid="rp-card-category">{this.state.category}</div>
+        <div onClick={this.changePage.bind(this)} className="rp-card-name" data-testid="rp-card-name">{this.state.name} {this.state.style_name}</div>
+        <div onClick={this.changePage.bind(this)} className="rp-card-price" data-testid="rp-card-price">
           <Price original_price={this.state.original_price} sale_price={this.state.sale_price}/>
         </div>
         <div onClick={this.changePage.bind(this)} className="rp-card-star">

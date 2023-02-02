@@ -25,27 +25,27 @@ describe("RelatedProducts Component" , () => {
 describe("Cards Component" , () => {
 
   test("Card Rendering", async () => {
-    render(<Cards product_id={71697} key={71697} onclick={()=>{}}/>);
+    render(<Cards product_id={71697} key={71697}/>);
     const linkElement = screen.getByTestId("rp-card");
     await expect(linkElement).toBeInTheDocument();
   });
 
-  xtest("Product Category", async () => {
+  test("Product Category", async () => {
     render(<Cards product_id={71697} key={71697}/>);
-    const linkElement = screen.getByText("rp-card");
+    const linkElement = screen.getByTestId("rp-card-category");
     await expect(linkElement).toBeInTheDocument();
   });
 
   test("Product Name", async () => {
-    // render(<Cards product_id={71697} key={71697}/>);
-    // const linkElement = screen.getByTestId("rp-card");
-    // await expect(linkElement).toBeInTheDocument();
+    render(<Cards product_id={71697} key={71697}/>);
+    const linkElement = screen.getByTestId("rp-card-name");
+    await expect(linkElement).toBeInTheDocument();
   });
 
   test("Product Price", async () => {
-    // render(<Cards product_id={71697} key={71697}/>);
-    // const linkElement = screen.getByTestId("rp-card");
-    // await expect(linkElement).toBeInTheDocument();
+    render(<Cards product_id={71697} key={71697}/>);
+    const linkElement = screen.getByTestId("rp-card-price");
+    await expect(linkElement).toBeInTheDocument();
   });
 });
 
@@ -62,7 +62,7 @@ xdescribe("Action button" , () => {
 
 describe("List Behavior" , () => {
 
-  test("Navigating Behavior", async () => {
+  xtest("Navigating Behavior", async () => {
 
   });
 
