@@ -16,15 +16,20 @@ body {
 }
 
 .overview-gallery {
-  height: 700px;
-  width: 600px;
+  height: 500px;
+  width: 400px;
   border-style: solid;
   display: inline;
   margin-bottom: 10px;
+  border-left-width: 50px;
+  border-right-width: 50px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-color: lightgray;
 }
 
 .overview-description {
-  width: 600px;
+  width: 500px;
 }
 
 /* .overview-slogan-description {
@@ -42,6 +47,7 @@ body {
   margin: 25px 80px 25px 0px;
   font-size: 20px;
   padding: 15px 30px;
+  background-color: white;
 }
 
 .overview-category {
@@ -50,15 +56,18 @@ body {
 }
 
 .overview-thumbnail {
-  width: 600px;
+  width: 400px;
   margin-bottom: 25px;
+  position: relative;
+  left: 50px;
 }
 
 .overview-thumbnail-photos {
-  width: 82.5px;
-  height: 112.5px;
+  width: 50px;
+  height: 50px;
   margin: 0px 5px 5px 0px;
   border-style: solid;
+  border-color: lightgray;
 }
 
 .overview-button {
@@ -85,6 +94,42 @@ body {
   position: relative;
   bottom: 75px;
   left: 25px;
+}
+
+.overview-scroll-reviews:hover {
+  color: lightblue;
+}
+
+.fullscreen-container {
+  height: 100%;
+  width: 100%;
+}
+
+.fullscreen {
+  height: 80%;
+  width: 80%;
+  border-style: solid;
+  border-right-width: 50px;
+  border-left-width: 50px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-color: lightgray;
+}
+
+.overview-expanded-image {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  right: 37px;
+  bottom: 20px;
+}
+
+.overview-expanded-image-2 {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  right: 37px;
+  bottom: 15px;
 }
 
 
@@ -207,8 +252,9 @@ body {
 
 /*--Related Products---*/
 .rp-related {
+  display: block;
   float: inline-end;
-  height: 1000px;
+  height: 100%;
   margin-left: 200px;
   margin-right:auto;
   width: 2000px;
@@ -218,9 +264,27 @@ body {
   content: "";
   clear: both;
   display: table;
-  height: 50%;
+  height: 475px;
 }
 
+.rp-outfit-list {
+  content: "";
+  clear: both;
+  display: table;
+  height: 475px;
+}
+
+.rp-card-addoutfit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rp-card-addoutfit-text {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  font-size: 30px;
+}
 .rp-card {
   float: left;
   display: block;
@@ -229,6 +293,11 @@ body {
   width: 250px;
   border: 1px solid #ddd;
   margin-left: 20px;
+}
+
+.rp-card:hover {
+  border: 3px solid rgba(0, 0, 0, 0.538);
+  cursor: pointer;
 }
 
 .rp-card-img {
@@ -259,6 +328,55 @@ body {
   position: absolute;
   bottom: 0;
   font-size: 1.5em;
+}
+.rp-card-action {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.rp-card-action:hover {
+  text-shadow: 0 0 5px rgb(0, 0, 0);
+  color: rgb(251, 6, 6);
+}
+
+.rp-left {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-left {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-left:hover {
+  color: rgb(251, 6, 6);
+}
+
+.rp-right {
+  float: left;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 25px;
+  margin-left: 20px;
+}
+
+.chevron-right {
+  position: absolute;
+  top: 50%;
+}
+
+.chevron-right:hover {
+  color: rgb(251, 6, 6);
 }
 
 /*---------------------*/

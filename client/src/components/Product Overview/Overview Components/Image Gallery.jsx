@@ -3,30 +3,54 @@ import axios from 'axios';
 
 function ImageGallery (props) {
 
-  // just need a default image here for now, we can default style one
-  // its an array so props.styles[0].photos.url is our src for default 1
+  const [click, setClick] = useState(false);
 
-  // create a state for the current rendered big image
-  const [currPhoto, setCurrPhoto] = useState('');
+  function setFlag () {
+    setClick(true)
+  }
 
-  // create two states one for the next image
-  // one for the default image
-  // default image will be passed down from the product overview
-  //
+  function unsetFlag () {
+    setClick(false)
+  }
 
-  // create useEffect here to set current photo immediately to default
+  if (!click) {
+    return ([
+      <div key={'main-photo'} data-testid="gallery-main">
+        <img  className='overview-gallery' src={props.currPhoto}></img>
+        <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
 
-  return ([
-    <img key={'main-photo'} className='overview-gallery' src={props.currPhoto}></img>,
-    <div key={'overview-thumbnail-div'} className='overview-thumbnail'>
-      {props.style.photos.map( (currPhotoObj, i) => {
-      var test = i;
-      return (
-          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
-          )
-      })}
-    </div>
-  ])
+      </div>,
+      <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+        {props.style.photos.map( (currPhotoObj, i) => {
+        var test = i;
+        return (
+            <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+            )
+        })}
+      </div>
+    ])
+  } else {
+    return (
+      <div>
+        {click ? (
+          <div className="fullscreen-container">
+            <img src={props.currPhoto} className='fullscreen'></img>
+            <img onClick={unsetFlag} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+          </div>
+        ) : (
+          <img src={props.currPhoto} onClick={setFlag}></img>
+        )}
+        <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+          {props.style.photos.map( (currPhotoObj, i) => {
+          var test = i;
+          return (
+              <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+              )
+          })}
+        </div>
+      </div>
+    )
+  }
 
 }
 
