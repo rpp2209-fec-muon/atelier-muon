@@ -1,4 +1,5 @@
 import { render, screen, cleanup, fireEvent, waitFor } from "@testing-library/react";
+import '@testing-library/jest-dom'
 import React from 'react';
 import ProductOverview from '../client/src/components/Product Overview/Product Overview.jsx';
 import ImageGallery from '../client/src/components/Product Overview/Overview Components/Image Gallery.jsx';
@@ -14,7 +15,7 @@ afterEach(() => {
 
 describe('Does our Product Overview Component Render Out?', () => {
 
-  test('does our axios call work?', () => {
+  test('does our axios getProducts call work?', () => {
 
     var props = {
       product_id: '/71697'
@@ -28,20 +29,98 @@ describe('Does our Product Overview Component Render Out?', () => {
       })
   })
 
-  test('does Image Gallery render?', () => {
-    render(<ImageGallery key={'1'} style={exampleStyleData[0]} id={'/71697'} currPhoto={exampleStyleData[0].photos[0]} update={() => { return null }}/>);
+  test('does our axios getRatings call work?', () => {
+
+    var props = {
+        product_id: '/71697'
+    }
+
+    var int_product_id = parseInt(props.product_id.slice(1));
+    console.log(int_product_id);
+
+    axios
+    .get('/reviews', { params: { type: '/meta', params: {
+      product_id: int_product_id
+    }}})
+    .then((data) => {
+      var ratingInfo = (data.data);
+      expect(JSON.stringify(data.data)).toBe(JSON.stringify(exampleReviewsData));
+    })
+    .catch(err => console.log(err));
   })
 
-  test('does Product Info render?', () => {
-    render( <ProductInfo key={'2'} product={exampleProductData}/>);
+  test('does our rating translation work?', () => {
+
+    function ratingTranslate(ratings, callback) {
+        for (var i = 1; i <= 5; i ++) {
+          if (ratings[i] === undefined) {
+            ratings[i] = 0;
+          }
+        }
+        var total = ratings[1] * 1 + ratings[2] * 2 + ratings[3] * 3 + ratings[4] * 4 + ratings[5] * 5;
+        var totalRate = ratings[1] * 1 + ratings[2] * 1 + ratings[3] * 1 + ratings[4] * 1 + ratings[5] * 1;
+        var rating =  total / totalRate;
+        // setRating(rating);
+        // setReviews(total)
+        callback(totalRate);
+    }
+
+    ratingTranslate(exampleReviewsData.ratings, (data) => {
+        expect(data).toBe(305);
+    } );
+
   })
 
-  test ('does Style Selector render?', () => {
-    render(<StyleSelector key={'3'} styles={exampleStyleData} update={()=> {return null}}/>);
+  test('does Image Gallery render?', async () => {
+    render(<ImageGallery key={'1'} style={exampleStyleData[0]} id={'/71697'} currPhoto={exampleStyleData[0].photos[0].thumbnail_url} update={() => { return null }}/>);
+    const linkElement1 = screen.getByTestId('gallery-main');
+    const linkElement2 = screen.getByTestId('gallery-thumbnails');
+    await expect(linkElement1).toBeInTheDocument();
+    await expect(linkElement2).toBeInTheDocument();
+
   })
 
-  test('does Add To Cart render?', () => {
-    render(<AddToCart key={'4'} product={exampleProductData}/>);
+  test('does Product Info render?', async () => {
+    render(<ProductInfo key={'2'} product={[exampleProductData]} star={3.7} price={'140.00'} reviews={305}/>);
+
+    const linkElement1 = screen.getByTestId('overview-product-info')
+    const linkElement2 = screen.getByTestId('overview-slogan');
+
+    await expect(linkElement1).toBeInTheDocument();
+  })
+
+  test('does Style Selector render?', async () => {
+    render(<StyleSelector key={'3'} check={[true, false, false, false, false, false]} style={exampleStyleData[0]} styles={exampleStyleData} update={() => { return null}}/>);
+    const linkElement1 = screen.getByTestId('overview-style-heading');
+    const linkElement2 = screen.getByTestId('overview-mapped-styles');
+    await expect(linkElement1).toBeInTheDocument();
+    await expect(linkElement2).toBeInTheDocument();
+  })
+
+  test('does Add To Cart render? without chosenSize/Quant?', async () => {
+    render(<AddToCart key={'4'} product={[exampleProductData]} styles={exampleStyleData[0]} skus={[]} quantity={[]} update={() => {return null}} chosenSize={''} chosenQuantity={'-'} update2={() => {return null}} chosenSKU={0}/>);
+
+    const linkElement3 = screen.getByTestId('overview-cart-select3');
+    const linkElement4 = screen.getByTestId('overview-cart-select4');
+    const linkElement5 = screen.getByTestId('overview-cart-button');
+
+    await expect(linkElement3).toBeInTheDocument();
+    await expect(linkElement4).toBeInTheDocument();
+    await expect(linkElement5).toBeInTheDocument();
+
+  })
+
+  test('does Add To Cart render? with chosenSize/Quant?', async () => {
+    render(<AddToCart key={'4'} product={[exampleProductData]} styles={exampleStyleData[0]} skus={[exampleStyleData[0]['skus']]} quantity={[1, 2, 3, 4, 5]} update={() => {return null}} chosenSize={'M'} chosenQuantity={'1'} update2={() => {return null}} chosenSKU={0}/>);
+
+    const linkElement1 = screen.getByTestId('overview-cart-select1');
+    const linkElement2 = screen.getByTestId('overview-cart-select2');
+    const linkElement3 = screen.getByTestId('overview-cart-button');
+
+    await expect(linkElement1).toBeInTheDocument();
+    await expect(linkElement2).toBeInTheDocument();
+    await expect(linkElement3).toBeInTheDocument();
+
   })
 
 
@@ -49,6 +128,39 @@ describe('Does our Product Overview Component Render Out?', () => {
 
 
 })
+
+var exampleReviewsData = {
+    "product_id": "71697",
+    "ratings": {
+        "1": "52",
+        "2": "22",
+        "3": "39",
+        "4": "44",
+        "5": "148"
+    },
+    "recommended": {
+        "false": "73",
+        "true": "232"
+    },
+    "characteristics": {
+        "Fit": {
+            "id": 240582,
+            "value": "3.4739336492890995"
+        },
+        "Length": {
+            "id": 240583,
+            "value": "3.0791666666666667"
+        },
+        "Comfort": {
+            "id": 240584,
+            "value": "3.3662551440329218"
+        },
+        "Quality": {
+            "id": 240585,
+            "value": "3.6092436974789916"
+        }
+    }
+}
 
 var exampleProductData = {
   "id": 71697,

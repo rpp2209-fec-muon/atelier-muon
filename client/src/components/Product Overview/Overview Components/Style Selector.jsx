@@ -5,16 +5,30 @@ function StyleSelector (props) {
   // take the array of different styles
   // create buttons that are cicles by mapping through them
 
-  return (
-    <div className='overview-style'>
-      <div> Select Your Style </div>
+  // create state to hold checkmark array
+
+  return ([
+    <h3 data-testid='overview-style-heading' key={'style-heading'} > Style > {props.style.name}</h3>,
+    <div data-testid='overview-mapped-styles' key={'style-buttons'} className='overview-style'>
       {props.styles.map( (currStyle, i) => {
-        return (
-          <button onClick={props.update} value={currStyle.style_id} key={currStyle.style_id} className='overview-button'> Style {i + 1}</button>
-        )
-      })}
+          if (props.check[i] === true) {
+            return (
+              <button onClick={props.update}  key={currStyle.style_id} className='overview-button'>
+                <img alt={`${currStyle.style_id}`} className="overview-style-thumbnail" src={currStyle.photos[0].url}></img>
+                <img className="overview-checkmark" src='https://i.imgur.com/Fxl95Rx.png'></img>
+              </button>
+            )
+          } else {
+            return (
+              <button onClick={props.update}  key={currStyle.style_id} className='overview-button'>
+                <img alt={`${currStyle.style_id}`} className="overview-style-thumbnail" src={currStyle.photos[0].url}></img>
+              </button>
+            )
+          }
+        }
+      )}
     </div>
-  )
+  ])
 }
 
 export default StyleSelector;

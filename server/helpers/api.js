@@ -10,6 +10,7 @@ let getProduct = (callback, params, product_id = '', type = '') => {
     }
   };
 
+
   axios({
     method: 'get',
     url: options.url,
@@ -54,6 +55,34 @@ let postReview = (body, callback) => {
       'Authorization': process.env.API_KEY
     }
   };
+}
+
+let postCart = (params, callback) => {
+
+  console.log('what is json', JSON.stringify(params))
+
+  let options = {
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}/cart`,
+    headers: {
+      'Authorization': process.env.API_KEY
+    }
+  };
+  axios({
+    method: 'post',
+    url: options.url,
+    headers: options.headers,
+    data: params,
+  })
+    .then((data) => {
+      console.log('response data from post cart', data)
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err, null);
+      console.log(err);
+    });
+}
+
 
   // TO-DO finish post reviews axios request
   // axios({
@@ -68,7 +97,6 @@ let postReview = (body, callback) => {
   //   .catch((err) => {
   //     callback(err, null);
   //   });
-}
 
 let putReview = (type, review_id, callback) => {
   let options = {
@@ -94,3 +122,4 @@ module.exports.getProduct = getProduct;
 module.exports.getReview = getReview;
 module.exports.postReview = postReview;
 module.exports.putReview = putReview;
+module.exports.postCart = postCart;
