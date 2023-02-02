@@ -124,7 +124,7 @@ img: GET /products/:product_id/styles
         <div className="rp-card-action">
           {action}
         </div>
-        <img onClick={this.changePage.bind(this)} className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
+        <img onClick={this.changePage.bind(this)} alt="rp-product-img" className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div onClick={this.changePage.bind(this)} className="rp-card-category">{this.state.category}</div>
         <div onClick={this.changePage.bind(this)} className="rp-card-name">{this.state.name} {this.state.style_name}</div>
