@@ -168,12 +168,13 @@ body {
 
 .reviews-modalContainer {
   width: 60%;
-  height: 500px;
+  height: 75%;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   outline: auto;
+  overflow-y: auto;
   background-color: white;
 }
 
