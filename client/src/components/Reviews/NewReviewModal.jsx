@@ -147,7 +147,10 @@ export default function NewReviewModal({ closeModal, meta }) {
         </div>
 
         <div className="reviews-modal-pictures-container">
-          <button>Add photos</button>
+          <label htmlFor="image-upload">Upload photos</label>
+          {photos.length < 5 &&
+          <input type="file" id="image-upload" mulitple="true"></input>
+          }
         </div>
 
         <div className="reviews-modal-name/email-container">
