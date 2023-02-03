@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
+import { v2 as cloudinary } from 'cloudinary';
+require("dotenv").config();
 
 export default function NewReviewModal({ closeModal, meta }) {
+
+  cloudinary.config({
+    cloud_name: 'dmqjgoaej',
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true
+  });
 
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(false);
