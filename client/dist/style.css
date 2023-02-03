@@ -193,6 +193,10 @@ body {
   color: #ccc;
 }
 
+.star-parent {
+  display: inline-block;
+}
+
 
 
 /*-------Star--------*/
