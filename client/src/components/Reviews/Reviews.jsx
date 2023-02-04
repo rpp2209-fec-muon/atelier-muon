@@ -74,7 +74,7 @@ export default function Reviews(props) {
   // and will control the state that is passed to List
 
   return (
-    <div id='reviews-component'>
+    <div id='reviews-component' onClick={props.onClick}>
       <div className="reviews-flexParent" data-testid="reviews-parent-div">
         <div className="reviews-flexBreakdownParent">
           <div><b>Ratings and Reviews</b></div>

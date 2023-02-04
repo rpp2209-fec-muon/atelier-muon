@@ -146,18 +146,18 @@ class RelatedProducts extends React.Component {
     if (this.state.related.length > r + 4) { relatedNext = true };
     if (this.state.outfit.length > o + 3) { outfitNext = true };
     return(
-      <div className="rp-related" data-testid="rp-related">
+      <div className="rp-related" data-testid="rp-related" onClick={this.props.onClick}>
         <h3>Related Products</h3>
         <div className="rp-cards-list">
           <Left page={this.state.r_page} onLast={this.relatedLast.bind(this)}/>
-          {relatedList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'r'}/>)}
+          {relatedList.map((product) => <Cards product_id={product} key={product} onPage={this.props.onPage} kind={'r'}/>)}
           <Right show={relatedNext} onNext={this.relatedNext.bind(this)} />
         </div>
         <h3>Your Outfit</h3>
           <div className="rp-outfit-list">
             <Left page={this.state.o_page} onLast={this.outfitLast.bind(this)}/>
             <AddOutfit onClick={this.addToOutfit.bind(this)}/>
-            {outfitList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'o'}
+            {outfitList.map((product) => <Cards product_id={product} key={product} onPage={this.props.onPage} kind={'o'}
             onRemove={this.removeOutfit.bind(this)}/>)}
             <Right show={outfitNext} onNext={this.outfitNext.bind(this)} />
           </div>

@@ -105,7 +105,7 @@ img: GET /products/:product_id/styles
   }
 
   changePage() {
-    this.props.onClick(`/${this.props.product_id}`);
+    this.props.onPage(`/${this.props.product_id}`);
   }
 
   removeOutfit() {
