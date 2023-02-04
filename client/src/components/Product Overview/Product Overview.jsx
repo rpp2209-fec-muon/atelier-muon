@@ -178,7 +178,7 @@ function ProductOverview (props) {
 
   if (productStyles.length && currentStyle.photos.length) {
     return (
-      <div id={'test-id' + props.product_id}>
+      <div id={'test-id' + props.product_id} onClick={props.onClick}>
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
         <ProductInfo key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
         <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
