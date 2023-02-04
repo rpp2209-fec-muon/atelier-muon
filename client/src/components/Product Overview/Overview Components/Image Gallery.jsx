@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 function ImageGallery (props) {
 
   const [click, setClick] = useState(false);
+  const ref = useRef(null);
 
   function setFlag () {
     setClick(true)
@@ -13,6 +14,17 @@ function ImageGallery (props) {
     setClick(false)
   }
 
+
+  function scrollD (e) {
+    e.preventDefault();
+    ref.current.scrollTop += 20;
+  }
+
+  function scrollU (e) {
+    e.preventDefault();
+    ref.current.scrollTop -= 20;
+  }
+
   if (!click) {
     return ([
       <div key={'main-photo'} data-testid="gallery-main">
@@ -20,13 +32,17 @@ function ImageGallery (props) {
         <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
 
       </div>,
-      <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
-        {props.style.photos.map( (currPhotoObj, i) => {
-        var test = i;
-        return (
-            <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
-            )
-        })}
+      <div className='overview-thumbnail-parent'>
+        <span onClick={scrollU} className='overview-scroll-up'></span>
+        <div ref={ref} data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+          {props.style.photos.map( (currPhotoObj, i) => {
+          var test = i;
+          return (
+              <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+              )
+          })}
+        </div>
+        <span onClick={scrollD} className='overview-scroll-down'></span>
       </div>
     ])
   } else {
@@ -40,13 +56,18 @@ function ImageGallery (props) {
         ) : (
           <img src={props.currPhoto} onClick={setFlag}></img>
         )}
-        <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
-          {props.style.photos.map( (currPhotoObj, i) => {
-          var test = i;
-          return (
-              <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
-              )
-          })}
+        <div className='overview-thumbnail-parent'>
+          <span className='overview-scroll-up'></span>
+          <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+
+            {props.style.photos.map( (currPhotoObj, i) => {
+            var test = i;
+            return (
+                <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                )
+            })}
+          </div>
+          <span onClick={scrollD} className='overview-scroll-down'></span>
         </div>
       </div>
     )
