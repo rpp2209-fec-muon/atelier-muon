@@ -3,6 +3,8 @@ import axios from 'axios';
 
 function ImageGallery (props) {
 
+  console.log(props.currPhotoIndex);
+
   const [click, setClick] = useState(false);
   const ref = useRef(null);
 
@@ -25,11 +27,18 @@ function ImageGallery (props) {
     ref.current.scrollTop -= 20;
   }
 
+
   if (!click) {
     return ([
       <div key={'main-photo'} data-testid="gallery-main">
         <img  className='overview-gallery' src={props.currPhoto}></img>
         <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <div className='overview-next-main' onClick={props.update} >
+          <span id={props.currPhotoIndex} className='overview-next-left'></span>
+        </div>
+        <div className='overview-next-main' onClick={props.update} >
+          <span id={props.currPhotoIndex} className='overview-next-right'></span>
+        </div>
 
       </div>,
       <div className='overview-thumbnail-parent'>

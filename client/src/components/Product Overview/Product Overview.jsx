@@ -13,6 +13,7 @@ function ProductOverview (props) {
   const [productStyles, setProductStyles] = useState([])
   const [currentStyle, setCurrentStyle] = useState([])
   const [currPhoto, setCurrPhoto] = useState('');
+  const [currPhotoIndex, setCurrPhotoIndex] = useState(0);
   const [rating, setRating] = useState(0);
   const [price, setPrice] = useState({});
   const [checkmark, setCheckmark] = useState([]);
@@ -90,6 +91,7 @@ function ProductOverview (props) {
         setCurrentStyle(data.data.results[0]);
         getSKUs(data.data.results[0])
         setCurrPhoto(data.data.results[0].photos[0].thumbnail_url);
+        setCurrPhotoIndex(0);
         return (data.data.results);
       })
       .catch(err => console.log(err));
@@ -136,6 +138,7 @@ function ProductOverview (props) {
         setSize('Select Size');
         setItemQuantity('-');
         setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
+        setCurrPhotoIndex(0);
         setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
         checkMarks(i, productStyles);
       }
@@ -145,7 +148,36 @@ function ProductOverview (props) {
   function updatePhoto (e) {
     // onclick function that updates the photo
     e.preventDefault();
-    setCurrPhoto(currentStyle.photos[e.target.id].thumbnail_url);
+
+    console.log(e.target.getAttribute('data-id'))
+
+    if (e.target.id) {
+      var index = parseInt(e.target.id)
+    } else {
+      var index = parseInt(e.target.getAttribute('data-id'))
+      console.log(index);
+    }
+
+    if (e.target.className === 'overview-next-right') {
+      if (index === currentStyle.photos.length - 1) {
+        setCurrPhoto(currentStyle.photos[0].thumbnail_url)
+        setCurrPhotoIndex(0);
+      } else {
+        setCurrPhoto(currentStyle.photos[index + 1].thumbnail_url)
+        setCurrPhotoIndex(index + 1);
+      }
+    } else if (e.target.className === 'overview-next-left') {
+      if (index === 0) {
+        setCurrPhoto(currentStyle.photos[currentStyle.photos.length - 1].thumbnail_url)
+        setCurrPhotoIndex(currentStyle.photos.length - 1);
+      } else {
+        setCurrPhoto(currentStyle.photos[index - 1].thumbnail_url)
+        setCurrPhotoIndex(index - 1);
+      }
+    } else {
+      setCurrPhoto(currentStyle.photos[index].thumbnail_url);
+      setCurrPhotoIndex(index);
+    }
   }
 
 
@@ -178,8 +210,8 @@ function ProductOverview (props) {
 
   if (productStyles.length && currentStyle.photos.length) {
     return (
-      <div id={'test-id' + props.product_id} onClick={props.onClick}>
-        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} update={updatePhoto}/>
+      <div id={'test-id' + props.product_id}>
+        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto}/>
         <ProductInfo key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
         <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
         <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange} chosenSKU={currSKU}/>

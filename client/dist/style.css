@@ -10,36 +10,27 @@ body {
 .overview-style {
   width: 400px;
   margin-top: 20px;
-  /* position: relative;
-  bottom: 600px;
-  left: 700px; */
 }
 
 .overview-gallery {
   height: 500px;
-  width: 400px;
+  width: 350px;
   border-style: solid;
   display: inline;
   margin-bottom: 10px;
-  border-left-width: 50px;
+  border-left-width: 100px;
   border-right-width: 50px;
   border-top-width: 10px;
   border-bottom-width: 10px;
   border-color: lightgray;
+  position: relative;
+  right: 20px;
 }
 
 .overview-description {
   width: 500px;
 }
 
-/* .overview-slogan-description {
-  float: left;
-  clear: both;
-} */
-
-/* .overview-name {
-  margin: 0px 95px 25px 0px;
-} */
 
 .overview-cart {
   /* float: right;
@@ -107,6 +98,33 @@ body {
   margin-top: 10px;
 }
 
+.overview-next-main {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0px;
+}
+
+.overview-next-left::after {
+  font-family: FontAwesome;
+  content: "\f053";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 60px;
+  top: 250px;
+}
+
+.overview-next-right::after {
+  font-family: FontAwesome;
+  content: "\f054";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 440px;
+  top: 250px;
+}
+
 .overview-button {
   border-radius: 50%;
   width: 70px;
@@ -157,7 +175,7 @@ body {
   width: 25px;
   height: 25px;
   position: relative;
-  right: 37px;
+  right: 57px;
   bottom: 20px;
 }
 
