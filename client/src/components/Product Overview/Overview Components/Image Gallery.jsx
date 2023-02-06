@@ -8,6 +8,7 @@ function ImageGallery (props) {
   const [click, setClick] = useState(false);
   const ref = useRef(null);
 
+
   function setFlag () {
     setClick(true)
   }
@@ -19,25 +20,70 @@ function ImageGallery (props) {
 
   function scrollD (e) {
     e.preventDefault();
-    ref.current.scrollTop += 20;
+    ref.current.scrollTop += 50;
   }
 
   function scrollU (e) {
     e.preventDefault();
-    ref.current.scrollTop -= 20;
+    ref.current.scrollTop -= 50;
   }
 
 
-  if (!click) {
+  if (!click && props.currPhotoIndex === 0) {
     return ([
-      <div key={'main-photo'} data-testid="gallery-main">
+      <div className='overview-gallery-parent' key={'main-photo'} data-testid="gallery-main">
         <img  className='overview-gallery' src={props.currPhoto}></img>
         <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
-        <div className='overview-next-main' onClick={props.update} >
-          <span id={props.currPhotoIndex} className='overview-next-left'></span>
+        <div className='overview-next-right-div'>
+          <span onClick={props.update} id={props.currPhotoIndex} className='overview-next-right'></span>
         </div>
-        <div className='overview-next-main' onClick={props.update} >
-          <span id={props.currPhotoIndex} className='overview-next-right'></span>
+
+      </div>,
+      <div className='overview-thumbnail-parent'>
+        <span onClick={scrollU} className='overview-scroll-up'></span>
+        <div ref={ref} data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+          {props.style.photos.map( (currPhotoObj, i) => {
+          var test = i;
+          return (
+              <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+              )
+          })}
+        </div>
+        <span onClick={scrollD} className='overview-scroll-down'></span>
+      </div>
+    ])
+  } else if (!click && props.currPhotoIndex === 5) {
+    return ([
+      <div className='overview-gallery-parent'key={'main-photo'} data-testid="gallery-main">
+        <img  className='overview-gallery' src={props.currPhoto}></img>
+        <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <div className='overview-next-left-div'>
+          <span onClick={props.update} id={props.currPhotoIndex} className='overview-next-left'></span>
+        </div>
+      </div>,
+      <div className='overview-thumbnail-parent'>
+        <span onClick={scrollU} className='overview-scroll-up'></span>
+        <div ref={ref} data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
+          {props.style.photos.map( (currPhotoObj, i) => {
+          var test = i;
+          return (
+              <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+              )
+          })}
+        </div>
+        <span onClick={scrollD} className='overview-scroll-down'></span>
+      </div>
+    ])
+  } else if (!click && props.currPhotoIndex !== 0 && props.currPhotoIndex !== 5) {
+    return ([
+      <div className='overview-gallery-parent'key={'main-photo'} data-testid="gallery-main">
+        <img  className='overview-gallery' src={props.currPhoto}></img>
+        <img onClick={setFlag} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <div className='overview-next-left-div'>
+          <span onClick={props.update} id={props.currPhotoIndex} className='overview-next-left'></span>
+        </div>
+        <div className='overview-next-right-div'>
+          <span onClick={props.update} id={props.currPhotoIndex} className='overview-next-right'></span>
         </div>
 
       </div>,

@@ -149,7 +149,6 @@ function ProductOverview (props) {
     // onclick function that updates the photo
     e.preventDefault();
 
-    console.log(e.target.getAttribute('data-id'))
 
     if (e.target.id) {
       var index = parseInt(e.target.id)
@@ -168,6 +167,7 @@ function ProductOverview (props) {
       }
     } else if (e.target.className === 'overview-next-left') {
       if (index === 0) {
+        console.log('left', index);
         setCurrPhoto(currentStyle.photos[currentStyle.photos.length - 1].thumbnail_url)
         setCurrPhotoIndex(currentStyle.photos.length - 1);
       } else {
