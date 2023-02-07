@@ -380,5 +380,34 @@ body {
   color: rgb(251, 6, 6);
 }
 
+.rp-comparison {
+  position: absolute;
+  height: 450px;
+  width: 450px;
+  top: 10%;
+  left: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display:grid;
+}
+
+.rp-comparison-text {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: auto;
+  overflow-y: auto;
+  z-index: 999;
+  border: 3px solid rgba(0, 0, 0, 0.538);
+  background-color: white;
+}
+.rp-comparsion-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
 /*---------------------*/
 
