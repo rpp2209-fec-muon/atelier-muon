@@ -114,37 +114,111 @@ function ImageGallery (props) {
       </div>
     ])
   } else {
-    return (
-      <div>
-        {click ? (
-          <div className="fullscreen-container">
-            <img onClick={unsetFlag} src={props.currPhoto} className='fullscreen'></img>
-            <img onClick={unsetFlag} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+      if (click && props.currPhotoIndex === 0) {
+        return (
+          <div>
+            {click ? (
+              <div className="fullscreen-container">
+                <img onClick={unsetFlag} src={props.currPhoto} className='fullscreen'></img>
+                <img onClick={unsetFlag} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                <div style={{left: '845px', top: '60%'}} className='overview-next-right-div'>
+                  <span onClick={(e) => {props.update(e);}} id={props.currPhotoIndex} className='overview-next-right'></span>
+                </div>
+              </div>
+            ) : (
+              <img src={props.currPhoto} onClick={setFlag}></img>
+            )}
+            <div className='overview-thumbnail-parent'>
+              <span className='overview-scroll-up'></span>
+              <div data-testid="gallery-thumbnails" style={{width: '15px', height: '110px', marginLeft: '10px'}} key={'overview-thumbnail-div'} className='overview-thumbnail'>
+                {props.style.photos.map( (currPhotoObj, i) => {
+                  if (i === props.currPhotoIndex) {
+                    return (
+                      <img style={{border: '1.5px solid rgba(255,255,255, 0.9)', height: '10px', width: '10px'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                      )
+                  } else {
+                    return (
+                        <img style={{height: '10px', width: '10px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                        )
+                  }
+                })}
+              </div>
+              <span onClick={scrollD} className='overview-scroll-down'></span>
+            </div>
           </div>
-        ) : (
-          <img src={props.currPhoto} onClick={setFlag}></img>
-        )}
-        <div className='overview-thumbnail-parent'>
-          <span className='overview-scroll-up'></span>
-          <div data-testid="gallery-thumbnails" key={'overview-thumbnail-div'} className='overview-thumbnail'>
-            {props.style.photos.map( (currPhotoObj, i) => {
-              if (i === props.currPhotoIndex) {
-                return (
-                  <img style={{border: '2px solid rgba(1, 1, 1, 1)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
-                  )
-              } else {
-                return (
-                    <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
-                    )
-              }
-            })}
-          </div>
-          <span onClick={scrollD} className='overview-scroll-down'></span>
-        </div>
-      </div>
-    )
-  }
+        )
+      } else if (click && props.currPhotoIndex === props.style.photos.length - 1) {
+          return (
+            <div>
+              {click ? (
+                <div className="fullscreen-container">
+                  <img onClick={unsetFlag} src={props.currPhoto} className='fullscreen'></img>
+                  <img onClick={unsetFlag} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                  <div style={{left: '845px', top: '60%'}} className='overview-next-right-div'>
+                    <span onClick={(e) => {props.update(e)}} id={props.currPhotoIndex} className='overview-next-right'></span>
+                  </div>
+                </div>
+              ) : (
+                <img src={props.currPhoto} onClick={setFlag}></img>
+              )}
+              <div className='overview-thumbnail-parent'>
+                <span className='overview-scroll-up'></span>
+                <div data-testid="gallery-thumbnails" style={{width: '15px', height: '110px', marginLeft: '10px'}} key={'overview-thumbnail-div'} className='overview-thumbnail'>
+                  {props.style.photos.map( (currPhotoObj, i) => {
+                    if (i === props.currPhotoIndex) {
+                      return (
+                        <img style={{border: '1.5px solid rgba(255,255,255, 0.9)', height: '10px', width: '10px'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                        )
+                    } else {
+                      return (
+                          <img style={{height: '10px', width: '10px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                          )
+                    }
+                  })}
+                </div>
+                <span onClick={scrollD} className='overview-scroll-down'></span>
+              </div>
+            </div>
+          )
+      } else if (click && props.currPhotoIndex !== 0 && props.currPhotoIndex !== props.style.photos.length - 1) {
+          return (
+            <div>
+              {click ? (
+                <div className="fullscreen-container">
+                  <img onClick={unsetFlag} src={props.currPhoto} className='fullscreen'></img>
+                  <img onClick={unsetFlag} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                  <div style={{top: '60%', left: '3%'}} className='overview-next-left-div'>
+                    <span onClick={(e) => {props.update(e);}} id={props.currPhotoIndex} className='overview-next-left'></span>
+                  </div>
+                  <div style={{left: '845px', top: '60%'}} className='overview-next-right-div'>
+                    <span onClick={(e) => {props.update(e);}} id={props.currPhotoIndex} className='overview-next-right'></span>
+                  </div>
+                </div>
+              ) : (
+                <img src={props.currPhoto} onClick={setFlag}></img>
+              )}
+              <div className='overview-thumbnail-parent'>
+                <span className='overview-scroll-up'></span>
+                <div data-testid="gallery-thumbnails" style={{width: '15px', height: '110px', marginLeft: '10px'}} key={'overview-thumbnail-div'} className='overview-thumbnail'>
+                  {props.style.photos.map( (currPhotoObj, i) => {
+                    if (i === props.currPhotoIndex) {
+                      return (
+                        <img style={{border: '1.5px solid rgba(255,255,255, 0.9)', height: '10px', width: '10px'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                        )
+                    } else {
+                      return (
+                          <img style={{height: '10px', width: '10px'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                          )
+                    }
+                  })}
+                </div>
+                <span onClick={scrollD} className='overview-scroll-down'></span>
+              </div>
+            </div>
+          )
+      }
 
+    }
 }
 
 export default ImageGallery;

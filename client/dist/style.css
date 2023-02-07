@@ -160,17 +160,6 @@ body {
   width: 500px;
 }
 
-/* -------------------------  cart component css ------------------------ */
-
-.overview-cart {
-  /* float: right;
-  clear: both; */
-  margin: 25px 80px 25px 0px;
-  font-size: 20px;
-  padding: 15px 30px;
-  background-color: white;
-}
-
 .overview-button {
   border-radius: 50%;
   width: 70px;
@@ -200,6 +189,22 @@ body {
 .overview-scroll-reviews:hover {
   color: lightblue;
 }
+
+/* -------------------------  cart component css ------------------------ */
+
+.overview-cart {
+  /* float: right;
+  clear: both; */
+  margin: 25px 80px 25px 0px;
+  font-size: 20px;
+  padding: 15px 30px;
+  background-color: white;
+}
+
+.sale-price {
+  color:rgb(251, 6, 6);
+}
+
 
 
 /* ============ REVIEWS STYLES =============== */
