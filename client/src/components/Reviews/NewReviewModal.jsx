@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
-import { v2 as cloudinary } from 'cloudinary';
-require("dotenv").config();
+const axios = require('axios');
 
 export default function NewReviewModal({ closeModal, meta }) {
 
-  cloudinary.config({
-    cloud_name: 'dmqjgoaej',
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-    secure: true
-  });
-
   const [rating, setRating] = useState(0);
-  const [recommend, setRecommend] = useState(false);
-  const [chars, setCharState] = useState({});
   const [photos, setPhotos] = useState([]);
+  const [chars, setCharState] = useState({});
+  const [recommend, setRecommend] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [uploadFailure, setUploadFailure] = useState(false);
   const [textState, setTextState] = useState({
     summary: '',
     body: '',
@@ -26,7 +21,6 @@ export default function NewReviewModal({ closeModal, meta }) {
   // Star Rating Change Handler
   const handleStarChange = (num) => {
     setRating(num);
-    console.log('star', rating);
   }
 
   // Recommend Change Handler
@@ -45,7 +39,7 @@ export default function NewReviewModal({ closeModal, meta }) {
     }))
   }
 
-  // Summary/Body Text Change Handler
+  // Text Field Change Handler
   const handleTextChange = (event) => {
     var name = event.target.name;
     var value = event.target.value;
@@ -56,11 +50,47 @@ export default function NewReviewModal({ closeModal, meta }) {
     }))
   }
 
+  // Image Add Handler
+  const onFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setUploadSuccess(false);
+  }
+
+  // Image Upload Handler
+  const onFileUpload = () => {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const base64 = reader.result;
+
+      axios.post('reviews/photos', {
+        data: {
+          file: base64
+        }
+      })
+        .then((response) => {
+          setPhotos(photos => ([...photos, response.data]));
+          setUploadSuccess(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setUploadFailure(true);
+        })
+    }
+    reader.readAsDataURL(selectedFile);
+  }
+
+  // Form Submission Handler
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(event);
+  }
+
   return (
     <div className='reviews-modalOverlay'>
       <div className='reviews-modalContainer'>
         <p onClick={() => {closeModal()}}>X</p>
-        <form>
+        <form onSubmit={(e) => {handleFormSubmit(e)}}>
           <p>Overall Rating*</p>
 
           <StarRating rating={rating} handleChange={handleStarChange}/>
@@ -68,9 +98,9 @@ export default function NewReviewModal({ closeModal, meta }) {
           <div className="reviews-modal-recommend-container" onChange={(e) => {handleRecoChange(e)}}>
             <p>Do you recommend this product?*</p>
             <input type="radio" id="yes-radio" name="recommend" value={true} required></input>
-            <label forHtml="yes-radio">Yes</label>
+            <label htmlFor="yes-radio">Yes</label>
             <input type="radio" id="no-radio" name="recommend" value={false}></input>
-            <label forHtml="no-radio">No</label>
+            <label htmlFor="no-radio">No</label>
           </div>
 
           <div className="reviews-modal-characteristics-container" onChange={(e) => {handleCharsChange(e)}}>
@@ -78,25 +108,25 @@ export default function NewReviewModal({ closeModal, meta }) {
             {meta.characteristics.Size &&
               <div className="reviews-modal-size-container">
                 <p>Size*</p>
-                <label forHtml="size-1">A size too small</label>
+                <label htmlFor="size-1">A size too small</label>
                 <input type="radio" id="size-1" name={meta.characteristics.Size.id} value="1" required></input>
                 <input type="radio" id="size-2" name={meta.characteristics.Size.id} value="2"></input>
                 <input type="radio" id="size-3" name={meta.characteristics.Size.id} value="3"></input>
                 <input type="radio" id="size-4" name={meta.characteristics.Size.id} value="4"></input>
                 <input type="radio" id="size-5" name={meta.characteristics.Size.id} value="5"></input>
-                <label forHtml="size-5">A size too wide</label>
+                <label htmlFor="size-5">A size too wide</label>
               </div>
             }
             {meta.characteristics.Width &&
               <div className="reviews-modal-width-container">
                 <p>Width*</p>
-                <label forHtml="width-1">Too narrow</label>
+                <label htmlFor="width-1">Too narrow</label>
                 <input type="radio" id="width-1" name={meta.characteristics.Width.id} value="1" required></input>
                 <input type="radio" id="width-2" name={meta.characteristics.Width.id} value="2"></input>
                 <input type="radio" id="width-3" name={meta.characteristics.Width.id} value="3"></input>
                 <input type="radio" id="width-4" name={meta.characteristics.Width.id} value="4"></input>
                 <input type="radio" id="width-5" name={meta.characteristics.Width.id} value="5"></input>
-                <label forHtml="width-5">Too wide</label>
+                <label htmlFor="width-5">Too wide</label>
               </div>
             }
             {meta.characteristics.Comfort &&
@@ -157,9 +187,16 @@ export default function NewReviewModal({ closeModal, meta }) {
           </div>
 
           <div className="reviews-modal-pictures-container">
-            <label htmlFor="image-upload">Upload photos</label>
+            <label htmlFor="image-upload">Add Photo</label>
+            <input type="file" id="image-upload" onChange={(e) => {onFileChange(e)}}></input>
             {photos.length < 5 &&
-            <input type="file" id="image-upload" mulitple="true"></input>
+            <button onClick={() => {onFileUpload()}}>Upload Photo</button>
+            }
+            {uploadSuccess &&
+              <p>Photo Uploaded Successfully!</p>
+            }
+            {uploadFailure &&
+              <p>Photo Upload Error! Please try again.</p>
             }
           </div>
 
