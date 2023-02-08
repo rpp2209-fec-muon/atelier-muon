@@ -2,44 +2,165 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.test {
-  border-style: solid;
-  width: fit-content;
-}
+/* ------------------------ overview image gallery main css -------------------- */
 
 .overview-style {
   width: 400px;
   margin-top: 20px;
-  /* position: relative;
-  bottom: 600px;
-  left: 700px; */
+}
+
+.overview-gallery-parent {
+  border-style: solid;
+  height: 505px;
+  width: 450px;
+  margin-bottom: 10px;
+  border-color: darkgray;
+  background-color: darkgray;
 }
 
 .overview-gallery {
-  height: 500px;
-  width: 400px;
-  border-style: solid;
+  height: 475px;
+  width: 325px;
   display: inline;
-  margin-bottom: 10px;
-  border-left-width: 50px;
+  position: relative;
+  top: 15px;
+  left: 85px;
+}
+
+.overview-gallery {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.fullscreen-container {
+  height: 100%;
+  width: 100%;
+}
+
+.fullscreen {
+  height: 80%;
+  width: 80%;
+  border-style: solid;
   border-right-width: 50px;
+  border-left-width: 50px;
   border-top-width: 10px;
   border-bottom-width: 10px;
   border-color: lightgray;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.overview-expanded-image {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 92.5px;
+  top: 15px;
+}
+
+.overview-expanded-image-2 {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  right: 37px;
+  bottom: 15px;
+}
+
+/* ------------------------   main image thumbnail css -------------------- */
+
+.overview-thumbnail-parent {
+  position: absolute;
+  height: 225px;
+  bottom: 550px;
+  left: 25px;
+}
+
+.overview-thumbnail {
+  width: 45px;
+  height: 260px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.overview-thumbnail::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.overview-thumbnail-photos {
+  width: 30px;
+  height: 30px;
+  margin: 0px 5px 5px 0px;
+}
+
+.overview-thumbnail-scroll {
+  margin-bottom: 1px;
+  width: 15px;
+  height: 15px;
+}
+
+.overview-scroll-up::before {
+  font-family: FontAwesome;
+  content: "\f077";
+  position: relative;
+  left: 7.5px;
+  margin-bottom: 10px;
+}
+
+.overview-scroll-down::before {
+  font-family: FontAwesome;
+  content: "\f078";
+  position: absolute;
+  left: 7.5px;
+  margin-top: 10px;
+}
+
+.overview-next-left-div {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 70px;
+  top: 240px;
+}
+
+.overview-next-right-div {
+  height: 20px;
+  width: 10px;
+  position: absolute;
+  left: 435px;
+  top: 240px;
+}
+
+.overview-next-left::after {
+  font-family: FontAwesome;
+  content: "\f053";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.overview-next-right::after {
+  font-family: FontAwesome;
+  content: "\f054";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+/* ------------------------   product info component css -------------------- */
+
+.overview-category {
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .overview-description {
   width: 500px;
 }
 
-/* .overview-slogan-description {
-  float: left;
-  clear: both;
-} */
-
-/* .overview-name {
-  margin: 0px 95px 25px 0px;
-} */
+/* -------------------------  cart component css ------------------------ */
 
 .overview-cart {
   /* float: right;
@@ -48,26 +169,6 @@ body {
   font-size: 20px;
   padding: 15px 30px;
   background-color: white;
-}
-
-.overview-category {
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.overview-thumbnail {
-  width: 400px;
-  margin-bottom: 25px;
-  position: relative;
-  left: 50px;
-}
-
-.overview-thumbnail-photos {
-  width: 50px;
-  height: 50px;
-  margin: 0px 5px 5px 0px;
-  border-style: solid;
-  border-color: lightgray;
 }
 
 .overview-button {
@@ -99,40 +200,6 @@ body {
 .overview-scroll-reviews:hover {
   color: lightblue;
 }
-
-.fullscreen-container {
-  height: 100%;
-  width: 100%;
-}
-
-.fullscreen {
-  height: 80%;
-  width: 80%;
-  border-style: solid;
-  border-right-width: 50px;
-  border-left-width: 50px;
-  border-top-width: 10px;
-  border-bottom-width: 10px;
-  border-color: lightgray;
-}
-
-.overview-expanded-image {
-  width: 25px;
-  height: 25px;
-  position: relative;
-  right: 37px;
-  bottom: 20px;
-}
-
-.overview-expanded-image-2 {
-  width: 25px;
-  height: 25px;
-  position: relative;
-  right: 37px;
-  bottom: 15px;
-}
-
-
 
 
 /* ============ REVIEWS STYLES =============== */
@@ -168,12 +235,13 @@ body {
 
 .reviews-modalContainer {
   width: 60%;
-  height: 500px;
+  height: 75%;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   outline: auto;
+  overflow-y: auto;
   background-color: white;
 }
 
@@ -190,6 +258,10 @@ body {
 }
 .off {
   color: #ccc;
+}
+
+.star-parent {
+  display: inline-block;
 }
 
 
@@ -308,7 +380,7 @@ body {
 
 .rp-card-category {
   position: relative;
-  color: gray;
+  color: rgb(86, 86, 86);
   font-size: 12px;
 }
 
@@ -379,5 +451,44 @@ body {
   color: rgb(251, 6, 6);
 }
 
+.rp-comparison {
+  position: absolute;
+  height: 450px;
+  width: 450px;
+  top: 10%;
+  left: 90%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display:grid;
+}
+
+.rp-comparison-text {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: auto;
+  overflow-y: auto;
+  z-index: 999;
+  border: 3px solid rgba(0, 0, 0, 0.538);
+  background-color: white;
+}
+.rp-comparsion-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+tr.rp-tr>td {
+  padding-bottom: 1em;
+}
+th.rp-comparison-name {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-bottom: 1em;
+}
 /*---------------------*/
 

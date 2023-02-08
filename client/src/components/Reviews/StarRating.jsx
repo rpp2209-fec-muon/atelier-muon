@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-export default function StarRating () {
-  const [rating, setRating] = useState(0);
-
+export default function StarRating ({ rating, handleChange }) {
 
   return (
     <div className="star-rating">
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
-          <button
-            type="button"
-            key={index}
-            className={index <= rating ? "on star-button" : "off star-button"}
-            onClick={() => setRating(index)}>
-              <span className="new-review-star">&#9733;</span>
-            </button>
+          <div className="star-parent" key={"radio-parent" + index}>
+            <input type="radio" id={"rating" + index} name="rating" value={index} key={index} onClick={() => {handleChange(index)}} required></input>
+            <label htmlFor={"rating" + index} key={"label" + index}>{index}&#9733;</label>
+          </div>
         )
       })}
     </div>

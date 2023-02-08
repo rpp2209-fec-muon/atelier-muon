@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Price from '../../Global/Price.jsx';
 import Star from '../../Global/Star.jsx';
+import Comparison from './Comparison.jsx';
+
 
 class Cards extends React.Component {
   constructor(props) {
@@ -13,7 +15,9 @@ class Cards extends React.Component {
       original_price: '',
       sale_price: null,
       name: '',
-      ratings: 0
+      ratings: 0,
+      char: {},
+      comparison: false
     }
   }
 /*
@@ -33,9 +37,15 @@ img: GET /products/:product_id/styles
     axios
     .get('/products', { params: { type: '', product_id: `/${this.props.product_id}`, params: {} }})
       .then((data) => {
+        var obj = {
+          name: data.data.name,
+          default_price: data.data.default_price,
+          features: data.data.features
+        }
         this.setState({
           category: data.data.category,
-          name: data.data.name
+          name: data.data.name,
+          char: obj
         });
       })
       .catch(err => console.log(err));
@@ -105,26 +115,48 @@ img: GET /products/:product_id/styles
   }
 
   changePage() {
-    this.props.onClick(`/${this.props.product_id}`);
+    this.props.onPage(`/${this.props.product_id}`);
   }
 
   removeOutfit() {
     this.props.onRemove(this.props.product_id);
   }
 
+  openComparison () {
+    this.setState({
+      comparison: true
+    })
+  }
+
+  closeComparison () {
+    this.setState({
+      comparison: false
+    })
+  }
+
   render () {
     let action;
+    let comparison;
     if (this.props.kind === 'o') {
       action = <span className="rp-times fa fa-times-circle-o" onClick={this.removeOutfit.bind(this)}></span>;
     } else {
-      action = <span className="rp-star-o fa fa-star-o"></span>;
+      action = <span className="rp-star-o fa fa-star-o" onClick={this.openComparison.bind(this)}></span>;
     }
+
+    if (this.state.comparison) {
+      comparison = <Comparison o_product={this.props.main_char} c_product={this.state.char} onClickOutside={this.closeComparison.bind(this)}/>
+    } else {
+      comparison = <div></div>;
+    }
+
+
     return(
       <div className="rp-card" data-testid="rp-card">
+        <div>{comparison}</div>
         <div className="rp-card-action">
           {action}
         </div>
-        <img onClick={this.changePage.bind(this)} className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
+        <img onClick={this.changePage.bind(this)} alt="rp-product-img" className="rp-card-img" src={this.state.photos[0] !== null ? this.state.photos[0] :
            'https://actogmbh.com/files/no-product-image.png'}></img>
         <div onClick={this.changePage.bind(this)} className="rp-card-category" data-testid="rp-card-category">{this.state.category}</div>
         <div onClick={this.changePage.bind(this)} className="rp-card-name" data-testid="rp-card-name">{this.state.name} {this.state.style_name}</div>

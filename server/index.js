@@ -4,6 +4,11 @@ const express = require('express');
 const helper = require('./helpers/api.js');
 const path = require("path");
 const PORT = process.env.PORT;
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  secure: true
+});
 
 const app = express();
 // static file serve
@@ -11,7 +16,7 @@ const app = express();
 // extra imports (body parsers, etc);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.use(express.json());
+app.use(express.json({limit: '100mb'}));
 
 
 // routes
@@ -60,6 +65,26 @@ app.post('/cart', (req, res) => {
 
 app.put('/reviews', (req, res) => {
   //helper.putReview
+})
+
+app.post('/reviews/photos', async (req, res) => {
+  const image = req.body.data.file;
+
+  const options = {
+    use_filename: true,
+    unique_filename: false,
+    overwrite: true,
+  };
+
+  try {
+    // Upload the image
+    const result = await cloudinary.uploader.upload(image, options);
+    console.log(result);
+    res.status(201).send(result.secure_url);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Image upload error!');
+  }
 })
 
 

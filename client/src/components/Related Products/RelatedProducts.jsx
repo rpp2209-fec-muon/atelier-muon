@@ -12,13 +12,15 @@ class RelatedProducts extends React.Component {
       related: [],
       outfit: [],
       r_page: 0,
-      o_page: 0
+      o_page: 0,
+      characteristics: {}
     }
   }
   // related list: GET /products/:product_id/related
   componentDidMount() {
     this.getRelatedList();
     this.getOutfitList();
+    this.getProductcharacteristics();
   }
 
   getRelatedList() {
@@ -28,6 +30,22 @@ class RelatedProducts extends React.Component {
       var newData = this.uniqueArray(data.data);
       this.setState({
         related: newData
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  getProductcharacteristics() {
+    axios
+    .get('/products', { params: { type: '', product_id: this.props.product_id, params: {} }})
+    .then((data) => {
+      var obj = {
+        name: data.data.name,
+        default_price: data.data.default_price,
+        features: data.data.features
+      }
+      this.setState({
+        characteristics: obj
       })
     })
     .catch(err => console.log(err));
@@ -146,18 +164,18 @@ class RelatedProducts extends React.Component {
     if (this.state.related.length > r + 4) { relatedNext = true };
     if (this.state.outfit.length > o + 3) { outfitNext = true };
     return(
-      <div className="rp-related" data-testid="rp-related">
+      <div className="rp-related" data-testid="rp-related" onClick={this.props.onClick}>
         <h3>Related Products</h3>
         <div className="rp-cards-list">
           <Left page={this.state.r_page} onLast={this.relatedLast.bind(this)}/>
-          {relatedList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'r'}/>)}
+          {relatedList.map((product) => <Cards product_id={product} key={product} onPage={this.props.onPage} kind={'r'} main_char={this.state.characteristics}/>)}
           <Right show={relatedNext} onNext={this.relatedNext.bind(this)} />
         </div>
         <h3>Your Outfit</h3>
           <div className="rp-outfit-list">
             <Left page={this.state.o_page} onLast={this.outfitLast.bind(this)}/>
             <AddOutfit onClick={this.addToOutfit.bind(this)}/>
-            {outfitList.map((product) => <Cards product_id={product} key={product} onClick={this.props.onClick} kind={'o'}
+            {outfitList.map((product) => <Cards product_id={product} key={product} onPage={this.props.onPage} kind={'o'}
             onRemove={this.removeOutfit.bind(this)}/>)}
             <Right show={outfitNext} onNext={this.outfitNext.bind(this)} />
           </div>
