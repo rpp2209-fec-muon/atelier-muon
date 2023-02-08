@@ -63,6 +63,16 @@ app.post('/cart', (req, res) => {
   })
 })
 
+app.post('/interactions', (req, res) => {
+  helper.postInteraction(req.body, (err, data) => {
+    if (err) {
+      res.sendStatus(422);
+    } else {
+      res.status(201).send(data);
+    }
+  })
+})
+
 app.put('/reviews', (req, res) => {
   //helper.putReview
 })
