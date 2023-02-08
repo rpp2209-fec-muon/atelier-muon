@@ -41,7 +41,8 @@ class RelatedProducts extends React.Component {
     .then((data) => {
       var obj = {
         name: data.data.name,
-        default_price: data.data.default_price
+        default_price: data.data.default_price,
+        features: data.data.features
       }
       this.setState({
         characteristics: obj

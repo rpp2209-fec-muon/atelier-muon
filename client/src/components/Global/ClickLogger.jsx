@@ -9,7 +9,7 @@ const withLogger = (WrappedComponent, widget) => {
     }
 
     onClick(e) {
-      console.log(`**${widget}`, e.target)
+      console.log(`**${widget}`, e.target.tagName)
     }
 
     render() {

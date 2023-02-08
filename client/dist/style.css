@@ -409,5 +409,15 @@ body {
   width: 100%;
   text-align: center;
 }
+
+tr.rp-tr>td {
+  padding-bottom: 1em;
+}
+th.rp-comparison-name {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-bottom: 1em;
+}
 /*---------------------*/
 

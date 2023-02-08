@@ -39,7 +39,8 @@ img: GET /products/:product_id/styles
       .then((data) => {
         var obj = {
           name: data.data.name,
-          default_price: data.data.default_price
+          default_price: data.data.default_price,
+          features: data.data.features
         }
         this.setState({
           category: data.data.category,
@@ -122,7 +123,6 @@ img: GET /products/:product_id/styles
   }
 
   openComparison () {
-    console.log("open");
     this.setState({
       comparison: true
     })
