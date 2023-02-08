@@ -24,6 +24,7 @@ function ProductOverview (props) {
   const [itemQuantity, setItemQuantity] = useState('-');
   const [reviews, setReviews] = useState(0)
   const [currSKU, setCurrSKU] = useState(0)
+  const [expandedView, setExpandedView] = useState(false);
 
 
   // create style image state to be updated with onclick function for next
@@ -90,7 +91,7 @@ function ProductOverview (props) {
         setPrice({original: data.data.results[0].original_price, sale: data.data.results[0].sale_price});
         setCurrentStyle(data.data.results[0]);
         getSKUs(data.data.results[0])
-        setCurrPhoto(data.data.results[0].photos[0].thumbnail_url);
+        setCurrPhoto(data.data.results[0].photos[0].url);
         setCurrPhotoIndex(0);
         return (data.data.results);
       })
@@ -137,7 +138,7 @@ function ProductOverview (props) {
         getSKUs(productStyles[i]);
         setSize('Select Size');
         setItemQuantity('-');
-        setCurrPhoto(productStyles[i].photos[0].thumbnail_url);
+        setCurrPhoto(productStyles[i].photos[0].url);
         setCurrPhotoIndex(0);
         setPrice({original: productStyles[i].original_price, sale: productStyles[i].sale_price})
         checkMarks(i, productStyles);
@@ -159,23 +160,23 @@ function ProductOverview (props) {
 
     if (e.target.className === 'overview-next-right') {
       if (index === currentStyle.photos.length - 1) {
-        setCurrPhoto(currentStyle.photos[0].thumbnail_url)
+        setCurrPhoto(currentStyle.photos[0].url)
         setCurrPhotoIndex(0);
       } else {
-        setCurrPhoto(currentStyle.photos[index + 1].thumbnail_url)
+        setCurrPhoto(currentStyle.photos[index + 1].url)
         setCurrPhotoIndex(index + 1);
       }
     } else if (e.target.className === 'overview-next-left') {
       if (index === 0) {
         console.log('left', index);
-        setCurrPhoto(currentStyle.photos[currentStyle.photos.length - 1].thumbnail_url)
+        setCurrPhoto(currentStyle.photos[currentStyle.photos.length - 1].url)
         setCurrPhotoIndex(currentStyle.photos.length - 1);
       } else {
-        setCurrPhoto(currentStyle.photos[index - 1].thumbnail_url)
+        setCurrPhoto(currentStyle.photos[index - 1].url)
         setCurrPhotoIndex(index - 1);
       }
     } else {
-      setCurrPhoto(currentStyle.photos[index].thumbnail_url);
+      setCurrPhoto(currentStyle.photos[index].url);
       setCurrPhotoIndex(index);
     }
   }
@@ -205,18 +206,32 @@ function ProductOverview (props) {
     setItemQuantity(e.target.value);
   }
 
+  function expandView () {
+    e.preventDefault();
+    console.log('should ping', expandedView);
+    setExpandedView(!expandedView)
+  }
+
   // ---------------------------- render component ---------------------------- //
 
 
-  if (productStyles.length && currentStyle.photos.length) {
+  if (productStyles.length && currentStyle.photos.length && !expandedView) {
     return (
-      <div id={'test-id' + props.product_id}>
-        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto}/>
-        <ProductInfo key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
-        <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
-        <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange} chosenSKU={currSKU}/>
+      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
+        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} expand={setExpandedView}/>
+        <div key={'overview-main-parent-2'} className='overview-main-parent-2'>
+          <ProductInfo  key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
+          <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
+          <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange} chosenSKU={currSKU}/>
+        </div>
       </div>
     )
+  } else if (productStyles.length && currentStyle.photos.length && expandedView) {
+    return (
+      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
+        <ImageGallery key={'5'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} expand={expandView}/>
+      </div>
+      )
   } else {
     return null
   }

@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <div>
-      <LoggableProductOverview key={`o-${product}`} product_id={product}/>
+      <LoggableProductOverview  key={`o-${product}`} product_id={product}/>
       <LoggableRelatedProducts key={`rp-${product}`} product_id={product} onPage={(product_id) => changePage(product_id)}/>
       <LoggableReviews key={`r-${product}`} product_id={product}/>
     </div>

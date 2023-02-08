@@ -4,28 +4,44 @@ body {
 
 /* ------------------------ overview image gallery main css -------------------- */
 
-.overview-style {
-  width: 400px;
-  margin-top: 20px;
+.overview-main-parent {
+  width: 1000px;
+  height: 700px;
+  display: block;
+  position: relative;
+  left: 10%;
+  margin-top: 5%;
+}
+
+.overview-main-parent-2 {
+  width: 500px;
+  height: 900px;
+  display: block;
+  position: relative;
+  left: 93%;
+  top: -100%;
 }
 
 .overview-gallery-parent {
-  border-style: solid;
-  height: 505px;
-  width: 450px;
+  height: 600px;
+  width: 900px;
   margin-bottom: 10px;
-  border-color: darkgray;
   background-color: darkgray;
 }
 
-.overview-gallery {
-  height: 475px;
-  width: 325px;
-  display: inline;
+.overview-gallery-main-image-parent {
+  width: 300px;
+  height: 450px;
   position: relative;
-  top: 15px;
-  left: 85px;
+  left: 35%;
+  top: 12.5%;
 }
+
+.overview-gallery-main-image {
+  width: 100%;
+  height: 100%;
+}
+
 
 .overview-gallery {
   cursor: -moz-zoom-in;
@@ -33,55 +49,65 @@ body {
   cursor: zoom-in;
 }
 
-.fullscreen-container {
-  height: 100%;
-  width: 100%;
+.overview-image-gallery-fullscreen-container {
+  height: 700px;
+  width: 200%;
+  margin-bottom: 10px;
+  background-color: darkgray;
+  position: relative;
 }
 
-.fullscreen {
-  height: 80%;
-  width: 80%;
-  border-style: solid;
-  border-right-width: 50px;
-  border-left-width: 50px;
-  border-top-width: 10px;
-  border-bottom-width: 10px;
-  border-color: lightgray;
-  cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
+.overview-image-gallery-fullscreen-image {
+  width: 300px;
+  height: 450px;
+  position: relative;
+  left: 30%;
+  top: 12.5%;
 }
+
 
 .overview-expanded-image {
   width: 25px;
   height: 25px;
-  position: relative;
-  left: 92.5px;
-  top: 15px;
+  position: absolute;
+  left: 64%;
+  top: 71.5%;
 }
 
 .overview-expanded-image-2 {
   width: 25px;
   height: 25px;
-  position: relative;
+
   right: 37px;
   bottom: 15px;
+}
+
+.overview-style {
+  width: 400px;
+  margin-top: 20px;
 }
 
 /* ------------------------   main image thumbnail css -------------------- */
 
 .overview-thumbnail-parent {
+  height: 377px;
+  width: 55px;
   position: absolute;
-  height: 225px;
-  bottom: 550px;
-  left: 25px;
+  left: 15%;
+  bottom: 33%;
 }
 
 .overview-thumbnail {
-  width: 45px;
-  height: 260px;
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+.overview-thumbnail-photos {
+  height: 49px;
+  width: 49px;
+  margin: 0 4 4 0;
 }
 
 .overview-thumbnail::-webkit-scrollbar {
@@ -89,92 +115,129 @@ body {
   height: 0;
 }
 
-.overview-thumbnail-photos {
-  width: 30px;
-  height: 30px;
-  margin: 0px 5px 5px 0px;
-}
-
 .overview-thumbnail-scroll {
-  margin-bottom: 1px;
-  width: 15px;
-  height: 15px;
+  position: relative;
+  left: 33%;
 }
 
-.overview-scroll-up::before {
+.overview-thumbnail-scroll-up-icon::before {
   font-family: FontAwesome;
   content: "\f077";
+  margin-bottom: 5px;
   position: relative;
-  left: 7.5px;
-  margin-bottom: 10px;
 }
 
-.overview-scroll-down::before {
+.overview-thumbnail-scroll-down-icon::before {
   font-family: FontAwesome;
   content: "\f078";
-  position: absolute;
-  left: 7.5px;
-  margin-top: 10px;
+  margin-top: 5px;
+  position: relative;
 }
 
 .overview-next-left-div {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  left: 70px;
-  top: 240px;
+  position: relative;
+  width: 15px;
+  left: 30%;
+  bottom: 190px;
+}
+
+.overview-first-next-right-div {
+  position: relative;
+  width: 15px;
+  left: 72%;
+  bottom: 191px;
 }
 
 .overview-next-right-div {
-  height: 20px;
-  width: 10px;
-  position: absolute;
-  left: 435px;
-  top: 240px;
+  position: relative;
+  width: 15px;
+  left: 72%;
+  bottom: 209px;
 }
 
 .overview-next-left::after {
   font-family: FontAwesome;
   content: "\f053";
-  position: absolute;
-  height: 100%;
-  width: 100%;
 }
 
 .overview-next-right::after {
   font-family: FontAwesome;
   content: "\f054";
-  position: absolute;
-  height: 100%;
-  width: 100%;
 }
 
 /* ------------------------   product info component css -------------------- */
 
-.overview-category {
+.overview-product-info-category {
   font-size: 20px;
-  margin-top: 20px;
+  margin: 5px 0 0 0;
 }
 
-.overview-description {
+.overview-product-info-name {
+  margin: 5px 0 5px 0;
+}
+
+.overview-product-info-price {
+  margin: 10px 0 10px 0;
+}
+
+.overview-product-info-star {
+  margin: 0 0 10px 0;
+}
+
+.overview-product-info-description {
   width: 500px;
+  margin: 5px 0 5px 0;
 }
 
-.overview-button {
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  border-width: 3px;
-  margin: 10px;
+.overview-product-info-slogan {
+  margin: 5px 0 5px 0;
 }
 
-.overview-style-thumbnail {
+.overview-product-info-sd {
+  position: absolute;
+  bottom: 63.5%;
+}
+
+.overview-product-info-reviews:hover {
+  color: lightblue;
+  margin: 10px 0 10px 0;
+}
+
+.overview-product-info-parent {
+  position: absolute;
+  bottom: 71%;
+}
+/* ------------------------   style selector component css -------------------- */
+
+.overview-style-selector-parent {
+  position: absolute;
+  bottom: 40%;
+}
+
+.overview-style-selector-thumbnail-parent {
+  margin: 5px 0 0 0;
+  width: 360px;
+}
+
+.overview-style-selector-display {
+  margin: 10px 0 0 0;
+}
+
+.overview-style-selector-thumbnail {
   width: 65px;
   height: 65px;
   border-radius: 50%;
   position: relative;
   bottom: 1px;
   right: 6px;
+}
+
+.overview-style-selector-thumbnail-button {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-width: 3px;
+  margin: 10px;
 }
 
 .overview-checkmark {
@@ -186,23 +249,57 @@ body {
   left: 25px;
 }
 
-.overview-scroll-reviews:hover {
-  color: lightblue;
-}
+
+
 
 /* -------------------------  cart component css ------------------------ */
 
-.overview-cart {
-  /* float: right;
-  clear: both; */
-  margin: 25px 80px 25px 0px;
+.overview-cart-size {
+  font-size: 20px;
+  padding: 15px 50px;
+  background-color: white;
+  margin: 0px 25px 0 0;
+}
+
+.overview-cart-quantity {
+  font-size: 20px;
+  padding: 15px 50px;
+  background-color: white;
+}
+
+.overview-cart-size-quantity {
+  width: 400px;
+  height: 50px;
+  margin: 0 0 15px 0;
+}
+
+.overview-cart-checkout {
+  font-size: 20px;
+  padding: 15px 80px;
+  background-color: white;
+  margin: 0px 25px 0 0;
+}
+
+
+.overview-cart-outfit-star {
   font-size: 20px;
   padding: 15px 30px;
   background-color: white;
 }
 
+.overivew-cart-checkout-outfit {
+  width: 400px;
+  height: 50px;
+  margin: 15px 0 0 0;
+}
+
 .sale-price {
   color:rgb(251, 6, 6);
+}
+
+.overview-cart-parent {
+  position: absolute;
+  bottom: 25%;
 }
 
 

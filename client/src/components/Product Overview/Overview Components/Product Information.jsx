@@ -13,16 +13,18 @@ function ProductInfo (props) {
 
   if (currProduct) {
     return ([
-      <div data-testid='overview-product-info' key={'overview-name-div'} className='overview-name'>
-        <Star ratings={props.star}/>
-        <u className='overview-scroll-reviews' onClick={reviewScroll}> See all {props.reviews} reviews...</u>
-        <div className='overview-category'> {currProduct.category} </div>
-        <h1> {currProduct.name} </h1>
-        <h3><Price original_price={props.price.original} sale_price={props.price.sale}/></h3>
+      <div data-testid='overview-product-info' key={'overview-name-div'} className='overview-product-info-parent'>
+        <div className='overview-product-info-star'>
+          <Star ratings={props.star}/>
+        </div>
+        <u className='overview-product-info-reviews' onClick={reviewScroll}> See all {props.reviews} reviews...</u>
+        <div className='overview-product-info-category'> {currProduct.category} </div>
+        <h1 className='overview-product-info-name'> {currProduct.name} </h1>
+        <h3 className='overview-product-info-price'><Price original_price={props.price.original} sale_price={props.price.sale}/></h3>
       </div>,
-      <div data-testid='overview-slogan' key={'overview-slogal-description'} className='overview-slogan-description'>
-        <h3> {currProduct.slogan} </h3>
-        <div className='overview-description'> {currProduct.description} </div>
+      <div data-testid='overview-slogan' key={'overview-slogal-description'} className='overview-product-info-sd'>
+        <h3 className='overview-product-info-slogan'> {currProduct.slogan} </h3>
+        <div className='overview-product-info-description'> {currProduct.description} </div>
       </div>
     ])
   } else {
