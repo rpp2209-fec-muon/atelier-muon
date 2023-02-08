@@ -33,7 +33,7 @@ class Star extends React.Component {
   render () {
     const stars = this.pointToStar(this.props.ratings);
     return(
-      <div>
+      <div data-testid="g-star">
         {stars.map((star, i) =>  <span className={`star fa fa-star ${star}`} key={i}></span>)}
       </div>
     )

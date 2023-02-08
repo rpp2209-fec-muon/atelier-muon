@@ -48,7 +48,7 @@ class RelatedProducts extends React.Component {
         characteristics: obj
       })
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log("GET Products error"));
   }
 
   uniqueArray(array) {

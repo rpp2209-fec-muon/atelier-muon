@@ -48,7 +48,7 @@ img: GET /products/:product_id/styles
           char: obj
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log("GET products error"));
   }
 
   getStyle() {
@@ -84,7 +84,7 @@ img: GET /products/:product_id/styles
           });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log("GET styles error"));
   }
 
   getRating() {
@@ -96,7 +96,7 @@ img: GET /products/:product_id/styles
       .then((data) => {
         this.ratingTranslate(data.data.ratings);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log("GET meta reviews error"));
 
   }
 
