@@ -10,7 +10,14 @@ const axios = require('axios');
 export default function App() {
 
   let productId = window.location.pathname;
+  const containsOnlyNumbers = (str) => {
+    return /^[0-9]+$/.test(str);
+  }
+  let id = productId.substring(1);
+  let test = containsOnlyNumbers(id);
   if (productId === '/') {
+    productId = '/71697';
+  } else if (!test) {
     productId = '/71697';
   }
   const [product, setProduct] = useState(productId);
