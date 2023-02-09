@@ -10,6 +10,7 @@ function ProductOverview (props) {
 
   // create state to hold current view
   const [currentProduct, setCurrentProduct] = useState([])
+  const [outfit, setOutfit] = useState([]);
   const [productStyles, setProductStyles] = useState([])
   const [currentStyle, setCurrentStyle] = useState([])
   const [currPhoto, setCurrPhoto] = useState('');
@@ -212,6 +213,30 @@ function ProductOverview (props) {
     setExpandedView(!expandedView)
   }
 
+  function addToOutfit() {
+    var id = props.product_id.slice(1);
+    id = parseInt(id);
+    var getdata = localStorage.getItem('outfit');
+    if (getdata !== "undefined" && getdata !== null) {
+      var outfit = JSON.parse(getdata);
+    } else {
+      var outfit = null;
+    }
+    if (outfit === null) {
+      var list = [];
+      list.push(id);
+      localStorage.setItem('outfit', JSON.stringify(list));
+      setOutfit(list);
+    } else {
+      if(outfit.indexOf(id) === -1) {
+        outfit.push(id);
+        localStorage.setItem('outfit', JSON.stringify(outfit));
+        setOutfit(list);
+      }
+    }
+    props.setRefresh();
+  }
+
   // ---------------------------- render component ---------------------------- //
 
 
@@ -222,7 +247,7 @@ function ProductOverview (props) {
         <div key={'overview-main-parent-2'} className='overview-main-parent-2'>
           <ProductInfo  key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
           <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
-          <AddToCart key={'4'} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange} chosenSKU={currSKU}/>
+          <AddToCart key={'4'} outfit={addToOutfit} product={currentProduct} styles={currentStyle} skus={SKUs} quantity={quantity} update={sizeChange} chosenSize={size} chosenQuantity={itemQuantity} update2={quantityChange} chosenSKU={currSKU}/>
         </div>
       </div>
     )

@@ -5,7 +5,6 @@ import Price from '../../Global/Price.jsx';
 function ProductInfo (props) {
 
   var currProduct = props.product[0];
-  console.log(currProduct);
 
   function reviewScroll () {
     var element = document.getElementById('reviews-component')

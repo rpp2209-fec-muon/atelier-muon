@@ -10,6 +10,7 @@ const axios = require('axios');
 export default function App() {
 
   const [product, setProduct] = useState('/71697');
+  const [refreshRP, setRefreshRP] = useState(false);
 
 
   useEffect(() => {
@@ -21,14 +22,18 @@ export default function App() {
     console.log("changed");
   }
 
+  function refresh () {
+    setRefreshRP(!refreshRP);
+  }
+
   const LoggableRelatedProducts = withLogger(RelatedProducts, "Related Products");
   const LoggableProductOverview = withLogger(ProductOverview, "Product Overview");
   const LoggableReviews = withLogger(Reviews, "Reviews");
 
   return (
     <div>
-      <LoggableProductOverview  key={`o-${product}`} product_id={product}/>
-      <LoggableRelatedProducts key={`rp-${product}`} product_id={product} onPage={(product_id) => changePage(product_id)}/>
+      <LoggableProductOverview  key={`o-${product}`} product_id={product} refresh={refreshRP} setRefresh={refresh} />
+      <LoggableRelatedProducts key={`rp-${product}`} product_id={product} refresh={refreshRP} setRefresh={(refresh) => refresh()} onPage={(product_id) => changePage(product_id)}/>
       <LoggableReviews key={`r-${product}`} product_id={product}/>
     </div>
   );
