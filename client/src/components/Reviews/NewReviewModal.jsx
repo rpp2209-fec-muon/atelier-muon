@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 const axios = require('axios');
 
-export default function NewReviewModal({ closeModal, meta }) {
+export default function NewReviewModal({ closeModal, product_id, meta }) {
 
   const [rating, setRating] = useState(0);
   const [photos, setPhotos] = useState([]);
@@ -84,6 +84,24 @@ export default function NewReviewModal({ closeModal, meta }) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log(event);
+
+    axios.post('/reviews', {
+      product_id: product_id,
+      rating: rating,
+      summary: textState.summary,
+      body: textState.body,
+      recommend: recommend,
+      name: textState.name,
+      email: textState.email,
+      photos: photos,
+      characteristics: chars
+    })
+      .then((response) => {
+        // tell user of success, close modal
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   return (

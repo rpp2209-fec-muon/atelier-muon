@@ -93,7 +93,7 @@ export default function Reviews(props) {
         </div>
       </div>
       {modalState &&
-        <NewReviewModal closeModal={closeModal} meta={metaState}/>
+        <NewReviewModal closeModal={closeModal} product_id={product_id} meta={metaState}/>
       }
     </div>
   )
