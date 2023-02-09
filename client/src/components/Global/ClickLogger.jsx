@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const withLogger = (WrappedComponent, widget) => {
   return class ClickLogger extends React.Component {
@@ -9,7 +10,20 @@ const withLogger = (WrappedComponent, widget) => {
     }
 
     onClick(e) {
-      console.log(`**${widget}`, e.target.tagName)
+      var element = e.target.tagName;
+      var time = new Date().toLocaleString();
+      var params = {
+        element: element,
+        widget: widget,
+        time: time
+      }
+      axios.post('/interactions', params)
+      .then(function (response) {
+        console.log("POST Interactions successful");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
     render() {

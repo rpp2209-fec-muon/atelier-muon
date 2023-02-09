@@ -83,6 +83,28 @@ let postCart = (params, callback) => {
     });
 }
 
+let postInteraction = (params, callback) => {
+
+  let options = {
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}/interactions`,
+    headers: {
+      'Authorization': process.env.API_KEY
+    }
+  };
+  axios({
+    method: 'post',
+    url: options.url,
+    headers: options.headers,
+    data: params,
+  })
+    .then((data) => {
+      callback(null, data.data);
+    })
+    .catch((err) => {
+      callback(err, null);
+      console.log(err);
+    });
+}
 
   // TO-DO finish post reviews axios request
   // axios({
@@ -123,3 +145,4 @@ module.exports.getReview = getReview;
 module.exports.postReview = postReview;
 module.exports.putReview = putReview;
 module.exports.postCart = postCart;
+module.exports.postInteraction = postInteraction;
