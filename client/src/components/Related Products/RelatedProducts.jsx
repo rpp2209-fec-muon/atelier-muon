@@ -15,6 +15,9 @@ class RelatedProducts extends React.Component {
       o_page: 0,
       characteristics: {}
     }
+    if (this.props.refresh) {
+      this.props.setRefresh;
+    }
   }
   // related list: GET /products/:product_id/related
   componentDidMount() {
