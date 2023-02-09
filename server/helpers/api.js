@@ -55,6 +55,20 @@ let postReview = (body, callback) => {
       'Authorization': process.env.API_KEY
     }
   };
+  axios({
+    method: 'post',
+    url: options.url,
+    headers: options.headers,
+    data: body
+  })
+    .then((res) => {
+      console.log('response from post review', res);
+      callback(null, res);
+    })
+    .catch((err) => {
+      console.log('error from post review', err);
+      callback(err, null);
+    })
 }
 
 let postCart = (params, callback) => {
