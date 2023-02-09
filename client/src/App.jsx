@@ -9,15 +9,19 @@ const axios = require('axios');
 
 export default function App() {
 
-  const [product, setProduct] = useState('/71697');
+  let productId = window.location.pathname;
+  if (productId === '/') {
+    productId = '/71697';
+  }
+  const [product, setProduct] = useState(productId);
   const [refreshRP, setRefreshRP] = useState(false);
-
 
   useEffect(() => {
 
   }, []);
 
   const changePage = (product_id) => {
+    window.location.pathname = product_id;
     setProduct(product_id);
     console.log("changed");
   }
