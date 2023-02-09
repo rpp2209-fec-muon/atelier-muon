@@ -5,6 +5,7 @@ import Price from '../../Global/Price.jsx';
 function ProductInfo (props) {
 
   var currProduct = props.product[0];
+  console.log(currProduct);
 
   function reviewScroll () {
     var element = document.getElementById('reviews-component')
@@ -25,6 +26,13 @@ function ProductInfo (props) {
       <div data-testid='overview-slogan' key={'overview-slogal-description'} className='overview-product-info-sd'>
         <h3 className='overview-product-info-slogan'> {currProduct.slogan} </h3>
         <div className='overview-product-info-description'> {currProduct.description} </div>
+        <div className='overview-product-info-feature-parent'>
+          {currProduct.features.map( (currFeature, key) => {
+            return (
+              <p className='overview-product-info-feature' key={currFeature.feature}> <img key={'overview-product-info-feature-checkmark'} className='overview-product-info-feature-checkmark' src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Check_mark_9x9.svg/800px-Check_mark_9x9.svg.png'></img>{currFeature.value + ' ' + currFeature.feature} </p>
+            )
+          })}
+        </div>
       </div>
     ])
   } else {

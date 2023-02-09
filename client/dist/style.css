@@ -21,6 +21,7 @@ body {
   position: relative;
   left: 93%;
   top: -100%;
+  margin-bottom: 10%;
 }
 
 .overview-gallery-parent {
@@ -264,6 +265,26 @@ body {
   position: relative;
   top: 62%;
   right: 155%;
+  height: 150px;
+}
+
+.overview-product-info-feature-parent {
+  position: relative;
+  height: 90px;
+  width: 650px;
+  left: 110%;
+  top: -50%;
+}
+
+.overview-product-info-feature {
+  width: 310px;
+  height: 18px;
+}
+
+.overview-product-info-feature-checkmark {
+  height: 10px;
+  width: 15px;
+  margin-right: 10px;
 }
 
 .overview-product-info-reviews:hover {
@@ -279,7 +300,7 @@ body {
 
 .overview-style-selector-parent {
   position: relative;
-  top: 3%;
+  top: -7%;
 }
 
 .overview-style-selector-thumbnail-parent {
@@ -367,7 +388,8 @@ body {
 
 .overview-cart-parent {
   position: relative;
-  top: 5%;
+  top: -5%;
+  margin-bottom: 15px;
 }
 
 
