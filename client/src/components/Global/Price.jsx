@@ -14,7 +14,7 @@ class Price extends React.Component {
     if (this.props.sale_price === null) {
       price = <div>${this.props.original_price}</div>;
     } else {
-      price =  <div><del>${this.props.original_price}</del>  ${this.props.sale_price}</div>;
+      price =  <div className='sale-price'>${this.props.sale_price}  <del>${this.props.original_price}</del> </div>;
     }
 
     return(
