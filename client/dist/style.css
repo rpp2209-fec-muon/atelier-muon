@@ -10,7 +10,8 @@ body {
   display: block;
   position: relative;
   left: 10%;
-  margin-top: 5%;
+  margin-top: 10%;
+  margin-bottom: 5%;
 }
 
 .overview-main-parent-2 {
@@ -42,30 +43,6 @@ body {
   height: 100%;
 }
 
-
-.overview-gallery {
-  cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
-}
-
-.overview-image-gallery-fullscreen-container {
-  height: 700px;
-  width: 200%;
-  margin-bottom: 10px;
-  background-color: darkgray;
-  position: relative;
-}
-
-.overview-image-gallery-fullscreen-image {
-  width: 300px;
-  height: 450px;
-  position: relative;
-  left: 30%;
-  top: 12.5%;
-}
-
-
 .overview-expanded-image {
   width: 25px;
   height: 25px;
@@ -74,17 +51,137 @@ body {
   top: 71.5%;
 }
 
+.overview-gallery-main-image {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.overview-next-left-div {
+  position: relative;
+  width: 15px;
+  left: 30%;
+  bottom: 180px;
+}
+
+.overview-next-right-div {
+  position: relative;
+  width: 15px;
+  left: 72%;
+  bottom: 199px;
+}
+
+.overview-first-next-right-div {
+  position: relative;
+  width: 15px;
+  left: 72%;
+  bottom: 181px;
+}
+
+.overview-last-next-left-div {
+  position: relative;
+  width: 15px;
+  bottom: 286px;
+  left: 32%;
+}
+.overview-next-left::after {
+  font-family: FontAwesome;
+  content: "\f053";
+}
+
+.overview-next-right::after {
+  font-family: FontAwesome;
+  content: "\f054";
+}
+
+/* -------------- full screen ---------------- */
+
+.overview-image-gallery-fullscreen-container {
+  height: 700px;
+  width: 175%;
+  margin-bottom: 10px;
+  background-color: darkgray;
+  position: relative;
+  right: 10%;
+}
+
+.overview-image-gallery-fullscreen-image-parent {
+  width: 450px;
+  height: 600px;
+  position: relative;
+  left: 35%;
+  top: 7.5%;
+  overflow: hidden;
+}
+
+.overview-image-gallery-fullscreen-image {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: crosshair;
+  width: 100%;
+}
+
 .overview-expanded-image-2 {
   width: 25px;
   height: 25px;
-
-  right: 37px;
-  bottom: 15px;
+  position: relative;
+  left: 62.5%;
+  top: 4%;
 }
 
-.overview-style {
-  width: 400px;
-  margin-top: 20px;
+.overview-first-next-right-div-expanded {
+  position: relative;
+  width: 15px;
+  left: 72%;
+  bottom: 217px;
+}
+
+.overview-next-right-div-expanded {
+  position: relative;
+  width: 15px;
+  left: 63%;
+  bottom: 287px;
+}
+
+.overview-next-left-div-expanded {
+  position: relative;
+  width: 15px;
+  bottom: 95px;
+  left: 110px;
+}
+
+.overview-last-next-left-div-expanded {
+  position: relative;
+  width: 15px;
+  bottom: 286px;
+  left: 32%;
+}
+
+.overview-thumbnail-parent-expanded {
+  height: 260px;
+  width: 35px;
+  position: relative;
+  left: 35%;
+  bottom: 550px;
+}
+
+.overview-thumbnail-expanded {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  left: 10%;
+}
+
+.overview-thumbnail-expanded::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.overview-thumbnail-photos-expanded {
+  height: 22.5px;
+  width: 15px;
+  margin: 5px 7.5px 5px 7.5px;
 }
 
 /* ------------------------   main image thumbnail css -------------------- */
@@ -101,7 +198,6 @@ body {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  scrollbar-width: none;
 }
 
 .overview-thumbnail-photos {
@@ -118,6 +214,7 @@ body {
 .overview-thumbnail-scroll {
   position: relative;
   left: 33%;
+  width: 16px;
 }
 
 .overview-thumbnail-scroll-up-icon::before {
@@ -134,36 +231,6 @@ body {
   position: relative;
 }
 
-.overview-next-left-div {
-  position: relative;
-  width: 15px;
-  left: 30%;
-  bottom: 190px;
-}
-
-.overview-first-next-right-div {
-  position: relative;
-  width: 15px;
-  left: 72%;
-  bottom: 191px;
-}
-
-.overview-next-right-div {
-  position: relative;
-  width: 15px;
-  left: 72%;
-  bottom: 209px;
-}
-
-.overview-next-left::after {
-  font-family: FontAwesome;
-  content: "\f053";
-}
-
-.overview-next-right::after {
-  font-family: FontAwesome;
-  content: "\f054";
-}
 
 /* ------------------------   product info component css -------------------- */
 
@@ -194,8 +261,9 @@ body {
 }
 
 .overview-product-info-sd {
-  position: absolute;
-  bottom: 63.5%;
+  position: relative;
+  top: 62%;
+  right: 155%;
 }
 
 .overview-product-info-reviews:hover {
@@ -204,14 +272,14 @@ body {
 }
 
 .overview-product-info-parent {
-  position: absolute;
-  bottom: 71%;
+  position: relative;
+  top: 10.5%;
 }
 /* ------------------------   style selector component css -------------------- */
 
 .overview-style-selector-parent {
-  position: absolute;
-  bottom: 40%;
+  position: relative;
+  top: 3%;
 }
 
 .overview-style-selector-thumbnail-parent {
@@ -298,8 +366,8 @@ body {
 }
 
 .overview-cart-parent {
-  position: absolute;
-  bottom: 25%;
+  position: relative;
+  top: 5%;
 }
 
 

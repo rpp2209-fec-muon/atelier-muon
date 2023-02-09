@@ -206,7 +206,7 @@ function ProductOverview (props) {
     setItemQuantity(e.target.value);
   }
 
-  function expandView () {
+  function expandView (e) {
     e.preventDefault();
     console.log('should ping', expandedView);
     setExpandedView(!expandedView)
@@ -218,7 +218,7 @@ function ProductOverview (props) {
   if (productStyles.length && currentStyle.photos.length && !expandedView) {
     return (
       <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
-        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} expand={setExpandedView}/>
+        <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} setView={expandView}/>
         <div key={'overview-main-parent-2'} className='overview-main-parent-2'>
           <ProductInfo  key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
           <StyleSelector key={'3'} check={checkmark} style={currentStyle} styles={productStyles} update={updateStyle}/>
@@ -229,7 +229,7 @@ function ProductOverview (props) {
   } else if (productStyles.length && currentStyle.photos.length && expandedView) {
     return (
       <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
-        <ImageGallery key={'5'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} expand={expandView}/>
+        <ImageGallery key={'5'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} setView={expandView} expanded={true} />
       </div>
       )
   } else {
