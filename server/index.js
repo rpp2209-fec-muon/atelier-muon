@@ -22,6 +22,7 @@ app.use(express.json({limit: '100mb'}));
 // routes
 
 
+
 app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
@@ -96,6 +97,11 @@ app.post('/reviews/photos', async (req, res) => {
     res.status(500).send('Image upload error!');
   }
 })
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 
 app.listen(PORT, () => {
