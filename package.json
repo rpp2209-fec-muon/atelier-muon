@@ -30,6 +30,7 @@
     "babel-loader": "^9.1.2",
     "babel-preset-es2015": "^6.24.1",
     "cloudinary": "^1.33.0",
+    "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "install": "^0.13.0",
