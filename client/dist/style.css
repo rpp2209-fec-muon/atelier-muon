@@ -439,10 +439,27 @@ body {
 
 .tile-instance {
   outline: solid;
+  outline-width: 2px;
   width: 600px;
   height: 300px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 15px;
+}
+
+.reviews-flexListChild {
+  overflow-y: auto;
+  width: 640px;
+  height: 600px;
+}
+
+.review-helpful-yes {
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px;
+}
+
+.review-helpful {
+  display: inline-block;
+  padding: 3px;
 }
 
 /* New Review Modal */
