@@ -56,61 +56,77 @@ function ImageGallery (props) {
   }
 
   function zoomPosition (e) {
-    console.log('position?', mousePos, e.target.getBoundingClientRect())
+    e.preventDefault();
 
-    // there are four possible regions
-    var imgStyle = {
-      cursor: 'zoom-out',
-      width: '100%',
-      transform: 'scale(2.5)',
-      position: 'relative',
-    }
+    console.log('alt', e.target.alt);
 
-    var imageBounds = e.target.getBoundingClientRect();
-    var xBound = Math.floor(imageBounds.x);
-    var yBound = Math.floor(imageBounds.y);
-
-    if (!zoomed) {
-      if ((mousePos.x - xBound >= 180) && (mousePos.y - yBound >= 240)
-      && (mousePos.x - xBound <= 270) && (mousePos.y - yBound <= 360)) {
-        setZoom(true);
-        setZoomStyle(imgStyle);
-      } else {
-        // region 1 is mousePos.x > 547 < 772 mousePos.y > 242 < 542
-        if ((mousePos.x - xBound < 225) && (mousePos.y - yBound <  300)) {
-          imgStyle.left = '50%'
-          imgStyle.top = '50%'
-          setZoom(true);
-          setZoomStyle(imgStyle);
-        }
-        // region 2 is mousePos.x > 772 < 997 mousePos.y > 242 < 542
-        if ((mousePos.x - xBound > 225) && (mousePos.y - yBound < 300 )) {
-          imgStyle.right = '50%'
-          imgStyle.top = '50%'
-          setZoom(true);
-          setZoomStyle(imgStyle);
-        }
-        // region 3 is mousePos.x > 547 < 772 mousePos.y > 542 < 842
-        if ((mousePos.x - xBound < 225) && (mousePos.y - yBound > 300)) {
-          imgStyle.left = '50%'
-          imgStyle.bottom = '50%'
-          setZoom(true);
-          setZoomStyle(imgStyle);
-        }
-        // region 4 is mousePos.x > 772 < 997 mousePos.y > 242 < 542
-        if ((mousePos.x - xBound > 225) && (mousePos.y - yBound > 300)) {
-          imgStyle.right = '50%'
-          imgStyle.bottom = '50%'
-          setZoom(true);
-          setZoomStyle(imgStyle);
-        }
+    if (e.target.alt === 'true') {
+      var imgStyle = {
+        cursor: 'crosshair',
+        width: '100%',
+        position: 'relative',
       }
-    } else {
       setZoom(false);
-      setZoomStyle({
+      setZoomStyle(imgStyle);
+    } else {
+      // there are four possible regions
+      var imgStyle = {
         cursor: 'zoom-out',
         width: '100%',
-      })
+        transform: 'scale(2.5)',
+        position: 'relative',
+      }
+
+      var imageBounds = e.target.getBoundingClientRect();
+      var xBound = Math.floor(imageBounds.x);
+      var yBound = Math.floor(imageBounds.y);
+
+      if (!zoomed) {
+        if ((mousePos.x - xBound >= 180) && (mousePos.y - yBound >= 240)
+        && (mousePos.x - xBound <= 270) && (mousePos.y - yBound <= 360)) {
+          setZoom(true);
+          setZoomStyle(imgStyle);
+        } else {
+          // region 1 is mousePos.x > 547 < 772 mousePos.y > 242 < 542
+          if ((mousePos.x - xBound < 225) && (mousePos.y - yBound <  300)) {
+            imgStyle.left = '50%'
+            imgStyle.top = '50%'
+            setZoom(true);
+            setZoomStyle(imgStyle);
+            console.log('region1', mousePos, e.target.getBoundingClientRect())
+          }
+          // region 2 is mousePos.x > 772 < 997 mousePos.y > 242 < 542
+          if ((mousePos.x - xBound > 225) && (mousePos.y - yBound < 300 )) {
+            imgStyle.right = '50%'
+            imgStyle.top = '50%'
+            setZoom(true);
+            setZoomStyle(imgStyle);
+            console.log('region2', mousePos, e.target.getBoundingClientRect())
+          }
+          // region 3 is mousePos.x > 547 < 772 mousePos.y > 542 < 842
+          if ((mousePos.x - xBound < 225) && (mousePos.y - yBound > 300)) {
+            imgStyle.left = '50%'
+            imgStyle.bottom = '50%'
+            setZoom(true);
+            setZoomStyle(imgStyle);
+            console.log('region3', mousePos, e.target.getBoundingClientRect())
+          }
+          // region 4 is mousePos.x > 772 < 997 mousePos.y > 242 < 542
+          if ((mousePos.x - xBound > 225) && (mousePos.y - yBound > 300)) {
+            imgStyle.right = '50%'
+            imgStyle.bottom = '50%'
+            setZoom(true);
+            setZoomStyle(imgStyle);
+            console.log('region4', mousePos, e.target.getBoundingClientRect())
+          }
+        }
+      } else {
+        setZoom(false);
+        setZoomStyle({
+          cursor: 'zoom-out',
+          width: '100%',
+        })
+      }
     }
   }
 
@@ -223,7 +239,7 @@ function ImageGallery (props) {
             {click ? (
               <div key={"overview-image-gallery-fullscreen-container"} className="overview-image-gallery-fullscreen-container">
                 <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
-                  <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image' onClick={zoomPosition}></img>
+                  <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image' alt={`${zoomed}`} onClick={zoomPosition}></img>
                 </div>
                 <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                 <div key={'overview-next-right-div-expanded'} className='overview-next-right-div-expanded'>
@@ -262,7 +278,7 @@ function ImageGallery (props) {
               {click ? (
                 <div key={"overview-image-gallery-fullscreen-container"} className="overview-image-gallery-fullscreen-container">
                 <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
-                  <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
+                  <img style={zoomStyle} alt={`${zoomed}`} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
                 </div>
                   <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                   <div key={'overview-last-next-left-div-expanded'} className='overview-last-next-left-div-expanded'>
@@ -301,7 +317,7 @@ function ImageGallery (props) {
               {click ? (
                 <div key={"overview-image-gallery-fullscreen-container"} className="overview-image-gallery-fullscreen-container">
                   <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
-                    <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
+                    <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'} alt={`${zoomed}`} src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
                   </div>
                   <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                   <div key={'overview-next-right-div-expanded'} className='overview-next-right-div-expanded'>
