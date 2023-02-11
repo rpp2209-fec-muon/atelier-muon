@@ -53,6 +53,13 @@ export default function Reviews(props) {
       })
   }
 
+  const getAverageRating = (ratings) => {
+    var scoreTotal = ((ratings[5] * 5 ) + (ratings[4] * 4) + (ratings[3] * 3) + (ratings[2] * 2) + (ratings[1] * 1));
+    var totalResponses = Number(ratings[5]) + Number(ratings[4]) + Number(ratings[3]) + Number(ratings[2]) + Number(ratings[1]);
+    var averageRating = Math.round((scoreTotal / totalResponses) * 10) / 10;
+    return averageRating;
+  }
+
   // on click handler for closing the new review modal
   const closeModal = () => {
     setModalState(false);
@@ -79,7 +86,7 @@ export default function Reviews(props) {
         <div className="reviews-flexBreakdownParent">
           <div><b>Ratings and Reviews</b></div>
           {metaState.ratings &&
-            <RatingsBreakdown meta={metaState}/>
+            <RatingsBreakdown meta={metaState} getAverageRating={getAverageRating}/>
           }
           {metaState.characteristics &&
             <ProductBreakdown meta={metaState}/>

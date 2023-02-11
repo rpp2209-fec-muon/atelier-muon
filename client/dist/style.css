@@ -437,6 +437,14 @@ body {
   background-color: white;
 }
 
+.tile-instance {
+  outline: solid;
+  width: 600px;
+  height: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 /* New Review Modal */
 
 .star-button {
