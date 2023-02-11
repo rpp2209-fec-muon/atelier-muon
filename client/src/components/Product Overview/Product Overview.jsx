@@ -242,7 +242,7 @@ function ProductOverview (props) {
 
   if (productStyles.length && currentStyle.photos.length && !expandedView) {
     return (
-      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
+      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id} onClick={props.onClick}>
         <ImageGallery key={'1'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} setView={expandView}/>
         <div key={'overview-main-parent-2'} className='overview-main-parent-2'>
           <ProductInfo  key={'2'} product={currentProduct} star={rating} price={price} reviews={reviews}/>
@@ -253,7 +253,7 @@ function ProductOverview (props) {
     )
   } else if (productStyles.length && currentStyle.photos.length && expandedView) {
     return (
-      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id}>
+      <div key={'overview-main-parent'} className='overview-main-parent' id={'test-id' + props.product_id} onClick={props.onClick}>
         <ImageGallery key={'5'} style={currentStyle} id={props.product} currPhoto={currPhoto} currPhotoIndex={currPhotoIndex} update={updatePhoto} setView={expandView} expanded={true} />
       </div>
       )
