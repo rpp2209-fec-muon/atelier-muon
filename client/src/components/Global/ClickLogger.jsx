@@ -10,13 +10,14 @@ const withLogger = (WrappedComponent, widget) => {
     }
 
     onClick(e) {
-      var element = e.target.tagName;
+      var element = e.target.outerHTML;
       var time = new Date().toLocaleString();
       var params = {
         element: element,
         widget: widget,
         time: time
       }
+      console.log(params.element);
       axios.post('/interactions', params)
       .then(function (response) {
         console.log("POST Interactions successful");
