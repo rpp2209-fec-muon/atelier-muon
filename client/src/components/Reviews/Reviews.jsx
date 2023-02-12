@@ -10,10 +10,11 @@ const axios = require('axios');
 
 export default function Reviews(props) {
 
-  const [modalState, setModalState] = useState(false);
-  const [sortState, setSortState] = useState('relevant');
+  const [pageState, setPageState] = useState(2);
   const [listState, setListState] = useState([]);
   const [metaState, setMetaState] = useState({});
+  const [modalState, setModalState] = useState(false);
+  const [sortState, setSortState] = useState('relevant');
 
   var product_id = Number(props.product_id.slice(1));
 
@@ -24,7 +25,8 @@ export default function Reviews(props) {
         type: '',
         params: {
           product_id: product_id,
-          sort: sortCriteria
+          sort: sortCriteria,
+          count: 1000
         }
       }
     })
@@ -95,8 +97,9 @@ export default function Reviews(props) {
 
         <div className="reviews-flexListParent">
           <Sort handleSortChange={handleSortChange}/>
-          <List list={listState}/>
-          <button onClick={() => {setModalState(true)}}>Add A Review</button>
+          <List list={listState.slice(0, pageState)}/>
+          <button onClick={() => {setModalState(true)}} className='modal-button'>Add A Review</button>
+          <button className='more-reviews-button' onClick={() => {setPageState(pageState + 2)}}>More Reviews</button>
         </div>
       </div>
       {modalState &&

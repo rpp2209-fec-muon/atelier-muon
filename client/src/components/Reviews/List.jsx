@@ -3,7 +3,7 @@ import Tile from './Tile.jsx';
 
 export default function List(props) {
 
-  console.log(props.list);
+  console.log('list', props.list);
 
   return (
     <div className="reviews-flexListChild" data-testid="list-parent-div">

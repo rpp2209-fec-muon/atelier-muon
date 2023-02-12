@@ -6,7 +6,6 @@ import Photos from './Photos.jsx';
 export default function Tile({ review }) {
 
   const date = format(parseISO(review.date), 'MMMM d, y');
-  console.log(date);
 
   return (
     <div data-testid="tile-instance" className='tile-instance'>
