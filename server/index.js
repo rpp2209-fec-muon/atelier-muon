@@ -75,7 +75,16 @@ app.post('/interactions', (req, res) => {
 })
 
 app.put('/reviews', (req, res) => {
-  //helper.putReview
+  console.log('body', req.body);
+
+  helper.putReview((err, data) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(201);
+      console.log(data);
+    }
+  }, req.body.params.type, req.body.params.review_id);
 })
 
 app.post('/reviews/photos', async (req, res) => {

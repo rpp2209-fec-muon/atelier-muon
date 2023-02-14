@@ -120,21 +120,7 @@ let postInteraction = (params, callback) => {
     });
 }
 
-  // TO-DO finish post reviews axios request
-  // axios({
-  //   method: 'post',
-  //   url: options.url,
-  //   headers: options.headers,
-  //   body: body
-  // })
-  //   .then((data) => {
-  //     callback(null, data.data);
-  //   })
-  //   .catch((err) => {
-  //     callback(err, null);
-  //   });
-
-let putReview = (type, review_id, callback) => {
+let putReview = (callback, type, review_id) => {
   let options = {
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}/reviews${review_id}${type}`,
     headers: {
