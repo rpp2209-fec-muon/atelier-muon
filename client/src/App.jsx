@@ -43,9 +43,9 @@ export default function App() {
 
   return (
     <div>
-      {/* <LoggableProductOverview  key={`o-${product}`} product_id={product} refresh={refreshRP} setRefresh={refresh} /> */}
+      <LoggableProductOverview  key={`o-${product}`} product_id={product} refresh={refreshRP} setRefresh={refresh} />
       <LoggableRelatedProducts key={`rp-${product}`} product_id={product} refresh={refreshRP} setRefresh={(refresh) => refresh()} onPage={(product_id) => changePage(product_id)}/>
-      {/* <LoggableReviews key={`r-${product}`} product_id={product}/> */}
+      <LoggableReviews key={`r-${product}`} product_id={product}/>
     </div>
   );
 }
