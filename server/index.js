@@ -5,6 +5,7 @@ const helper = require('./helpers/api.js');
 const path = require("path");
 const PORT = process.env.PORT;
 const cloudinary = require('cloudinary').v2;
+const compression = require('compression');
 
 cloudinary.config({
   secure: true
@@ -14,15 +15,16 @@ const app = express();
 // static file serve
 
 // extra imports (body parsers, etc);
+app.use(compression({
+  threshold: 0
+}));
+
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(express.json({limit: '100mb'}));
 
 
 // routes
-
-
-
 app.get('/products', (req, res) => {
   helper.getProduct((err, products) => {
     if (err) {
@@ -34,7 +36,6 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
-  // console.log(req.query);
   helper.getReview((err, reviews) => {
     if (err) {
       res.sendStatus(400);
