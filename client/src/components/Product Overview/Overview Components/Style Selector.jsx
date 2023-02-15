@@ -15,14 +15,14 @@ function StyleSelector (props) {
             if (props.check[i] === true) {
               return (
                 <button className='overview-style-selector-thumbnail-button' onClick={props.update}  key={currStyle.style_id}>
-                  <img key={"overview-style-selector-thumbnail" + i} alt={`${currStyle.style_id}`} className="overview-style-selector-thumbnail" src={currStyle.photos[0].url}></img>
+                  <img key={"overview-style-selector-thumbnail" + i} alt={`${currStyle.style_id}`} className="overview-style-selector-thumbnail" src={currStyle.photos[0].thumbnail_url}></img>
                   <img key={"overview-checkmark" + i} className="overview-checkmark" src='https://i.imgur.com/Fxl95Rx.png'></img>
                 </button>
               )
             } else {
               return (
                 <button className='overview-style-selector-thumbnail-button' onClick={props.update}  key={currStyle.style_id} >
-                  <img key={"overview-style-selector-thumbnail" + i} alt={`${currStyle.style_id}`} className="overview-style-selector-thumbnail" src={currStyle.photos[0].url}></img>
+                  <img key={"overview-style-selector-thumbnail" + i} alt={`${currStyle.style_id}`} className="overview-style-selector-thumbnail" src={currStyle.photos[0].thumbnail_url}></img>
                 </button>
               )
             }

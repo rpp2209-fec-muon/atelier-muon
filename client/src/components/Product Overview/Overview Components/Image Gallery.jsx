@@ -134,9 +134,9 @@ function ImageGallery (props) {
     return ([
       <div className='overview-gallery-parent' key={'main-photo'} data-testid="gallery-main">
         <div key={'overview-gallery-main-image-parent'} className='overview-gallery-main-image-parent'>
-          <img key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
+          <img alt='main image' key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
         </div>
-        <img key={'overview-expanded-image'} onClick={ (e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <img alt='expanded image' key={'overview-expanded-image'} onClick={ (e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
         <div key={'overview-first-next-right-div'} className='overview-first-next-right-div'>
           <span key={'overview-next-right'} onClick={ (e) => {props.update(e); scrollD(e)}} id={props.currPhotoIndex} className='overview-next-right'></span>
         </div>
@@ -149,11 +149,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{border: '2px solid rgba(255,255,255, 0.9)' }} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                   )
             }
           })}
@@ -167,9 +167,9 @@ function ImageGallery (props) {
     return ([
       <div className='overview-gallery-parent' key={'main-photo'} data-testid="gallery-main">
         <div key={'overview-gallery-main-image-parent'} className='overview-gallery-main-image-parent'>
-          <img key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
+          <img alt='main image' key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
         </div>
-        <img key={'overview-expanded-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <img alt='expanded image' key={'overview-expanded-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
         <div key={'overview-next-left-div'} className='overview-next-left-div'>
           <span key={'overview-next-left'} onClick={(e) => {props.update(e); scrollU(e)}} id={props.currPhotoIndex} className='overview-next-left'></span>
         </div>
@@ -182,11 +182,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                   )
             }
           })}
@@ -200,9 +200,9 @@ function ImageGallery (props) {
     return ([
       <div className='overview-gallery-parent' key={'main-photo'} data-testid="gallery-main">
         <div key={'overview-gallery-main-image-parent'} className='overview-gallery-main-image-parent'>
-          <img key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
+          <img alt='main image' key={'overview-gallery-main-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-gallery-main-image' src={props.currPhoto}></img>
         </div>
-        <img key={'overview-expanded-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+        <img alt='expanded image' key={'overview-expanded-image'} onClick={(e) => {setFlag(); props.setView(e)}} className='overview-expanded-image' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
         <div key={'overview-next-left-div'} className='overview-next-left-div'>
           <span key={'overview-next-left'} onClick={(e) => {props.update(e); scrollU(e)}} id={props.currPhotoIndex} className='overview-next-left'></span>
         </div>
@@ -218,11 +218,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
                   )
             }
           })}
@@ -241,13 +241,13 @@ function ImageGallery (props) {
                 <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
                   <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image' alt={`${zoomed}`} onClick={zoomPosition}></img>
                 </div>
-                <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                <img alt='expand button' key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                 <div key={'overview-next-right-div-expanded'} className='overview-next-right-div-expanded'>
                   <span key={'overview-next-right'} onClick={(e) => {props.update(e); scrollD(e)}} id={props.currPhotoIndex} className='overview-next-right'></span>
                 </div>
               </div>
             ) : (
-              <img key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
+              <img alt='expanded image' key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
             )}
             <div key={'overview-thumbnail-parent'} className='overview-thumbnail-parent-expanded'>
               <div key={'overview-thumbnail-scroll-up'} className='overview-thumbnail-scroll'>
@@ -257,11 +257,11 @@ function ImageGallery (props) {
                 {props.style.photos.map( (currPhotoObj, i) => {
                   if (i === props.currPhotoIndex) {
                     return (
-                      <img style={{border: '1.5px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                      <img style={{height: '49px', width: '49px', border: '1.5px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                       )
                   } else {
                     return (
-                        <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                        <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                   }
                 })}
@@ -280,13 +280,13 @@ function ImageGallery (props) {
                 <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
                   <img style={zoomStyle} alt={`${zoomed}`} key={'overview-image-gallery-fullscreen-image'}  src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
                 </div>
-                  <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                  <img alt='expand button' key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                   <div key={'overview-last-next-left-div-expanded'} className='overview-last-next-left-div-expanded'>
                     <span key={'overview-last-next-left'} onClick={(e) => {props.update(e); scrollU(e)}} id={props.currPhotoIndex} className='overview-next-left'></span>
                   </div>
                 </div>
               ) : (
-                <img key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
+                <img alt='expanded image' key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
               )}
               <div key={'overview-thumbnail-parent'} className='overview-thumbnail-parent-expanded'>
                 <div key={'overview-thumbnail-scroll-up'} className='overview-thumbnail-scroll'>
@@ -296,11 +296,11 @@ function ImageGallery (props) {
                   {props.style.photos.map( (currPhotoObj, i) => {
                     if (i === props.currPhotoIndex) {
                       return (
-                        <img style={{border: '1.5px solid rgba(255,255,255, 0.9)'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                        <img style={{height: '49px', width: '49px', border: '1.5px solid rgba(255,255,255, 0.9)'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                     } else {
                       return (
-                          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                          <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                           )
                     }
                   })}
@@ -319,13 +319,13 @@ function ImageGallery (props) {
                   <div key={'overview-image-gallery-fullscreen-image-parent'} className='overview-image-gallery-fullscreen-image-parent'>
                     <img style={zoomStyle} key={'overview-image-gallery-fullscreen-image'} alt={`${zoomed}`} src={props.currPhoto} className='overview-image-gallery-fullscreen-image'></img>
                   </div>
-                  <img key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
+                  <img alt='expand button' key={'overview-expanded-image-2'} onClick={(e) => {unsetFlag(); props.setView(e)}} className='overview-expanded-image-2' src="https://www.svgrepo.com/show/121017/expand.svg"></img>
                   <div key={'overview-next-right-div-expanded'} className='overview-next-right-div-expanded'>
                     <span key={'overview-next-right'} onClick={(e) => {props.update(e); scrollD(e)}} id={props.currPhotoIndex} className='overview-next-right'></span>
                   </div>
                 </div>
               ) : (
-                <img key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
+                <img alt='expanded image' key={'overview-image-gallery-expanded-image'} src={props.currPhoto} onClick={setFlag}></img>
               )}
               <div key={'overview-thumbnail-parent'} className='overview-thumbnail-parent-expanded'>
                 <div key={'overview-thumbnail-scroll-up'} className='overview-thumbnail-scroll'>
@@ -335,11 +335,11 @@ function ImageGallery (props) {
                   {props.style.photos.map( (currPhotoObj, i) => {
                     if (i === props.currPhotoIndex) {
                       return (
-                        <img style={{border: '1.5px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                        <img style={{height: '49px', width: '49px', border: '1.5px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                     } else {
                       return (
-                          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.url} id={i}></img>
+                          <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                           )
                     }
                   })}

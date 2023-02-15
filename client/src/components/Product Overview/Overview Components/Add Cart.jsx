@@ -40,7 +40,7 @@ function AddToCart (props) {
         </div>
         <div key={'overview-cart-checkout-outfit'} className='overview-cart-checkout-outfit'>
           <button className='overview-cart-checkout' onClick={addToCart} key={'add-cart-button'} > <div className='overview-cart-checkout-text'>Add To Cart</div> </button>
-          <button onClick={props.outfit} className='overview-cart-outfit-star' data-testid='overview-cart-button' key={'outfit-star-button'}> <span key={`star fa fa-star`} className={`star fa fa-star`}></span> </button>
+          <button name='favorites button' onClick={props.outfit} className='overview-cart-outfit-star' data-testid='overview-cart-button' key={'outfit-star-button'}> <span key={`star fa fa-star`} className={`star fa fa-star`}></span> Favorites </button>
         </div>
       </div>
     ])
@@ -54,7 +54,7 @@ function AddToCart (props) {
         </div>
         <div key={'overview-cart-checkout-outfit'} className='overview-cart-checkout-outfit'>
           <select className='overview-cart-quantity' data-testid='overview-cart-select4' key={'select-quantity'}></select>
-          <button onClick={props.outfit} className='overview-cart-outfit-star' data-testid='overview-cart-button' key={'outfit-star-button'}> <span key={`star fa fa-star`} className={`star fa fa-star`}></span> </button>
+          <button name='favorites button' onClick={props.outfit} className='overview-cart-outfit-star' data-testid='overview-cart-button' key={'outfit-star-button'}> <span key={`star fa fa-star`} className={`star fa fa-star`}></span> Favorites </button>
         </div>
       </div>
     ])
