@@ -539,7 +539,6 @@ body {
 /*--Related Products---*/
 .rp-related {
   display: block;
-  float: inline-end;
   height: 100%;
   margin-left: 200px;
   margin-right:auto;
@@ -589,18 +588,21 @@ body {
 .rp-card-img {
   width: 100%;
   height: 70%;
+  position: absolute;
   object-fit: cover;
 }
 
 .rp-card-category {
-  position: relative;
+  position: absolute;
   color: rgb(86, 86, 86);
   font-size: 12px;
+  top: 71%;
 }
 
 .rp-card-name  {
-  position: relative;
+  position: absolute;
   font-size: 20px;
+  top: 75%;
   text-shadow: 0.5px 0.5px;
 }
 
