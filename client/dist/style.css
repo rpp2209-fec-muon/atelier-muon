@@ -486,6 +486,11 @@ body {
   overflow-y: auto;
 }
 
+.review-recommend {
+  position: absolute;
+  bottom: 30px;
+}
+
 .review-body::-webkit-scrollbar {
   display: none;
 }
