@@ -56,10 +56,17 @@ export default function Reviews(props) {
   }
 
   const getAverageRating = (ratings) => {
-    var scoreTotal = ((ratings[5] * 5 ) + (ratings[4] * 4) + (ratings[3] * 3) + (ratings[2] * 2) + (ratings[1] * 1));
-    var totalResponses = Number(ratings[5]) + Number(ratings[4]) + Number(ratings[3]) + Number(ratings[2]) + Number(ratings[1]);
-    var averageRating = Math.round((scoreTotal / totalResponses) * 10) / 10;
-    return averageRating;
+    var scoreTotal = 0;
+    var totalResponses = 0;
+    for (let num in ratings) {
+      if (ratings[num] === undefined) {
+        continue;
+      } else {
+        scoreTotal += (ratings[num] * (parseInt(num)));
+        totalResponses += (parseInt(ratings[num]));
+      }
+    }
+    return Math.round((scoreTotal / totalResponses) * 10) / 10;
   }
 
   // on click handler for closing the new review modal
