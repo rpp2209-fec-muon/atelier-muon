@@ -247,6 +247,7 @@ body {
 
 .overview-product-info-star {
   margin: 0 0 10px 0;
+  font-size: 1.5em;
 }
 
 .overview-product-info-description {
@@ -540,7 +541,7 @@ body {
 .rp-related {
   display: block;
   height: 100%;
-  margin-left: 200px;
+  margin-left: 10%;
   margin-right:auto;
   width: 2000px;
 }
@@ -590,27 +591,25 @@ body {
   height: 70%;
   position: absolute;
   object-fit: cover;
-  z-index: -1;
 }
 
 .rp-card-category {
   position: absolute;
-  color: rgb(86, 86, 86);
-  font-size: 12px;
+  font-size: 15px;
+  margin: 5px 0 0 0;
   top: 71%;
 }
 
 .rp-card-name  {
   position: absolute;
-  font-size: 20px;
   top: 75%;
-  text-shadow: 0.5px 0.5px;
+  margin: 5px 0 5px 0;
 }
 
 .rp-card-price {
   position: absolute;
-  bottom: 30px;
-  font-size: 22px;
+  bottom: 5%;
+  margin: 10px 0 10px 0;
 }
 
 .rp-card-star {
@@ -625,6 +624,7 @@ body {
   text-shadow: 0 0 5px rgb(0, 0, 0);
   font-size: 30px;
   color: rgb(255, 255, 255);
+  z-index: 99;
 }
 
 .rp-card-action:hover {
@@ -637,8 +637,8 @@ body {
   display: block;
   position: relative;
   height: 100%;
-  width: 25px;
-  margin-left: 20px;
+  width: 50px;
+  margin-left: 80px;
 }
 
 .chevron-left {
