@@ -590,6 +590,7 @@ body {
   height: 70%;
   position: absolute;
   object-fit: cover;
+  z-index: -1;
 }
 
 .rp-card-category {
