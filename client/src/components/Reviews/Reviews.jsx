@@ -86,7 +86,7 @@ export default function Reviews(props) {
     <div id='reviews-component' onClick={props.onClick}>
       <div className="reviews-flexParent" data-testid="reviews-parent-div">
         <div className="reviews-flexBreakdownParent">
-          <div><b>Ratings and Reviews</b></div>
+          <div><h1>Ratings and Reviews</h1></div>
           {metaState.ratings &&
             <RatingsBreakdown meta={metaState} getAverageRating={getAverageRating}/>
           }
