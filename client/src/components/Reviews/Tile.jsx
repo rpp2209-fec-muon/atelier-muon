@@ -30,21 +30,23 @@ export default function Tile({ review }) {
 
   return (
     <div data-testid="tile-instance" className='tile-instance'>
+      <div className='tile-child review-star-parent'>
       <Star ratings={review.rating}/>
-      <div className='review-user-date'>Submitted by user <b>{review.reviewer_name}</b> on {date}</div>
-      <div className='review-summary'><b>{review.summary}</b></div>
-      <div className='review-body'>{review.body}</div>
+      </div>
+      <div className='tile-child review-user-date'>Submitted by user <b>{review.reviewer_name}</b> on {date}</div>
+      <div className='tile-child review-summary'><h3>{review.summary}</h3></div>
+      <div className='tile-child review-body'>{review.body}</div>
       <Photos photos={review.photos}/>
       {review.recommend &&
-        <div className='review-recommend'><i>I recommend this product</i></div>
+        <div className='tile-child review-recommend'><i>I recommend this product</i></div>
       }
-      <div className='review-helpful-parent'>
+      <div className='tile-child review-helpful-parent'>
         <div className='review-helpful'>Helpful?</div>
-        <div className='review-helpful-yes' onClick={() => {!rated ? helpfulHandler() : undefined}}>Yes {helpfulCount}</div>
+        <div className='tile-child review-helpful-yes' onClick={() => {!rated ? helpfulHandler() : undefined}}>Yes {helpfulCount}</div>
+        {helpfulMessage &&
+        <div className='review-helpful-message'>Thanks for your feedback!</div>
+        }
       </div>
-      {helpfulMessage &&
-        <div>Thanks for your feedback!</div>
-      }
     </div>
   )
 }
