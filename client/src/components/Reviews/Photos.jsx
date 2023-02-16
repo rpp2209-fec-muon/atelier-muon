@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function Photos({ photos }) {
 
   return (
-    <div className='review-tile-photos-container'>
+    <div className='tile-child review-tile-photos-container'>
       {photos.map((photo) => {
         return (
           <img className='review-tile-photo-instance' key={photo.id} src={photo.url} width="100" height="100" onError={(event) => {

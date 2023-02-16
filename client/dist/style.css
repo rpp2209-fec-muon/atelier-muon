@@ -435,17 +435,20 @@ body {
 }
 
 .tile-instance {
-  outline: solid;
-  outline-width: 2px;
-  width: 600px;
-  height: 300px;
+  width: 700px;
+  height: 400px;
   margin: 15px;
+  border: 1px solid #ddd
+}
+
+.tile-child {
+  margin: 5px;
 }
 
 .reviews-flexListChild {
   overflow-y: auto;
-  width: 640px;
-  height: 650px;
+  width: 740px;
+  height: 850px;
 }
 
 .review-helpful-yes {
@@ -456,7 +459,29 @@ body {
 
 .review-helpful {
   display: inline-block;
-  padding: 3px;
+}
+
+.review-helpful-parent {
+  position: absolute;
+  bottom: 0px;
+}
+
+.review-helpful-message {
+  display: inline-block;
+}
+
+.tile-instance {
+  position: relative;
+}
+
+.review-body {
+  width: 690px;
+  height: 126px;
+  overflow-y: auto;
+}
+
+.review-body::-webkit-scrollbar {
+  display: none;
 }
 
 /* New Review Modal */
