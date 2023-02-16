@@ -193,7 +193,7 @@ body {
 }
 
 .overview-thumbnail {
-  width: 100%;
+  width: 55px;
   height: 100%;
   overflow-y: scroll;
 }
@@ -314,17 +314,18 @@ body {
   width: 65px;
   height: 65px;
   border-radius: 50%;
+  border: 1px solid #ddd;
   position: relative;
-  bottom: 1px;
-  right: 6px;
 }
 
 .overview-style-selector-thumbnail-button {
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  border-width: 3px;
+  border-width: 0;
+  width: 65px;
+  height: 65px;
+  border-width: 0;
   margin: 10px;
+  background-color:rgb(255, 255, 255);
 }
 
 .overview-checkmark {
@@ -332,8 +333,8 @@ body {
   height: 25px;
   border-radius: 50%;
   position: relative;
-  bottom: 75px;
   left: 25px;
+  bottom: 75px;
 }
 
 
@@ -346,12 +347,14 @@ body {
   padding: 15px 50px;
   background-color: white;
   margin: 0px 25px 0 0;
+  border: 1px solid #ddd;
 }
 
 .overview-cart-quantity {
   font-size: 20px;
   padding: 15px 50px;
   background-color: white;
+  border: 1px solid #ddd;
 }
 
 .overview-cart-size-quantity {
@@ -365,6 +368,7 @@ body {
   padding: 15px 80px;
   background-color: white;
   margin: 0px 25px 0 0;
+  border: 1px solid #ddd;
 }
 
 
@@ -372,6 +376,7 @@ body {
   font-size: 20px;
   padding: 15px 30px;
   background-color: white;
+  border: 1px solid #ddd;
 }
 
 .overivew-cart-checkout-outfit {
