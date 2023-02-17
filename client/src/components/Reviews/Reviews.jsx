@@ -93,7 +93,7 @@ export default function Reviews(props) {
     <div id='reviews-component' onClick={props.onClick}>
       <div className="reviews-flexParent" data-testid="reviews-parent-div">
         <div className="reviews-flexBreakdownParent">
-          <div><b>Ratings and Reviews</b></div>
+          <div><h1>Ratings and Reviews</h1></div>
           {metaState.ratings &&
             <RatingsBreakdown meta={metaState} getAverageRating={getAverageRating}/>
           }
@@ -105,8 +105,14 @@ export default function Reviews(props) {
         <div className="reviews-flexListParent">
           <Sort handleSortChange={handleSortChange}/>
           <List list={listState.slice(0, pageState)}/>
-          <button onClick={() => {setModalState(true)}} className='modal-button'>Add A Review</button>
-          <button className='more-reviews-button' onClick={() => {setPageState(pageState + 2)}}>More Reviews</button>
+          <div className='button-parent'>
+            <div className='modal-button-parent'>
+              <button onClick={() => {setModalState(true)}} className='modal-button'>Add A Review</button>
+            </div>
+            <div className='more-reviews-parent'>
+              <button className='more-reviews-button' onClick={() => {setPageState(pageState + 2)}}>More Reviews</button>
+            </div>
+          </div>
         </div>
       </div>
       {modalState &&

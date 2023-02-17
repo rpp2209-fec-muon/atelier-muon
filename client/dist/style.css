@@ -435,7 +435,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  outline: auto;
+  border: 1px solid #ddd;
   overflow-y: auto;
   background-color: white;
 }
@@ -494,6 +494,53 @@ body {
 .review-body::-webkit-scrollbar {
   display: none;
 }
+
+.bar-container {
+  display: flex;
+  flex-direction: row ltr;
+  padding-bottom: 10px;
+}
+
+.bar-parent {
+  height: 15px;
+  width: 250px;
+  border: 1px solid #ddd;
+}
+
+.bar-child {
+  height: 15px;
+  background-color: black;
+}
+
+.bar-label {
+  padding-right: 5px;
+}
+
+.average-rating-parent {
+  display: flex;
+  flex-direction: row ltr;
+  padding-bottom: 10px;
+}
+
+.average-star-parent {
+  padding-top: 25px;
+  padding-left: 15px;
+}
+
+.sort-parent {
+  padding-left: 15px;
+}
+
+.modal-button-parent {
+  padding-left: 15px;
+  display: inline;
+}
+
+.more-reviews-parent {
+  padding-left: 5px;
+  display: inline;
+}
+
 
 /* New Review Modal */
 
