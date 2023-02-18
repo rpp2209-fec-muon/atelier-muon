@@ -3,6 +3,9 @@
 Project Atelier is a front-end overhaul of the retail portal for *the company*.
 ***
 
+## Accessibility
+Project Atelier has a Google Lighthouse accessibility rating of 100.
+(put screenshot here)
 
 ## Description
 
