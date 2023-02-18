@@ -243,6 +243,7 @@ body {
 
 .overview-product-info-price {
   margin: 10px 0 10px 0;
+  font-size: 20px;
 }
 
 .overview-product-info-star {
@@ -700,12 +701,14 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .rp-card-addoutfit-text {
   position: absolute;
   bottom: 20%;
   left: 15%;
   font-size: 30px;
 }
+
 .rp-card {
   float: left;
   display: block;
@@ -739,12 +742,14 @@ body {
   position: absolute;
   top: 75%;
   margin: 5px 0 5px 0;
+  font-size: 17.5px;
 }
 
 .rp-card-price {
   position: absolute;
   bottom: 5%;
   margin: 10px 0 10px 0;
+  font-size: 20px;
 }
 
 .rp-card-star {
