@@ -24,11 +24,6 @@ export default function RatingsBreakdown({ meta, getAverageRating }) {
 
   const reviewTotal = parseReviewTotal(meta.ratings);
 
-  // useEffect(() => {
-  //   parseReviewTotal(meta.ratings);
-  //   console.log(reviewTotal);
-  // }, []);
-
   return (
     <div className="reviews-flexBreakdownChild" data-testid="ratings-parent-div">
       <div className='average-rating-parent'>
