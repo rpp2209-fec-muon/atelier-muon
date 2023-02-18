@@ -149,11 +149,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
+                <img alt={'thumbnail' + i} style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
+                  <img alt={'thumbnail' + i} style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                   )
             }
           })}
@@ -182,11 +182,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
+                <img alt={'thumbnail' + i} style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
+                  <img alt={'thumbnail' + i} style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                   )
             }
           })}
@@ -218,11 +218,11 @@ function ImageGallery (props) {
           {props.style.photos.map( (currPhotoObj, i) => {
             if (i === props.currPhotoIndex) {
               return (
-                <img style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
+                <img alt={'thumbnail' + i} style={{height: '49px', width: '49px', border: '2px solid rgba(255,255,255, 0.9)' }}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.thumbnail_url} id={i}></img>
                 )
             } else {
               return (
-                  <img style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
+                  <img alt={'thumbnail' + i} style={{height: '49px', width: '49px'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos' src={currPhotoObj.url} id={i}></img>
                   )
             }
           })}
@@ -257,11 +257,11 @@ function ImageGallery (props) {
                 {props.style.photos.map( (currPhotoObj, i) => {
                   if (i === props.currPhotoIndex) {
                     return (
-                      <img style={{border: '1px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                      <img alt={'thumbnail' + i} style={{border: '1px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                       )
                   } else {
                     return (
-                        <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                        <img alt={'thumbnail' + i} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                   }
                 })}
@@ -296,11 +296,11 @@ function ImageGallery (props) {
                   {props.style.photos.map( (currPhotoObj, i) => {
                     if (i === props.currPhotoIndex) {
                       return (
-                        <img style={{border: '1px solid rgba(255,255,255, 0.9)'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                        <img alt={'thumbnail' + i} style={{border: '1px solid rgba(255,255,255, 0.9)'}}key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                     } else {
                       return (
-                          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                          <img alt={'thumbnail' + i} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                           )
                     }
                   })}
@@ -335,11 +335,11 @@ function ImageGallery (props) {
                   {props.style.photos.map( (currPhotoObj, i) => {
                     if (i === props.currPhotoIndex) {
                       return (
-                        <img style={{border: '1px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                        <img alt={'thumbnail' + i} style={{border: '1px solid rgba(255,255,255, 0.9)'}} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                         )
                     } else {
                       return (
-                          <img key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
+                          <img alt={'thumbnail' + i} key={'overview' + i} onClick={props.update} className='overview-thumbnail-photos-expanded' src={currPhotoObj.thumbnail_url} id={i}></img>
                           )
                     }
                   })}
