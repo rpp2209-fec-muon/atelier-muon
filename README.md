@@ -72,11 +72,20 @@ If the product is out of stock then the selection menu will display a notificati
 Related Prodouct widget is about display two lists with related products and you outfit list. Related products is the products that related with current detail page product, it's given by server and cannot been changed. You outfit list is the outfit that each user add to the list, it's only for the current user.
 ### List Behavior:
 Related Products List will display all products related to current product as a card. It will include product image, category, name, price and star rating. By click on the card will navigate to the detail page of clicked product. The list will only display four cards in a row and with a next/last page botton on the side. The botton will only display when there is a next/last page. Also there's a action botton on the top right of each card, by click on this botton will display a comparison modal.
+<img src="./client/dist/product-list.png"
+     alt="product-related-list"
+     style="float: left; margin-right: 10px;" />
 
 Your Outfit List will display same style of card as Related Products List, but there will be a "Add to Outfit" botton always display on the first card spot of list, by click on this botton will add current product to the outfit list. Also the action botton on the top right is different with related list, outfit botton will remove this clicked product from outfit list.
+<img src="./client/dist/outfit-list.png"
+     alt="product-related-list"
+     style="float: left; margin-right: 10px;" />
 
 ### Comparison Modal:
 By click on the related products top right star icon botton will open a comparison modal. In this modal window will display the different feature characteristic between current product and related product. The name of product will always display on the top of modal, and if product have that characteristic will display checkmark or specific value of the characteristic, if product do not have those characteristic will leave blank with this characteristic.
+<img src="./client/dist/comparison.png"
+     alt="product-related-list"
+     style="float: left; margin-right: 10px;" />
 
 ## Usage:
 
