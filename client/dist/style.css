@@ -404,17 +404,23 @@ body {
 .reviews-flexParent {
   display: flex;
   flex-direction: row ltr;
-  justify-content: center;
+  justify-content: flex-start;
+  position: relative;
+  left: 10%;
 }
+
+
 
 .reviews-flexBreakdownParent {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding-top: 50px;
+  padding-right: 20px;
 }
 
 .reviews-flexListParent {
   padding: 20px;
+  padding-top: 50px;
 }
 
 .reviews-modalOverlay {
