@@ -45,9 +45,15 @@ Related Products List will display all products related to current product as a 
      style="float: left; margin-right: 10px;" />
 
 Your Outfit List will display same style of card as Related Products List, but there will be a "Add to Outfit" botton always display on the first card spot of list, by click on this botton will add current product to the outfit list. Also the action botton on the top right is different with related list, outfit botton will remove this clicked product from outfit list.
+<img src="./client/dist/outfit-list.png"
+     alt="product-related-list"
+     style="float: left; margin-right: 10px;" />
 
 ### Comparison Modal:
 By click on the related products top right star icon botton will open a comparison modal. In this modal window will display the different feature characteristic between current product and related product. The name of product will always display on the top of modal, and if product have that characteristic will display checkmark or specific value of the characteristic, if product do not have those characteristic will leave blank with this characteristic.
+<img src="./client/dist/comparison.png"
+     alt="product-related-list"
+     style="float: left; margin-right: 10px;" />
 
 ## Usage:
 
