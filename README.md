@@ -5,7 +5,7 @@ Project Atelier is a front-end overhaul of the retail portal for *the company*.
 
 ## Accessibility
 Project Atelier has a Google Lighthouse accessibility rating of 100.
-(put screenshot here)
+!['Accessibility Score'](./READMEPICS/accessibility-score.png)
 
 ## Description
 
@@ -104,12 +104,17 @@ Click on the cross icon on the top right of outfit card will remove this product
 **Review List** - The heart of the Ratings & Reviews widget is the review list. On page load, a complete list of user-submitted reviews for the current product page is fetched from the API. Only two reviews are initially listed however. When the user clicks "More Reviews", two more review tiles are loaded. Only one server request is necessary though, as all reviews have already been retrieved. The list can be sorted by relevant, newest, or most helpful. Sorting does trigger another call to the API.
 ***
 **Review Tiles** - Each review tile contains all the information listed in the business requirements document: star rating, timestamp, a summary, a body, any images the user submitted as part of the review, an indicator of whether the reviewer recommends the product, the reviewer's name, and the helpfullness rating of the review. Users are able to mark a review as helpful by clicking "Yes". This can only be done once per user per review.
+!['Review Tiles'](./READMEPICS/review-tiles.png)
 ***
-**Rating Breakdown** - The rating breakdown section calculates an average score out of all submitted ratings for the product and displays that average as a number.
+**Rating Breakdown** - The rating breakdown section calculates an average score out of all submitted ratings for the product and displays that average as a number. It also displays a bar graph showing the user the rough division of reviews by their rating.
+
+!['Rating Breakdown'](./READMEPICS/ratings-breakdown.png)
 ***
-**Product Breakdown** - The product breakdown section takes user-submitted feedback regarding relevant characteristics of a given product and creates an average score in the form of a number.
+**Product Breakdown** - The product breakdown section takes user-submitted feedback regarding relevant characteristics of a given product and creates a visual representation of that characteristic's rating.
+!['Product Breakdown'](./READMEPICS/product-breakdown.png)
 ***
-**Write New Review** - Clicking "Add A Review" at the bottom of the review list opens a modal window where a user will be asked to enter information relevant to their opinion of the product. Required fields are mark with an asterisk, and input validation prevents the form from being submitted if any of those fields are left empty. In addition to text, the user can submit up to five pictures to go along with their review. On upload, these pictures are added to Cloudinary, an image and asset hosting site. A public image url is returned upon successful upload, and is added to an array that is submitted to the API when the form is submitted.
+**Write New Review** - Clicking "Add A Review" at the bottom of the review list opens a modal window where a user will be asked to enter information relevant to their opinion of the product. Required fields are mark with an asterisk, and input validation prevents the form from being submitted if any of those fields are left empty. In addition to text, the user can submit up to five pictures to go along with their review. On upload, these pictures are added to Cloudinary, an image and asset hosting site. A public image url is returned upon successful upload, and is added to an array that is sent to the API when the form is submitted.
+!['Write New Review'](./READMEPICS/write-new-review.png)
 
 
 
